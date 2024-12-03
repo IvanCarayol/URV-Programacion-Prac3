@@ -5,16 +5,18 @@ public class Accio {
     private String titol;
     private Associacio[] llistaAssociacio;
     private Membre responsable;
+    private Data data;
     private int n_asso;
     private static int num_id = 100;
 
     // Constructor
-    public Accio(String nom, String titol, Membre responsable, int num_Associa) {
+    public Accio(String nom, String titol, Membre responsable, int num_Associa, Data date) {
         creacio_codi(nom);
         this.nom = nom;
         this.titol = titol;
         this.llistaAssociacio = new Associacio[num_Associa];
         this.responsable = responsable;
+        data = date.copia();
         n_asso = 0;
     }
         
@@ -53,6 +55,14 @@ public class Accio {
 
     public void setResponsable(Membre responsable) {
         this.responsable = responsable;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data date) {
+        data = date.copia();
     }
 
     public void agregarAssociacio(Associacio associacio) {

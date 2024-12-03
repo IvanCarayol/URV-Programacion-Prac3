@@ -37,4 +37,9 @@ public class Data {
     {
         this.any = any;
     }
+
+    public Data copia()
+    {
+        return (new Data(dia, mes, any));
+    }
 }
