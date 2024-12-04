@@ -44,4 +44,5 @@ public class Xerrades extends Accio {
         // que hay que hacer con las valoracione y miembros, tengo en mente un for para imprimir todos los miembros con su valoracion
         return text;
     }
+
 }
