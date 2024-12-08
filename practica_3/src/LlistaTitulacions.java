@@ -63,7 +63,7 @@ public class LlistaTitulacions {
     }
 
     // Función para añadir un elemento en la siguiente posición libre
-    public void anadirTitulacio(Titulacio titulacio) {
+    public void afegirTitulacio(Titulacio titulacio) {
         if (numelem < tabla.length) {
             tabla[numelem] = titulacio;
             numelem++;

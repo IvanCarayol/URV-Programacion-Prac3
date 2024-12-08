@@ -47,7 +47,7 @@ public class LlistaAssociacio {
     }
 
     // Función para añadir un elemento en la siguiente posición libre
-    public void anadirAsociacio(Associacio asociacio) {
+    public void afegirAsociacio(Associacio asociacio) {
         if (numelem < tabla.length) {
             tabla[numelem] = asociacio;
             numelem++;
