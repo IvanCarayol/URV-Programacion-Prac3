@@ -1,3 +1,5 @@
+import javax.xml.validation.Validator;
+
 /**
  * Classe que representa una llista de valoracions
  */
@@ -13,6 +15,11 @@ public class LlistaValoracio {
      */
     public LlistaValoracio() {
         this.valoracions = new Valoracio[TAMANY]; // Capacitat inicial
+        this.nElem = 0;
+    }
+
+    public LlistaValoracio(int n) {
+        this.valoracions = new Valoracio[n]; // Capacitat inicial
         this.nElem = 0;
     }
 
@@ -67,6 +74,17 @@ public class LlistaValoracio {
             }
         }
         return aux;
+    }
+
+    public int getnElem() {
+        return nElem;
+    } 
+
+    public Valoracio getValo(int n) {
+        if (n < nElem) {
+            return valoracions[n];
+        }
+        return null;
     }
 
     /**

@@ -3,10 +3,9 @@ public class Accio {
     private String codi;
     private String nom;
     private String titol;
-    private Associacio[] llistaAssociacio;
+    private LlistaAssociacio llistaAssociacio;
     private Membre responsable;
     private Data data;
-    private int n_asso;
     private static int num_id = 100;
 
     // Constructor
@@ -14,12 +13,24 @@ public class Accio {
         creacio_codi(nom);
         this.nom = nom;
         this.titol = titol;
-        this.llistaAssociacio = new Associacio[num_Associa];
+        this.llistaAssociacio = new LlistaAssociacio(num_Associa);
         this.responsable = responsable;
         data = date.copia();
-        n_asso = 0;
+    }
+
+    public Accio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, Data date) {
+        creacio_codi(nom);
+        this.nom = nom;
+        this.titol = titol;
+        this.llistaAssociacio = lAssocia;
+        this.responsable = responsable;
+        data = date.copia();
     }
         
+    /**
+     * Creacio del codi de cada accio
+     * @param tit tipus String es al titol
+     */
     private void creacio_codi(String tit) {
         String codeAux = "";
         codeAux+= tit.substring(0, 3);
@@ -45,7 +56,7 @@ public class Accio {
         this.titol = titol;
     }
 
-    public Associacio[] getLlistaAssociacio() {
+    public LlistaAssociacio getLlistaAssociacio() {
         return llistaAssociacio;
     }
 
@@ -63,13 +74,6 @@ public class Accio {
 
     public void setData(Data date) {
         data = date.copia();
-    }
-
-    public void agregarAssociacio(Associacio associacio) {
-        if(n_asso < this.llistaAssociacio.length) {
-            this.llistaAssociacio[n_asso] = associacio;
-            n_asso++;
-        }
     }
 
     // Método para mostrar la información de la acción

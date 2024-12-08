@@ -6,7 +6,7 @@ public class Valoracio {
     private static int VALORACIONMINIMA = 0;
     private static int VALORACIONMAXIMA = 10;
     
-    private String membre;
+    private Membre membre;
     private int valoracio;
 
     /**
@@ -14,7 +14,7 @@ public class Valoracio {
      * Inicialitza el membre amb una cadena buida i una valoracio de 0
      */
     public Valoracio() {
-        this.membre = "";
+        this.membre = null;
         this.valoracio = 0;
     }
 
@@ -25,7 +25,7 @@ public class Valoracio {
      * @param membre    el nom del membre que fa la valoració
      * @param valoracio la valoració numèrica feta pel membre
      */
-    public Valoracio(String membre, int valoracio) {
+    public Valoracio(Membre membre, int valoracio) {
         this.membre = membre;
         this.valoracio = valoracio;
     }
@@ -35,7 +35,7 @@ public class Valoracio {
      *
      * @return el nom del membre
      */
-    public String getMembre() {
+    public Membre getMembre() {
         return membre;
     }
 
@@ -53,7 +53,7 @@ public class Valoracio {
      *
      * @param membre el nou nom del membre
      */
-    public void setMembre(String membre) {
+    public void setMembre(Membre membre) {
         this.membre = membre;
     }
 

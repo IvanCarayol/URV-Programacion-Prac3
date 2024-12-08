@@ -14,6 +14,15 @@ public class Demostracio extends Accio {
         cost_material = cost;
     }
 
+    public Demostracio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, int n_elem, boolean valida, Data data, int oferit, double cost) {
+        // Llama al constructor de Accio con los parámetros requeridos
+        super(nom, titol, responsable, lAssocia, data);
+
+        this.valida = valida;
+        vegades_oferit = oferit;
+        cost_material = cost;
+    }
+
     public boolean isValida() {
         return valida;
     }
