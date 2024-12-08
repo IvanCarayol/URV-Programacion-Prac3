@@ -1,4 +1,3 @@
-import java.nio.channels.MembershipKey;
 
 public class Xerrades extends Accio {
 
@@ -32,7 +31,7 @@ public class Xerrades extends Accio {
      */
     public void afegirMembreValoracio(Membre membre, Valoracio valoracio) {
         
-            lMembres.afegirMiembro(membre);
+            lMembres.afegirMembre(membre);
             lValoracions.afegirValoracio(valoracio);
     }
 

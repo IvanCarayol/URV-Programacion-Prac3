@@ -1,4 +1,3 @@
-import javax.xml.validation.Validator;
 
 /**
  * Classe que representa una llista de valoracions
