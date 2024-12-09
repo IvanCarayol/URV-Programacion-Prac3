@@ -1,17 +1,42 @@
 public class Membre {
         
     private String alias;
-    private Data dataAlta;
+    private Data dataAlta[] = new Data[3];
     private String correu;
-    private Data dataBaixa;
+    private Data dataBaixa[] = new Data[3];
     private LlistaAssociacio associacions;
 
-    public Membre (String alias, Data dataAlta, String correu, Data dataBaixa, LlistaAssociacio associacions) {
+    public Membre (String alias, String correu) {
         this.alias = alias;
-        this.dataAlta = dataAlta;
         this.correu = correu;
-        this.dataBaixa = dataBaixa;
+        associacions = new LlistaAssociacio(3);
+    }
+
+    public Membre (String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio) {
+        this.alias = alias;
+        this.dataAlta[0] = dataAlta;
+        this.correu = correu;
+        this.dataBaixa[0] = dataBaixa;
+        associacions = new LlistaAssociacio(3);
+        associacions.afegirAsociacio(associacio);
+    }
+
+    public Membre (String alias, String correu, Data dataAlta[], Data dataBaixa[], LlistaAssociacio associacions) {
+        this.alias = alias;
+        setDataConst(dataAlta, dataBaixa);
+        this.correu = correu;
         this.associacions = associacions;
+    }
+
+    public void setDataConst(Data dataAlta[], Data dataBaixa[]) {
+        for(int i = 0; i < 3; i++) {
+            if (dataAlta[i] != null) {
+                this.dataAlta[i] = dataAlta[i].copia();
+            }
+            if (dataBaixa[i] != null) {
+                this.dataBaixa[i] = dataBaixa[i].copia();
+            }
+        }
     }
 
     public String getAlias() {
