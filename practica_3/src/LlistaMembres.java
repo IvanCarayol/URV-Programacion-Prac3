@@ -98,7 +98,7 @@ public class LlistaMembres
         } 
         else 
         {
-            System.out.println("No hay espacio disponible en la tabla.");
+            System.out.println("No hi ha espai disponible a la taula.");
         }
     }
 

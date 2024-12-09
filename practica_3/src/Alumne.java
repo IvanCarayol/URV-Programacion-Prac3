@@ -12,17 +12,10 @@ public class Alumne extends Membre
      * @param titulacio Titulació del alumne
      * @param graduat   Graduat?
      */
-<<<<<<< HEAD
-    public Alumne(String nom, Data[] dataAlta, String correu, Data[] dataBaixa, 
-                  LlistaAssociacio associacions, boolean graduat, Titulacio titulacio) {
-        super(nom, correu, dataAlta, dataBaixa, associacions);
-        this.graduat = graduat;
-=======
     public Alumne(String alias, String correu, Titulacio titulacio, boolean graduat)
     {
         super(alias, correu);
 
->>>>>>> 914edaf05d65ac638876829c767e6463225ffb46
         this.titulacio = titulacio;
         this.graduat = graduat;
     }
