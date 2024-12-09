@@ -1,23 +1,42 @@
-public class Professor extends Membre {
-
-    // Atributs addicionals per la classe Professor
-    private String nomDepartament; // El nom del departament del professor
-    private int numeroDespatx; // El número del despatx del professor
+public class Professor extends Membre 
+{
+    // Atributs
+    private String nomDepartament; 
+    private int numeroDespatx;
 
     /**
      * Constructor de la classe Professor.
      * 
      * @param nom            El nom del membre.
-     * @param dataAlta       La data d'alta del membre.
      * @param correu         El correu electrònic del membre.
+     * @param nomDepartament El nom del departament del professor.
+     * @param numeroDespatx  El número del despatx del professor.
+     */
+
+    public Professor(String alias, String correu, String nomDepartament, int numeroDespatx)
+    {
+        super(alias, correu);
+
+        this.nomDepartament = nomDepartament;
+        this.numeroDespatx = numeroDespatx;
+    }
+
+    /**
+     * Constructor de la classe Professor.
+     * 
+     * @param nom            El nom del membre.
+     * @param correu         El correu electrònic del membre.
+     * @param dataAlta       La data d'alta del membre.
      * @param dataBaixa      La data de baixa del membre (pot ser null si encara està actiu).
      * @param associacions   La llista d'associacions del membre.
      * @param nomDepartament El nom del departament del professor.
      * @param numeroDespatx  El número del despatx del professor.
      */
-    public Professor(String alias, Data dataAlta, String correu, Data dataBaixa, 
-                     LlistaAssociacio associacions, String nomDepartament, int numeroDespatx) {
-        super(alias, dataAlta, correu, dataBaixa, associacions);
+
+    public Professor (String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio, String nomDepartament, int numeroDespatx)
+    {
+        super(alias, correu, dataAlta, dataBaixa, associacio);
+
         this.nomDepartament = nomDepartament;
         this.numeroDespatx = numeroDespatx;
     }
@@ -27,7 +46,8 @@ public class Professor extends Membre {
      * 
      * @return El nom del departament.
      */
-    public String getNomDepartament() {
+    public String getNomDepartament() 
+    {
         return nomDepartament;
     }
 
@@ -36,7 +56,8 @@ public class Professor extends Membre {
      * 
      * @param nomDepartament El nou nom del departament.
      */
-    public void setNomDepartament(String nomDepartament) {
+    public void setNomDepartament(String nomDepartament) 
+    {
         this.nomDepartament = nomDepartament;
     }
 
@@ -45,7 +66,8 @@ public class Professor extends Membre {
      * 
      * @return El número del despatx.
      */
-    public int getNumeroDespatx() {
+    public int getNumeroDespatx() 
+    {
         return numeroDespatx;
     }
 
@@ -54,7 +76,8 @@ public class Professor extends Membre {
      * 
      * @param numeroDespatx El nou número del despatx.
      */
-    public void setNumeroDespatx(int numeroDespatx) {
+    public void setNumeroDespatx(int numeroDespatx) 
+    {
         this.numeroDespatx = numeroDespatx;
     }
 
@@ -64,9 +87,11 @@ public class Professor extends Membre {
      * @return Una cadena amb la informació del professor.
      */
     @Override
-    public String toString() {
+    public String toString() 
+    {
         String aux;
         aux = super.toString(); // Obté la representació de la classe base
+
         aux += "\nNom del Departament: " + nomDepartament;
         aux += "\nNúmero del Despatx: " + numeroDespatx;
         return aux;
