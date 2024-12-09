@@ -164,6 +164,14 @@ public class tests {
         System.out.println(accio);
         System.out.println(accio2);
 
+        System.out.println("\nPROVES CLASSE LLISTAACCIO\n");
+
+        LlistaAccio laccio = new LlistaAccio(4);
+        laccio.afegirAccio(accio);
+        laccio.afegirAccio(accio2);
+
+        System.out.println(laccio);
+
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
 
         Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, true, dat, 0, 15000);

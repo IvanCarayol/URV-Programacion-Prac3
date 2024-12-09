@@ -10,7 +10,7 @@ public class LlistaAccio {
     }
 
     // Método para agregar una acción a la lista
-    public void agregarAccio(Accio accio) {
+    public void afegirAccio(Accio accio) {
         
         if (contador < listaAccions.length) {
             listaAccions[contador] = accio;  
