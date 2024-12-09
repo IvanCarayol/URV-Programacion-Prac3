@@ -35,7 +35,7 @@ public class LlistaXerrades {
         return validas;
     }
 
-    public boolean afegirXerrada(String nomXerrada, String titolXerrada, Membre responsable, int numeroAssociacions, Data dataXerrada){
+    public boolean afegirXerrada(String nomXerrada, String titolXerrada, Membre responsable, LlistaAssociacio llistaAssociacions, Data dataXerrada){
         if(nElem >= llista.length){
             return false;
         }
@@ -60,7 +60,7 @@ public class LlistaXerrades {
             }
         }
 
-        Xerrades novaXerrada = new Xerrades(nomXerrada, titolXerrada, responsable, numeroAssociacions, dataXerrada, 0);
+        Xerrades novaXerrada = new Xerrades(nomXerrada, titolXerrada, responsable, llistaAssociacions, dataXerrada, 0);
         llista[posicionInsertar] = novaXerrada;
         nElem++;
 
