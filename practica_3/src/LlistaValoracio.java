@@ -6,19 +6,19 @@ public class LlistaValoracio {
     private static int TAMANY = 500;
 
     private Valoracio[] valoracions;
-    private int nElem; // Nombre actual d'elements emmagatzemats
+    private int nElem;
 
     /**
      * Constructor per defecte.
      * Inicialitza un array buit amb una mida inicial.
      */
     public LlistaValoracio() {
-        this.valoracions = new Valoracio[TAMANY]; // Capacitat inicial
+        this.valoracions = new Valoracio[TAMANY]; 
         this.nElem = 0;
     }
 
     public LlistaValoracio(int n) {
-        this.valoracions = new Valoracio[n]; // Capacitat inicial
+        this.valoracions = new Valoracio[n];
         this.nElem = 0;
     }
 
@@ -46,7 +46,7 @@ public class LlistaValoracio {
         int i = 0;
 
         while (i < valoracions.length) {
-            if (valoracions[i].equals(valoracio)) {
+            if (valoracions[i] != null && valoracions[i].equals(valoracio)) {
                 moureElements(i);
                 nElem--;
                 return true;
@@ -64,26 +64,42 @@ public class LlistaValoracio {
      */
     public String toString() {
         String aux = "";
-
-        for (int i = 0; i < valoracions.length; i++){
-            aux += valoracions[i].toString();
-
-            if(i < valoracions.length - 1){                 //salt de linia entre valoracions menys al final
+    
+        for (int i = 0; i < valoracions.length; i++) {
+            if (valoracions[i] != null) {  
+                aux += valoracions[i].toString();
+            }
+    
+            if (i < valoracions.length - 1 && valoracions[i] != null) { 
                 aux += "\n";
             }
         }
         return aux;
     }
+    
 
     public int getnElem() {
         return nElem;
     } 
 
     public Valoracio getValo(int n) {
-        if (n < nElem) {
-            return valoracions[n];
+        if (n < 0 || n >= nElem) {  
+            throw new IndexOutOfBoundsException("Índex fora de rang: " + n);
         }
-        return null;
+        return valoracions[n]; 
+    }
+
+    /**
+     * Realitza una còpia de la llista de valoracions.
+     * 
+     * @return una nova instància de LlistaValoracio amb els mateixos elements
+     */
+    public LlistaValoracio copia() {
+        LlistaValoracio copiaLlista = new LlistaValoracio(nElem); 
+        for (int i = 0; i < nElem; i++) {
+            copiaLlista.afegirValoracio(valoracions[i].copia());  
+        }
+        return copiaLlista;
     }
 
     /**
@@ -95,6 +111,6 @@ public class LlistaValoracio {
         for (int i = pos; i < valoracions.length - 1; i++) {
             valoracions[i] = valoracions[i + 1];
         }
-        valoracions[nElem - 1] = null; // Hem d'eliminar l'últim element
+        valoracions[nElem - 1] = null; 
     }
 }

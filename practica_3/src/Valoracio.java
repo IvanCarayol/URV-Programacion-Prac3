@@ -10,15 +10,6 @@ public class Valoracio {
     private int valoracio;
 
     /**
-     * Constructor sense paràmetres
-     * Inicialitza el membre amb una cadena buida i una valoracio de 0
-     */
-    public Valoracio() {
-        this.membre = null;
-        this.valoracio = 0;
-    }
-
-    /**
      * Constructor amb paràmetres.
      * Permet inicialitzar el nom del membre i la valoració numèrica.
      *
@@ -79,7 +70,7 @@ public class Valoracio {
      */
     @Override
     public String toString() {
-        return ("Valoracio del membre "+membre+" es igual a "+valoracio+".");
+        return ("Valoracio del membre "+membre.getAlias()+" es igual a "+valoracio+".");
     }
 
     /**
@@ -94,4 +85,14 @@ public class Valoracio {
         }
         return false;
     }
+
+    /**
+     * Crea i retorna una còpia exacta d'aquesta instància de la classe Valoracio.
+     *
+     * @return una nova instància de Valoracio amb els mateixos valors de membre i valoracio
+     */
+    public Valoracio copia() {
+        return new Valoracio(this.membre, this.valoracio);
+    }
+
 }
