@@ -1,74 +1,117 @@
-public class LlistaMembres {
-
-    // Atributos
+public class LlistaMembres 
+{
+    // Atributs
     private Membre[] tabla;
-    private int numelem;
+    private int numElem;
 
-    // Constructor para inicializar la tabla
-    public LlistaMembres(int size) {
+    /**
+     * Constructor de la classe LlistaMembres
+     * @param size  Tamany de la taula
+     */
+    public LlistaMembres(int size) 
+    {
         this.tabla = new Membre[size];
-        this.numelem = 0;  // Al principio, no hay elementos en la tabla
+        this.numElem = 0;
     }
 
-    // Setter para una posición concreta de la tabla
-    public void setMembreAt(int position, Membre membre) {
-        if (position >= 0 && position < tabla.length) {
+    /**
+     * Estableix el membre a una posició concreta de la taula
+     * @param position  Index de la taula LlistaMembres
+     * @param membre    Membre a introduir
+     */
+    public void setMembreAt(int position, Membre membre) 
+    {
+        if (position >= 0 && position < tabla.length) 
+        {
             tabla[position] = membre;
-            if (position >= numelem) {
-                numelem = position + 1;  // Actualiza el número de elementos si es necesario
+            if (position >= numElem) 
+            {
+                numElem = position + 1; //Actualitza el número d'elements si es necesari
             }
-        } else {
-            System.out.println("Posición fuera de los límites.");
+        } 
+        else 
+        {
+            System.out.println("Posició fora dels límits.");
         }
     }
 
-    // Getter para una posición concreta de la tabla
-    public Membre getMembreAt(int position) {
-        if (position >= 0 && position < numelem) {
+    /**
+     * Retorna el membre de una posició concreta de la taula
+     * @param position  Index de la taula
+     *
+     * @return  Membre en la posició indicada
+     */
+    public Membre getMembreAt(int position) 
+    {
+        if (position >= 0 && position < numElem) 
+        {
             return tabla[position];
-        } else {
-            System.out.println("Posición fuera de los límites.");
+        } 
+        else 
+        {
+            System.out.println("Posició fora dels límits.");
             return null;
+        }
+    }
+
+    /**
+     * Retorna el numero de membres a la taula
+     * @return  nombre de membres
+     */
+    public int getNumelem() 
+    {
+        return numElem;
+    }
+
+    /**
+     * Elimina el membre en la posició indicada
+     * @param position  Index de la posició de la taula
+     */
+    public void eliminarMembreAt(int position) {
+        if (position >= 0 && position < numElem) 
+        {  
+            //Desplaçar els elements per omplir el buit
+            for (int i = position; i < numElem - 1; i++) 
+            {
+                tabla[i] = tabla[i + 1];    //Moure el segugüent element a la posició actual
+            }
+
+            tabla[numElem - 1] = null;  //Buidar la última posició
+            numElem--;  //Decrementar el numero d'elements
+        } 
+        else 
+        {
+            System.out.println("Posició fora dels límits.");
+        }
+    }
+
+    /**
+     * Afegeix un membre a la taula
+     * @param membre    Membre a afegir
+     */
+    public void afegirMembre(Membre membre) 
+    {
+        if (numElem < tabla.length) 
+        {
+            tabla[numElem] = membre;
+            numElem++;
+        } 
+        else 
+        {
+            System.out.println("No hay espacio disponible en la tabla.");
         }
     }
 
     // Método toString para mostrar toda la tabla temporal 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Lista de Membres:\n");
-        for (int i = 0; i < numelem; i++) {
-            sb.append("Membre ").append(i + 1).append(": ").append(tabla[i].toString()).append("\n");
-        }
-        return sb.toString();
-    }
+    public String toString() 
+    {
+        String text = "Llista de Membres:\n";
 
-    // Getter para el número de elementos (numelem)
-    public int getNumelem() {
-        return numelem;
-    }
-
-    // Función para eliminar un elemento en una posición específica
-    public void eliminarMembreAt(int position) {
-        if (position >= 0 && position < numelem) {
-            // Desplazar los elementos para cubrir el hueco
-            for (int i = position; i < numelem - 1; i++) {
-                tabla[i] = tabla[i + 1]; // Mover el siguiente elemento a la posición actual
-            }
-            tabla[numelem - 1] = null; // Limpiar la última posición
-            numelem--; // Reducir el número de elementos
-        } else {
-            System.out.println("Posición fuera de los límites.");
+        for (int i = 0; i < numElem; i++) 
+        {
+            text+="Membre "+i + 1+": "+tabla[i].toString()+"\n";
         }
-    }
-
-    // Función para añadir un elemento en la siguiente posición libre
-    public void afegirMembre(Membre membre) {
-        if (numelem < tabla.length) {
-            tabla[numelem] = membre;
-            numelem++;
-        } else {
-            System.out.println("No hay espacio disponible en la tabla.");
-        }
+        return text;
     }
 }

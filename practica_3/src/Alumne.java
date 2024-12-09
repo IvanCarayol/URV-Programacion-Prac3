@@ -1,75 +1,97 @@
-public class Alumne extends Membre {
-
-    // Atributs addicionals per la classe Alumne
-    private boolean graduat; // Indica si l'alumne està graduat
-    private Titulacio titulacio; // La titulació de l'alumne
+public class Alumne extends Membre
+{
+    //Atributs
+    private boolean graduat = false;
+    private Titulacio titulacio;
 
     /**
-     * Constructor de la classe Alumne.
+     * Constructor de la clase Alumne sense estar assignat a una associació
      * 
-     * @param nom          Nom del membre.
-     * @param dataAlta     La data d'alta del membre.
-     * @param correu       El correu electrònic del membre.
-     * @param dataBaixa    La data de baixa del membre (pot ser null si encara està actiu).
-     * @param associacions La llista d'associacions del membre.
-     * @param graduat      Indica si l'alumne està graduat.
-     * @param titulacio    La titulació de l'alumne.
+     * @param alias     Nom del alumne
+     * @param correu    Correu electronic del alumne
+     * @param titulacio Titulació del alumne
+     * @param graduat   Graduat?
      */
+<<<<<<< HEAD
     public Alumne(String nom, Data[] dataAlta, String correu, Data[] dataBaixa, 
                   LlistaAssociacio associacions, boolean graduat, Titulacio titulacio) {
         super(nom, correu, dataAlta, dataBaixa, associacions);
         this.graduat = graduat;
+=======
+    public Alumne(String alias, String correu, Titulacio titulacio, boolean graduat)
+    {
+        super(alias, correu);
+
+>>>>>>> 914edaf05d65ac638876829c767e6463225ffb46
         this.titulacio = titulacio;
-    }
-
-    /**
-     * Retorna si l'alumne està graduat.
-     * 
-     * @return true si l'alumne està graduat, false altrament.
-     */
-    public boolean isGraduat() {
-        return graduat;
-    }
-
-    /**
-     * Estableix si l'alumne està graduat.
-     * 
-     * @param graduat true si l'alumne està graduat, false altrament.
-     */
-    public void setGraduat(boolean graduat) {
         this.graduat = graduat;
     }
 
     /**
-     * Retorna la titulació de l'alumne.
+     * Constructor de la classe alumnse estant assignat a una associació
      * 
-     * @return La titulació de l'alumne.
+     * @param alias         Nom del alumne
+     * @param correu        Correu electronic del alumne
+     * @param dataAlta      Data de alta del alumne a la associació
+     * @param dataBaixa     Data de baixa del alumne a la associació
+     * @param associacio    Associació assignada al alumne
+     * @param titulacio     Titulacio del alumne
+     * @param graduat       Graduat?
      */
-    public Titulacio getTitulacio() {
+    public Alumne(String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio, Titulacio titulacio, boolean graduat)
+    {
+        super(alias, correu, dataAlta, dataBaixa, associacio);
+
+        this.titulacio = titulacio;
+        this.graduat = graduat;
+    }
+
+    /**
+     * Retorna la titulació del alumne
+     * @return Titulació del alumne
+     */
+    public Titulacio getTitulacio() 
+    {
         return titulacio;
     }
 
     /**
-     * Estableix la titulació de l'alumne.
-     * 
-     * @param titulacio La nova titulació de l'alumne.
+     * Retorna TRUE si graduat FALSE si no
+     * @return graduat?
      */
-    public void setTitulacio(Titulacio titulacio) {
+    public boolean isGraduat()
+    {
+        return graduat;
+    }
+
+    /**
+     * Estableix la titulació del alumne
+     * @param titulacio Titulació del alumne
+     */
+    public void setTitulacio (Titulacio titulacio)
+    {
         this.titulacio = titulacio;
     }
 
     /**
-     * Retorna una representació en forma de cadena de l'objecte Alumne.
-     * 
-     * @return Una cadena amb la informació de l'alumne.
+     * Estableix si el alumne esta graduat o no
+     * @param graduat   Graduat?
      */
-    @Override
-    public String toString() {
-        String aux;
-        aux = super.toString(); // Obté la representació de la classe base
-        aux += "\nGraduat: " + (graduat ? "Sí" : "No");
-        aux += "\nTitulació: " + titulacio;
-        return aux;
+    public void setGraduat (boolean graduat)
+    {
+        this.graduat = graduat;
     }
-}
 
+    @Override
+    public String toString()
+    {
+        String text;
+        text = super.toString();
+
+        text += "Titulacio: "+titulacio.getNom()+"\n";
+        if (graduat) {text += "Graduat: Si\n";} 
+            else { text += "Graduat: No\n"; }
+        return text;
+    }
+        
+}

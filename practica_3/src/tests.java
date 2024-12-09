@@ -150,7 +150,13 @@ public class tests {
         datas[1] = new Data(5, 6, 2024);
         Data datas2[] = new Data[2];
         
-        Membre llusep = new Membre("Llusep", "llusep27@gmail.com", datas, datas2, lAsso);
+        Membre llusep = new Membre("Llusep", "llusep27@gmail.com");
+
+        for (int i = 0; i < lAsso.getNumelem(); i++)
+        {
+            llusep.afegirAsociacio(lAsso.getAsociacioAt(i), datas[i]);
+            llusep.setDataBaixa(datas2[i], i);
+        }
 
         System.out.println("Utiliztacio del constructor de membre si esta en més associacions");
         System.out.println(llusep);
