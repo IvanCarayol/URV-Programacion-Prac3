@@ -82,7 +82,7 @@ public class Membre {
             text += "\nAssociacio: " + associacions.getAsociacioAt(i).getNom();
             text += "\nDataAlta: " + dataAlta[i];
             if (dataBaixa[i] != null) {
-                text += "\nDataBaixa: " + dataBaixa;
+                text += "\nDataBaixa: " + dataBaixa[i];
             }
         }
 

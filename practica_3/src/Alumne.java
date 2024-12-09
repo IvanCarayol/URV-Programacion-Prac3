@@ -15,9 +15,9 @@ public class Alumne extends Membre {
      * @param graduat      Indica si l'alumne està graduat.
      * @param titulacio    La titulació de l'alumne.
      */
-    public Alumne(String nom, Data dataAlta, String correu, Data dataBaixa, 
+    public Alumne(String nom, Data[] dataAlta, String correu, Data[] dataBaixa, 
                   LlistaAssociacio associacions, boolean graduat, Titulacio titulacio) {
-        super(nom, dataAlta, correu, dataBaixa, associacions);
+        super(nom, correu, dataAlta, dataBaixa, associacions);
         this.graduat = graduat;
         this.titulacio = titulacio;
     }

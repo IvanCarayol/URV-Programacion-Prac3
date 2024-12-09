@@ -15,9 +15,9 @@ public class Professor extends Membre {
      * @param nomDepartament El nom del departament del professor.
      * @param numeroDespatx  El número del despatx del professor.
      */
-    public Professor(String alias, Data dataAlta, String correu, Data dataBaixa, 
+    public Professor(String alias, Data[] dataAlta, String correu, Data[] dataBaixa, 
                      LlistaAssociacio associacions, String nomDepartament, int numeroDespatx) {
-        super(alias, dataAlta, correu, dataBaixa, associacions);
+        super(alias, correu, dataAlta, dataBaixa, associacions);
         this.nomDepartament = nomDepartament;
         this.numeroDespatx = numeroDespatx;
     }

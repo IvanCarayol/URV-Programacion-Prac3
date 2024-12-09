@@ -179,5 +179,64 @@ public class tests {
 
         System.out.println(xerra);
 
+        System.out.println("\nPROVES CLASSE PROFESSOR");
+        //Creamos algunas fechas de alta y baja
+        Data dataAlta1 = new Data(10, 1, 2020);
+        Data dataBaixa1 = new Data(15, 12, 2021);
+
+        //Creamos els membres provisionals
+        LlistaMembres llistaMembresAsociacio = new LlistaMembres(4);
+        llistaMembresAsociacio.afegirMembre(membre1);
+        llistaMembresAsociacio.afegirMembre(membre2);
+        llistaMembresAsociacio.afegirMembre(membre3);
+        llistaMembresAsociacio.afegirMembre(membre4);
+
+        //Creamos algunas asociaciones
+        Associacio associacio1 = new Associacio("CodeURV", "codeURV@gmail.com", membre1, membre2, membre3, titulacions, llistaMembresAsociacio );
+
+        // Crear una lista de asociaciones
+        LlistaAssociacio lista = new LlistaAssociacio(3);
+        lista.afegirAsociacio(associacio1);
+
+        //Crear un objeto Professor
+        Professor professor1 = new Professor("Profesor1", new Data[]{dataAlta1}, 
+                                             "profesor1@universidad.com", new Data[]{dataBaixa1}, 
+                                             lista, "Matemáticas", 101);
+        
+        //Imprimir información del Profesor 1
+        System.out.println("Profesor 1:");
+        System.out.println(professor1);
+
+        // Modificar el número de despacho y departamento del profesor1
+        professor1.setNumeroDespatx(103);
+        professor1.setNomDepartament("Química");
+ 
+        // Imprimir información del Profesor 1 después de la modificación
+        System.out.println("\nProfesor 1 después de cambios:");
+        System.out.println(professor1);
+        
+        System.out.println("\nPROVES CLASSE ALUMNE");
+
+        // Crear un objeto Alumne
+        Alumne alumne1 = new Alumne("Alumno1", new Data[]{dataAlta1}, 
+                                    "alumno1@universidad.com", new Data[]{dataBaixa1}, 
+                                    lista, true, titP);
+
+        // Imprimir información del Alumne 1
+        System.out.println("Alumno 1:");
+        System.out.println(alumne1);
+                
+        // Modificar el estado de graduado y titulacion del Alumne 1
+        alumne1.setGraduat(false);
+        alumne1.setTitulacio(new Titulacio("Matemáticas"));
+
+        // Imprimir información del Alumne 1 después de la modificación
+        System.out.println("\nAlumno 1 después de cambios:");
+        System.out.println(alumne1);
+
+        // Comprobar el estado de graduado para Alumne 2
+        System.out.println("\n¿El Alumne 1 está graduado?");
+        System.out.println(alumne1.isGraduat() ? "Sí" : "No");
+        
     }
 }

@@ -21,8 +21,6 @@ public class Titulacio {
     // Método toString
     @Override
     public String toString() {
-        return "Titulacio{" +
-                "nom='" + nom + '\'' +
-                '}';
+        return nom;
     }
 }
