@@ -4,17 +4,8 @@ public class Demostracio extends Accio {
     private int vegades_oferit;
     private double cost_material;
     
-    // Constructor
-    public Demostracio(String nom, String titol, Membre responsable, int num_Associa, int n_elem, boolean valida, Data data, int oferit, double cost) {
-        // Llama al constructor de Accio con los parámetros requeridos
-        super(nom, titol, responsable, num_Associa, data);
-
-        this.valida = valida;
-        vegades_oferit = oferit;
-        cost_material = cost;
-    }
-
-    public Demostracio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, int n_elem, boolean valida, Data data, int oferit, double cost) {
+    // Constructort_material = cost;
+    public Demostracio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, boolean valida, Data data, int oferit, double cost) {
         // Llama al constructor de Accio con los parámetros requeridos
         super(nom, titol, responsable, lAssocia, data);
 
@@ -45,6 +36,19 @@ public class Demostracio extends Accio {
 
     public void setCost_material(double cost_material) {
         this.cost_material = cost_material;
+    }
+
+    @Override
+    public String toString() {
+        
+        String text = super.toString(); 
+        
+        
+        text += ", valida=" + valida +
+                ", vegades_oferit=" + vegades_oferit +
+                ", cost_material=" + cost_material + "$";
+        
+        return text;
     }
 
     

@@ -1,5 +1,7 @@
 public class Data {
-    int dia, mes, any;
+    private int dia;
+    private int mes;
+    private int any;
 
     /**
      * Constructor que inicialitza una data amb els valors proporcionats.
@@ -97,5 +99,9 @@ public class Data {
             }
         }
         return false;
+    }
+
+    public String toString() {
+        return dia + "/" + mes + "/" + any;
     }
 }

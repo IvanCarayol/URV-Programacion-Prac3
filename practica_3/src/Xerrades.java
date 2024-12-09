@@ -1,27 +1,20 @@
 
 public class Xerrades extends Accio {
 
-    // Atributos específicos de la clase
     private LlistaMembres lMembres;      
     private LlistaValoracio lValoracions; 
+    private int nElem;
+    private int nElemMAX;
 
     // Constructor
-    public Xerrades(String nom, String titol, Membre responsable, int num_Associa, Data date, int n_elem) {
-        // Llama al constructor de Accio con los parámetros requeridos
-        super(nom, titol, responsable, num_Associa, date);
-
-        // Inicializa los atributos específicos de Xerrades
-        lMembres = new LlistaMembres(n_elem);
-        lValoracions = new LlistaValoracio(n_elem);
-    }
-
-    public Xerrades(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, Data date, int n_elem) {
-        // Llama al constructor de Accio con los parámetros requeridos
+    public Xerrades(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, Data date, int n_max) {
+        
         super(nom, titol, responsable, lAssocia, date);
 
-        // Inicializa los atributos específicos de Xerrades
-        lMembres = new LlistaMembres(n_elem);
-        lValoracions = new LlistaValoracio(n_elem);
+        lMembres = new LlistaMembres(n_max);
+        lValoracions = new LlistaValoracio(n_max);
+        nElemMAX = n_max;
+        nElem = 0;
     }
 
     /**
@@ -29,26 +22,24 @@ public class Xerrades extends Accio {
      * @param membre de tipus Membre
      * @param valoracio de tipus Valoracio
      */
-    public void afegirMembreValoracio(Membre membre, Valoracio valoracio) {
-        
-            lMembres.afegirMembre(membre);
+    public void afegirMembreValoracio(Valoracio valoracio) {
+        if(nElem < nElemMAX) {
+            lMembres.afegirMembre(valoracio.getMembre());
             lValoracions.afegirValoracio(valoracio);
+            nElem++;
+        }
     }
 
 
-    /**
-     * Método para mostrar información de la xerrada
-     */
+    @Override
     public String toString() {
-        String text = "";
-
-        text += "Xerrada: " + this.getTitol();
-        text += " - Codi: " + this.getCodi();
+        
+        String text = super.toString(); 
+        
         for(int i = 0; i < lValoracions.getnElem(); i++) {
             Valoracio val = lValoracions.getValo(i);
-            text += "\nMembre: " + val.getMembre().getAlias() + " - Valoracio: " + val.getValoracio();
+            text += "(Membre: " + val.getMembre().getAlias() + " - Valoracio: " + val.getValoracio() + ")";
         }
-        // que hay que hacer con las valoracione y miembros, tengo en mente un for para imprimir todos los miembros con su valoracion
         return text;
     }
 

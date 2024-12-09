@@ -2,7 +2,7 @@ public class Alumne extends Membre {
 
     // Atributs addicionals per la classe Alumne
     private boolean graduat; // Indica si l'alumne està graduat
-    private String titulacio; // La titulació de l'alumne
+    private Titulacio titulacio; // La titulació de l'alumne
 
     /**
      * Constructor de la classe Alumne.
@@ -16,7 +16,7 @@ public class Alumne extends Membre {
      * @param titulacio    La titulació de l'alumne.
      */
     public Alumne(String nom, Data dataAlta, String correu, Data dataBaixa, 
-                  LlistaAssociacio associacions, boolean graduat, String titulacio) {
+                  LlistaAssociacio associacions, boolean graduat, Titulacio titulacio) {
         super(nom, dataAlta, correu, dataBaixa, associacions);
         this.graduat = graduat;
         this.titulacio = titulacio;
@@ -45,7 +45,7 @@ public class Alumne extends Membre {
      * 
      * @return La titulació de l'alumne.
      */
-    public String getTitulacio() {
+    public Titulacio getTitulacio() {
         return titulacio;
     }
 
@@ -54,7 +54,7 @@ public class Alumne extends Membre {
      * 
      * @param titulacio La nova titulació de l'alumne.
      */
-    public void setTitulacio(String titulacio) {
+    public void setTitulacio(Titulacio titulacio) {
         this.titulacio = titulacio;
     }
 

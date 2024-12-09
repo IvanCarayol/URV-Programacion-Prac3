@@ -9,15 +9,6 @@ public class Accio {
     private static int num_id = 100;
 
     // Constructor
-    public Accio(String nom, String titol, Membre responsable, int num_Associa, Data date) {
-        creacio_codi(nom);
-        this.nom = nom;
-        this.titol = titol;
-        this.llistaAssociacio = new LlistaAssociacio(num_Associa);
-        this.responsable = responsable;
-        data = date.copia();
-    }
-
     public Accio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, Data date) {
         creacio_codi(nom);
         this.nom = nom;
@@ -77,14 +68,20 @@ public class Accio {
     }
 
     // Método para mostrar la información de la acción
-    @Override
+    
     public String toString() {
-        return "Accio{" +
+        String text = "Accio{" +
                 "codi=" + codi +
                 ", nom= " + nom +
                 ", titol= " + titol +
-                ", llistaAssociacio=" + llistaAssociacio +
-                ", responsable=" + responsable +
-                '}';
+                ", responsable=" + responsable.getAlias() +
+                ", llistaAssociacio: (";
+        for(int i = 0; i < llistaAssociacio.getNumelem() - 1;i++) {
+            text += llistaAssociacio.getAsociacioAt(i).getNom() + ", ";
+            
+        }
+        text += llistaAssociacio.getAsociacioAt(llistaAssociacio.getNumelem() - 1).getNom() + ")}";
+
+        return text;
     }
 }

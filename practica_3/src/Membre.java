@@ -29,10 +29,13 @@ public class Membre {
     }
 
     public void setDataConst(Data dataAlta[], Data dataBaixa[]) {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < dataAlta.length; i++) {
             if (dataAlta[i] != null) {
                 this.dataAlta[i] = dataAlta[i].copia();
             }
+        }
+
+        for(int i = 0; i < dataBaixa.length; i++) {
             if (dataBaixa[i] != null) {
                 this.dataBaixa[i] = dataBaixa[i].copia();
             }
@@ -76,8 +79,7 @@ public class Membre {
         String text = "Alias: " + alias + "\nCorreu: " + correu;
 
         for(int i = 0; i < associacions.getNumelem();i++) {
-            text += "\nAssociacio numero " + i + ":";
-            text += associacions.getAsociacioAt(i).toString();
+            text += "\nAssociacio: " + associacions.getAsociacioAt(i).getNom();
             text += "\nDataAlta: " + dataAlta[i];
             if (dataBaixa[i] != null) {
                 text += "\nDataBaixa: " + dataBaixa;

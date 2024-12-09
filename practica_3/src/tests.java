@@ -1,18 +1,6 @@
 public class tests {
     public static void main(String[] args) {
 
-        //Data datIni = new Data(25, 11, 2023);
-        //Data dat = new Data(2, 2, 2024);
-
-        
-        // Prueba de Membre
-        //Membre ivan = new Membre("Ivan", datIni, null, null, null);
-
-        // pruebas de accio
-        //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
-
-        //System.out.println(acccio1);
-
         Membre membre1 = new Membre("Pep", "pep33@gmail.com");
         Membre membre2 = new Membre("Fernando", "fernando32@gmail.com");
         Membre membre3 = new Membre("Joan", "joan31@gmail.com");
@@ -128,5 +116,68 @@ public class tests {
         System.out.println(llista.toString());
         System.out.println("Còpia de la llista:");
         System.out.println(copiaLlista.toString());
+
+
+        System.out.println("\nPROVES CLASSE MEMBRE");
+
+        Data datIni = new Data(25, 11, 2023);
+        Data dat = new Data(2, 2, 2024);
+        Membre ivan = new Membre("Ivan", "Ivan@urv.es");
+
+        Titulacio titP = new Titulacio("Gei");
+        LlistaTitulacions titulacions =new LlistaTitulacions(4);
+        titulacions.afegirTitulacio(titP);
+        LlistaMembres membres =new LlistaMembres(5);
+        // Prueba de Associacion
+        Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
+        ivan.afegirAsociacio(asso, datIni);
+
+        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, null, asso);
+        // pruebas de accio
+        //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
+
+        System.out.println("toString de membres");
+        System.out.println(Lluis + "\n");
+        System.out.println(ivan);
+
+        LlistaAssociacio lAsso = new LlistaAssociacio(3);
+        lAsso.afegirAsociacio(asso);
+
+        Associacio asso2 = new Associacio("Astronomia", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
+        lAsso.afegirAsociacio(asso2);
+        Data datas[] = new Data[2];
+        datas[0] = new Data(1, 1, 2024);
+        datas[1] = new Data(5, 6, 2024);
+        Data datas2[] = new Data[2];
+        
+        Membre llusep = new Membre("Llusep", "llusep27@gmail.com", datas, datas2, lAsso);
+
+        System.out.println("Utiliztacio del constructor de membre si esta en més associacions");
+        System.out.println(llusep);
+
+
+        System.out.println("\nPROVES CLASSE ACCIO\n");
+
+        Accio accio = new Accio("Nose", "tucro trato", llusep, lAsso, dat);
+        Accio accio2 = new Accio("Compas", "tucro trato", llusep, lAsso, dat);
+
+        System.out.println(accio);
+        System.out.println(accio2);
+
+        System.out.println("\nPROVES CLASSE DEMOSTRACIO");
+
+        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, true, dat, 0, 15000);
+
+        System.out.println(demost);
+
+        System.out.println("\nPROVES CLASSE XERRADA");
+
+        Xerrades xerra = new Xerrades("Estopa", "Nuevo album", llusep, lAsso, dat, 20);
+
+        xerra.afegirMembreValoracio(valoracio5);
+        xerra.afegirMembreValoracio(valoracio4);
+
+        System.out.println(xerra);
+
     }
 }

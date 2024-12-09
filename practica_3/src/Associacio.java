@@ -1,18 +1,18 @@
 public class Associacio {
     
     // Atributos
-    private int numero;
-    private String titul;
-    private String president;
-    private String tesorer;
-    private String secretari;
+    private String nom;
+    private String correoContact;
+    private Membre president;
+    private Membre tesorer;
+    private Membre secretari;
     private LlistaTitulacions titulacions;
     private LlistaMembres membres;
 
     // Constructor
-    public Associacio(int numero, String titul, String president, String tesorer, String secretari, LlistaTitulacions titulacions, LlistaMembres membres) {
-        this.numero = numero;
-        this.titul = titul;
+    public Associacio(String nom, String correoContact, Membre president, Membre tesorer, Membre secretari, LlistaTitulacions titulacions, LlistaMembres membres) {
+        this.nom = nom;
+        this.correoContact = correoContact;
         this.president = president;
         this.tesorer = tesorer;
         this.secretari = secretari;
@@ -22,43 +22,44 @@ public class Associacio {
 
     // Setters y Getters
 
-    public int getNumero() {
-        return numero;
+
+    public String getNom() {
+        return nom;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNoml(String nom) {
+        this.nom = nom;
     }
 
-    public String getTitul() {
-        return titul;
+    public String getCorreuContact() {
+        return correoContact;
     }
 
-    public void setTitul(String titul) {
-        this.titul = titul;
+    public void setCorreuContact(String correo) {
+        correoContact = correo;
     }
 
-    public String getPresident() {
+    public Membre getPresident() {
         return president;
     }
 
-    public void setPresident(String president) {
+    public void setPresident(Membre president) {
         this.president = president;
     }
 
-    public String getTesorer() {
+    public Membre getTesorer() {
         return tesorer;
     }
 
-    public void setTesorer(String tesorer) {
+    public void setTesorer(Membre tesorer) {
         this.tesorer = tesorer;
     }
 
-    public String getSecretari() {
+    public Membre getSecretari() {
         return secretari;
     }
 
-    public void setSecretari(String secretari) {
+    public void setSecretari(Membre secretari) {
         this.secretari = secretari;
     }
 
@@ -74,22 +75,30 @@ public class Associacio {
         return membres;
     }
 
-    public void setMembres(LlistaMembres membres) {
-        this.membres = membres;
+    public void afegeixMembre(Membre membre) {
+        membres.afegirMembre(membre);
+
+
+        if (membre instanceof Alumne) {
+            Titulacio titula = ((Alumne) membre).getTitulacio();
+
+            titulacions.afegirTitulacio(titula);
+            
+        }
+        
     }
 
     // Método toString
     @Override
     public String toString() {
-        return "Asociacio{" +
-                "numero=" + numero +
-                ", titul='" + titul + '\'' +
+        return ("Asociacio{" +
+                ", nom='" + nom + '\'' +
                 ", president='" + president + '\'' +
                 ", tesorer='" + tesorer + '\'' +
                 ", secretari='" + secretari + '\'' +
                 ", titulacions=" + titulacions +
                 ", membres=" + membres +
-                '}';
+                '}');
     }
 }
 

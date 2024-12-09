@@ -71,5 +71,17 @@ public class LlistaTitulacions {
             System.out.println("No hay espacio disponible en la tabla.");
         }
     }
+
+    public boolean estaTitulacio(String tit) {
+
+        for (int i = 0; i < numelem; i++) {
+            
+            if(tit.equals(tabla[i].getNom())) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 }
 
