@@ -43,16 +43,8 @@ public class Membre {
         return alias;
     }
 
-    public Data getDataAlta() {
-        return dataAlta;
-    }
-
     public String getCorreu() {
         return correu;
-    }
-
-    public Data getDataBaixa() {
-        return dataBaixa;
     }
 
     public LlistaAssociacio geLlistaAssociacions() {
@@ -63,25 +55,33 @@ public class Membre {
         this.alias = alias;
     }
 
-    public void setDataAlta(Data data) {
-        dataAlta = data;
+    public void setDataBaixa(Data data, int num) {
+        dataBaixa[num] = data;
     }
 
     public void setCorreu(String correu) {
         this.correu = correu;
     }
 
-    public void setLlistaAssociacion(LlistaAssociacio associacions) {
-        this.associacions = associacions;
+    public void afegirAsociacio(Associacio associacio, Data alta) {
+        int num = associacions.getNumelem();
+        if (num < 3) {
+            associacions.afegirAsociacio(associacio);
+            dataAlta[num] = alta.copia();
+        }
     }
 
     public String toString() {
 
-        String text = "Alias: " + alias + "\nCorreu: " + correu + "\nDataAlta: " + dataAlta + "\nDataBaixa: " + dataBaixa;
+        String text = "Alias: " + alias + "\nCorreu: " + correu;
 
         for(int i = 0; i < associacions.getNumelem();i++) {
             text += "\nAssociacio numero " + i + ":";
             text += associacions.getAsociacioAt(i).toString();
+            text += "\nDataAlta: " + dataAlta[i];
+            if (dataBaixa[i] != null) {
+                text += "\nDataBaixa: " + dataBaixa;
+            }
         }
 
         return text;
