@@ -166,6 +166,13 @@ public class Membre
         text = "Alias: " + alias + "\n";
         text += "Correu:" + correu + "\n";
 
+<<<<<<< HEAD
+        for(int i = 0; i < associacions.getNumelem();i++) {
+            text += "\nAssociacio: " + associacions.getAsociacioAt(i).getNom();
+            text += "\nDataAlta: " + dataAlta[i];
+            if (dataBaixa[i] != null) {
+                text += "\nDataBaixa: " + dataBaixa[i];
+=======
         int numAssociacions = associacions.getNumelem();
 
         if (numAssociacions != 0) 
@@ -179,6 +186,7 @@ public class Membre
                 {
                     text += "Data baixa: " + dataBaixa[i].getDia() + "/" + dataBaixa[i].getMes() + "/"+ dataBaixa[i].getAny() + "\n";
                 }
+>>>>>>> 914edaf05d65ac638876829c767e6463225ffb46
             }
         }
 
