@@ -200,10 +200,10 @@ public class Membre
             for (int i = 0; i < numAssociacions; i++) 
             {
                 text += i + "). " + associacions.getAsociacioAt(i).getNom();
-                text += "Data alta: " + dataAlta[i].getDia() + "/" + dataAlta[i].getMes() + "/" + dataAlta[i].getAny()+ "\n";
+                text += "Data alta: " + dataAlta[i];
                 if (dataBaixa[i] != null) 
                 {
-                    text += "Data baixa: " + dataBaixa[i].getDia() + "/" + dataBaixa[i].getMes() + "/"+ dataBaixa[i].getAny() + "\n";
+                    text += "Data baixa: " + dataBaixa[i];
                 }
             }
         }
