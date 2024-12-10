@@ -167,8 +167,6 @@ public class Membre
      * Afegeix una associació al membre
      * @param associacio    Associació a assignar
      * @param dataIni       Data de assignació
-     * 
-     * @return              Retorna 1 si s'ha assignat
      */
     public void afegirAsociacio(Associacio associacio, Data dataIni) 
     {
