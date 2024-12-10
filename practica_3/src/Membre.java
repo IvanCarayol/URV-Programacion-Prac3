@@ -52,21 +52,17 @@ public class Membre
     {
         this.alias = alias;
         this.correu = correu;
-        setDatas(dataAlta, dataBaixa);
+        setDates(dataAlta, dataBaixa);
         this.associacions = associacions;
     }
 
-    /**
-     * Assigna les dates de alta i baixa de varies associacions
-     * @param datesaAlta    Llista amb dates de alta
-     * @param datesBaixa    Llista amb dates de baixa
-     */
-    public void setDatas(Data[] datesaAlta, Data[] datesBaixa)
+    public void setDates(Data[] datesAlta, Data[] datesBaixa)
     {
-        for (int i = 0; i < datesaAlta.length; i++)
+        for (int i = 0; i < datesAlta.length; i++)
         {
-            dataAlta[i] = datesaAlta[i];
-            datesBaixa[i] = datesBaixa[i];
+            dataAlta[i] = datesAlta[i];
+            if (datesBaixa[i] != null){
+                dataBaixa[i] = datesBaixa[i];}
         }
     }
 
