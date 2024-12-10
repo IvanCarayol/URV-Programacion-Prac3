@@ -1,6 +1,5 @@
 public class Alumne extends Membre
 {
-    //Atributs
     private boolean graduat = false;
     private Titulacio titulacio;
 
@@ -34,6 +33,25 @@ public class Alumne extends Membre
     public Alumne(String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio, Titulacio titulacio, boolean graduat)
     {
         super(alias, correu, dataAlta, dataBaixa, associacio);
+
+        this.titulacio = titulacio;
+        this.graduat = graduat;
+    }
+
+    /**
+     * Constructor de la classe alumnse estant assignat a varies associacions
+     * 
+     * @param alias         Nom del alumne
+     * @param correu        Correu electronic del alumne
+     * @param dataAlta      Data de alta del alumne a la associació
+     * @param dataBaixa     Data de baixa del alumne a la associació
+     * @param associacio    Associació assignada al alumne
+     * @param titulacio     Titulacio del alumne
+     * @param graduat       Graduat?
+     */
+    public Alumne(String alias, String correu, Data[] dataAlta, Data[] dataBaixa, LlistaAssociacio associacions, Titulacio titulacio, boolean graduat)
+    {
+        super(alias, correu, dataAlta, dataBaixa, associacions);
 
         this.titulacio = titulacio;
         this.graduat = graduat;

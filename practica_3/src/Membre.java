@@ -1,6 +1,5 @@
 public class Membre 
 {
-    //Atributs
     static int NUM_MAX = 3;
     private String alias;
     private Data[] dataAlta = new Data[NUM_MAX];
@@ -38,6 +37,33 @@ public class Membre
         this.dataBaixa[0] = dataBaixa;
         this.associacions = new LlistaAssociacio(NUM_MAX);
         associacions.setAsociacioAt(0, associacio);
+    }
+
+    /**
+     * Constructor de la classe Membre estant assignat a varies associacions
+     * 
+     * @param alias         Alias del membre
+     * @param correu        Correu electronic del membre
+     * @param dataAlta      Data de alta a la associació
+     * @param dataBaixa     Data de baixa a la associació
+     * @param associacio    Associació assignada al membre
+     */
+    public Membre(String alias, String correu, Data[] dataAlta, Data[] dataBaixa, LlistaAssociacio associacions)
+    {
+        this.alias = alias;
+        this.correu = correu;
+        setDates(dataAlta, dataBaixa);
+        this.associacions = associacions;
+    }
+
+    public void setDates(Data[] datesAlta, Data[] datesBaixa)
+    {
+        for (int i = 0; i < datesAlta.length; i++)
+        {
+            dataAlta[i] = datesAlta[i];
+            if (datesBaixa[i] != null){
+                dataBaixa[i] = datesBaixa[i];}
+        }
     }
 
     /**
