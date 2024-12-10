@@ -226,9 +226,7 @@ public class tests {
         System.out.println("\nPROVES CLASSE ALUMNE");
 
         // Crear un objeto Alumne
-        Alumne alumne1 = new Alumne("Alumno1", new Data[]{dataAlta1}, 
-                                    "alumno1@universidad.com", new Data[]{dataBaixa1}, 
-                                    lista, true, titP);
+        Alumne alumne1 = new Alumne("Alumno1", "alumno1@universidad.com", new Data[] {dataAlta1}, new Data[] {dataBaixa1}, lista, titP, true);
 
         // Imprimir información del Alumne 1
         System.out.println("Alumno 1:");
