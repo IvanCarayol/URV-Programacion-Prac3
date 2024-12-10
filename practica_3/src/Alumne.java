@@ -39,7 +39,7 @@ public class Alumne extends Membre
     }
 
     /**
-     * Constructor de la classe alumnse estant assignat a una associació
+     * Constructor de la classe alumnse estant assignat a varies associació
      * 
      * @param alias         Nom del alumne
      * @param correu        Correu electronic del alumne

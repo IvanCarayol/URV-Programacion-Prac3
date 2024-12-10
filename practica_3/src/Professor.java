@@ -21,7 +21,7 @@ public class Professor extends Membre
     }
 
     /**
-     * Constructor de la classe Professor.
+     * Constructor de la classe Professor estant assignat a una associació.
      * 
      * @param nom            El nom del professor.
      * @param correu         El correu electrònic del professor.
@@ -41,7 +41,7 @@ public class Professor extends Membre
     }
 
     /**
-     * Constructor de la classe Professor.
+     * Constructor de la classe Professor estant assignat a varies associacions.
      * 
      * @param nom            El nom del professor.
      * @param correu         El correu electrònic del professor.
