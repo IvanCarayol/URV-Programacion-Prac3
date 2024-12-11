@@ -36,14 +36,38 @@ public class LlistaAccio {
         return listaAccions;
     }
 
+    public Accio getNAccions(int num) {
+        return listaAccions[num];
+    }
+
     // Método para mostrar la lista de acciones
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("LlistaAccio{\n");
+        String txt = "LlistaAccio{\n";
         for (int i = 0; i < contador; i++) {
-            sb.append(listaAccions[i].toString()).append("\n");
+            txt += listaAccions[i] + "\n";
         }
-        sb.append("}");
-        return sb.toString();
+        txt += "}";
+        return txt;
+    }
+
+    public LlistaAccio accioDeUnaAssociacio(Associacio asso) {
+
+        LlistaAccio lacc = new LlistaAccio(contador);
+        String nomAsso = asso.getNom();
+
+        for(int i = 0; i < contador;i++) {
+            
+            LlistaAssociacio lassoc = listaAccions[i].getLlistaAssociacio();
+            int h = lassoc.getNumelem();
+            for(int j = 0; j < h;j++) {
+                System.out.println("wdawdawdawda\n");
+                if(lassoc.getAsociacioAt(j).getNom().equals(nomAsso)) {
+                    lacc.afegirAccio(listaAccions[i]);
+                }
+            }
+        }
+
+        return lacc;
     }
 }
