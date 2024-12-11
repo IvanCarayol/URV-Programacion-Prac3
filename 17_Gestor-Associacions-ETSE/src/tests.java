@@ -243,6 +243,7 @@ public class tests {
         // Comprobar el estado de graduado para Alumne 2
         System.out.println("\n¿El Alumne 1 está graduado?");
         System.out.println(alumne1.isGraduat() ? "Sí" : "No");
-        
+
+        MainWindow.IniciarFinestra();
     }
 }

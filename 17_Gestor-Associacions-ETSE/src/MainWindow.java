@@ -1,4 +1,5 @@
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.*;
 
@@ -7,9 +8,25 @@ public class MainWindow
     public static void IniciarFinestra()
     {
         Finestra mainWinow = new Finestra("Main", 500, 300);
-        mainWinow.setLayout(new FlowLayout());
+        mainWinow.setLayout(new GridLayout(1, 3, 0, 0));
 
-        mainWinow.add(Imatge("sources/urv_icon.jpg",0.25f));
+        
+        JPanel columnaEsquerra = new JPanel();
+        JPanel columnaDreta = new JPanel();
+        JPanel columnaCentral = new JPanel();
+
+        columnaEsquerra.setLayout(new BorderLayout());
+        columnaCentral.setLayout(new BorderLayout());
+        columnaDreta.setLayout(new BorderLayout());
+
+        mainWinow.add(columnaEsquerra);
+        mainWinow.add(columnaCentral);
+        mainWinow.add(columnaDreta);
+
+        columnaEsquerra.add(Imatge("sources/urv_icon.jpg",0.15f), BorderLayout.NORTH);
+        columnaEsquerra.add(Imatge("sources/urv_icon.jpg",0.25f), BorderLayout.EAST);
+        columnaCentral.add(Imatge("sources/urv_icon.jpg", 0.25f), BorderLayout.NORTH);
+        columnaDreta.add(Imatge("sources/urv_icon.jpg",0.25f), BorderLayout.WEST);
 
         mainWinow.setVisible(true);
     }
