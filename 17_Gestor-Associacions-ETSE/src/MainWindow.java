@@ -5,31 +5,59 @@ import javax.swing.*;
 
 public class MainWindow
 {
+    private static JPanel columnaEsquerra;
+    private static JPanel columnaDreta;
+    private static JPanel columnaCentral;
+    private static Finestra mainWindow;
+    
+    private static int numElem;
+
     public static void IniciarFinestra()
     {
-        Finestra mainWinow = new Finestra("Main", 500, 300);
-        mainWinow.setLayout(new GridLayout(1, 3, 0, 0));
+        mainWindow = new Finestra("Main", 500, 300);
+        mainWindow.setLayout(null);
+        mainWindow.setVisible(true);
+        numElem = 0;
+    }
 
-        
-        JPanel columnaEsquerra = new JPanel();
-        JPanel columnaDreta = new JPanel();
-        JPanel columnaCentral = new JPanel();
+    public static void ActualitzarFinestra()
+    {
+        numElem = 0;
+        mainWindow.getContentPane().removeAll();
+        columnaEsquerra = new JPanel();
+        columnaDreta = new JPanel();
+        columnaCentral = new JPanel();
 
         columnaEsquerra.setLayout(new BorderLayout());
-        columnaCentral.setLayout(new BorderLayout());
+        columnaCentral.setLayout(null);
         columnaDreta.setLayout(new BorderLayout());
 
-        mainWinow.add(columnaEsquerra);
-        mainWinow.add(columnaCentral);
-        mainWinow.add(columnaDreta);
+        AfegirElementFinestra(columnaEsquerra);
+        AfegirElementFinestra(columnaCentral);
+        AfegirElementFinestra(columnaDreta);
 
-        columnaEsquerra.add(Imatge("sources/urv_icon.jpg",0.15f), BorderLayout.NORTH);
-        columnaEsquerra.add(Imatge("sources/urv_icon.jpg",0.25f), BorderLayout.EAST);
-        columnaCentral.add(Imatge("sources/urv_icon.jpg", 0.25f), BorderLayout.NORTH);
-        columnaDreta.add(Imatge("sources/urv_icon.jpg",0.25f), BorderLayout.WEST);
+        columnaCentral.setBounds((mainWindow.getWidth()/numElem),0,mainWindow.getWidth()/numElem, mainWindow.getHeight());
 
-        mainWinow.setVisible(true);
+        JLabel dimensions = new JLabel("Widht: "+mainWindow.getWidth()+" Heigh: "+mainWindow.getHeight());
+        columnaCentral.add(dimensions);
+        dimensions.setBounds((columnaCentral.getWidth()/2)-100,0,200,50);
+        
+        mainWindow.revalidate();
+        mainWindow.repaint();
     }
+
+    private static void AfegirElementFinestra(JLabel element)
+    {
+        mainWindow.add(element);
+        numElem ++;
+    }
+
+    private static void AfegirElementFinestra(JPanel element)
+    {
+        mainWindow.add(element);
+        numElem ++;
+    }
+
 
     public static JLabel Imatge(String rutaImg, float scale)
     {

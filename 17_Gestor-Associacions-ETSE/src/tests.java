@@ -1,3 +1,5 @@
+import java.sql.Time;
+
 public class tests {
     public static void main(String[] args) {
 
@@ -245,5 +247,7 @@ public class tests {
         System.out.println(alumne1.isGraduat() ? "Sí" : "No");
 
         MainWindow.IniciarFinestra();
+
+        Timer.ActualizarAfrecuencia(60);
     }
 }
