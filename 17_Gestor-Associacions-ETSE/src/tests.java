@@ -134,7 +134,7 @@ public class tests {
         Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
         ivan.afegirAsociacio(asso, datIni);
 
-        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, null, asso);
+        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, asso, null);
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
 

@@ -20,6 +20,8 @@ public class MainWindow
         mainWindow.setLayout(null);
         mainWindow.setVisible(true);
 
+        reiniciarNelementsContenidors();
+
         mainWindow.addComponentListener(new ComponentAdapter() 
         {
             public void componentResized(ComponentEvent e)
@@ -27,8 +29,6 @@ public class MainWindow
                 actualitzarFinestra();
             }  
         });
-
-        reiniciarNelementsContenidors();
     }
 
     public static void actualitzarFinestra()

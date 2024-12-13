@@ -26,11 +26,11 @@ public class Professor extends Membre
      * 
      * @param nom            El nom del professor.
      * @param correu         El correu electrònic del professor.
-     * @param dataAlta       La data d'alta del professor.
-     * @param dataBaixa      La data de baixa del professor
-     * @param associacions   La llista d'associacions del professor.
      * @param nomDepartament El nom del departament del professor.
      * @param numeroDespatx  El número del despatx del professor.
+     * @param dataAlta       La data d'alta del professor.
+     * @param associacions   La llista d'associacions del professor.
+     * @param dataBaixa      La data de baixa del professor
      */
     public Professor(String alias, Data[] dataAlta, String correu, Data[] dataBaixa, 
                      LlistaAssociacio associacions, String nomDepartament, int numeroDespatx) {

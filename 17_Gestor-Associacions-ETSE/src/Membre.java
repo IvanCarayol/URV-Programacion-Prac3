@@ -26,10 +26,10 @@ public class Membre
      * @param alias         Alias del membre
      * @param correu        Correu electronic del membre
      * @param dataAlta      Data de alta a la associació
-     * @param dataBaixa     Data de baixa a la associació
      * @param associacio    Associació assignada al membre
+     * @param dataBaixa     Data de baixa a la associació
      */
-    public Membre(String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio) 
+    public Membre(String alias, String correu, Data dataAlta, Associacio associacio, Data dataBaixa) 
     {
         this.alias = alias;
         this.dataAlta[0] = dataAlta;

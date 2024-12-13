@@ -24,15 +24,15 @@ public class Alumne extends Membre
      * 
      * @param alias         Nom del alumne
      * @param correu        Correu electronic del alumne
-     * @param dataAlta      Data de alta del alumne a la associació
-     * @param dataBaixa     Data de baixa del alumne a la associació
-     * @param associacio    Associació assignada al alumne
      * @param titulacio     Titulacio del alumne
      * @param graduat       Graduat?
+     * @param dataAlta      Data de alta del alumne a la associació
+     * @param associacio    Associació assignada al alumne
+     * @param dataBaixa     Data de baixa del alumne a la associació
      */
-    public Alumne(String alias, String correu, Data dataAlta, Data dataBaixa, Associacio associacio, Titulacio titulacio, boolean graduat)
+    public Alumne(String alias, String correu, Titulacio titulacio, boolean graduat, Data dataAlta, Associacio associacio, Data dataBaixa)
     {
-        super(alias, correu, dataAlta, dataBaixa, associacio);
+        super(alias, correu, dataAlta, associacio, dataBaixa);
 
         this.titulacio = titulacio;
         this.graduat = graduat;
