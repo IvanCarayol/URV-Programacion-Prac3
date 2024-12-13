@@ -3,7 +3,7 @@ import java.io.File;
 public class mainP {
     public static void main(String[] args) {
         // 2.1 Llistar associacions
-        File document
+        File document = new File("informacion.txt");
         LlistaAssociacio lAssocicions = new LlistaAssociacio(100);
 
         // 2.3. Llistar membres actius de cualsevol associacio
