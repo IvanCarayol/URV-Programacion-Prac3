@@ -209,9 +209,7 @@ public class tests {
         lista.afegirAsociacio(associacio1);
 
         //Crear un objeto Professor
-        Professor professor1 = new Professor("Profesor1", new Data[]{dataAlta1}, 
-                                             "profesor1@universidad.com", new Data[]{dataBaixa1}, 
-                                             lista, "Matemáticas", 101);
+        Professor professor1 = new Professor("Profesor1", "profesor1@universidad.com", "Matemáticas", 101, new Data[]{dataAlta1}, lista, new Data[]{dataBaixa1});
         
         //Imprimir información del Profesor 1
         System.out.println("Profesor 1:");

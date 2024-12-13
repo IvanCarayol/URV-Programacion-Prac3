@@ -32,9 +32,8 @@ public class Professor extends Membre
      * @param associacions   La llista d'associacions del professor.
      * @param dataBaixa      La data de baixa del professor
      */
-    public Professor(String alias, Data[] dataAlta, String correu, Data[] dataBaixa, 
-                     LlistaAssociacio associacions, String nomDepartament, int numeroDespatx) {
-        super(alias, correu, dataAlta, dataBaixa, associacions);
+    public Professor(String alias, String correu, String nomDepartament, int numeroDespatx, Data dataAlta, Associacio associacio, Data dataBaixa) {
+        super(alias,correu,dataAlta, associacio, dataBaixa);
         this.nomDepartament = nomDepartament;
         this.numeroDespatx = numeroDespatx;
     }
@@ -44,13 +43,13 @@ public class Professor extends Membre
      * 
      * @param nom            El nom del professor.
      * @param correu         El correu electrònic del professor.
-     * @param dataAlta       Llista dates de alta de associacions
-     * @param dataBaixa      Llista dates de baixa de associacions
-     * @param associacions   La llista d'associacions del professor.
      * @param nomDepartament El nom del departament del professor.
      * @param numeroDespatx  El número del despatx del professor.
+     * @param dataAlta       Llista dates de alta de associacions
+     * @param associacions   La llista d'associacions del professor.
+     * @param dataBaixa      Llista dates de baixa de associacions
      */
-    public Professor (String alias, String correu, Data[] dataAlta, Data[] dataBaixa, LlistaAssociacio associacions, String nomDepartament, int numeroDespatx)
+    public Professor (String alias, String correu, String nomDepartament, int numeroDespatx, Data[] dataAlta, LlistaAssociacio associacions, Data[] dataBaixa)
     {
         super(alias, correu, dataAlta, dataBaixa, associacions);
 
