@@ -1,4 +1,6 @@
-public class Associacio {
+import java.io.Serializable;
+
+public class Associacio implements Serializable{
     
     // Atributos
     private String nom;

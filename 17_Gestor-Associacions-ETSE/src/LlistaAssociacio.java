@@ -1,4 +1,6 @@
-public class LlistaAssociacio {
+import java.io.Serializable;
+
+public class LlistaAssociacio implements Serializable{
 
     // Atributos
     private Associacio[] tabla;

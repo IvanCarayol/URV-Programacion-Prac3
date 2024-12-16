@@ -1,4 +1,6 @@
-public class LlistaMembres 
+import java.io.Serializable;
+
+public class LlistaMembres implements Serializable
 {
     // Atributs
     private Membre[] tabla;
