@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Membre implements Serializable
+public class Membre
 {
     static int NUM_MAX = 3;
     private String alias;

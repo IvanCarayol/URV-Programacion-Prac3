@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Member;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Dades 
 {
@@ -104,9 +107,44 @@ public class Dades
         try 
         {
             BufferedReader fitxerIn = new BufferedReader(new FileReader(ruta+"membres.txt"));
+            LlistaMembres llista = new LlistaMembres(10);
             
             String linia;
             linia = fitxerIn.readLine();
+            Scanner trossos;
+            int opcio;
+
+            String nom, correu;
+            Data[] dataAlta, dataBaixa;
+
+
+            while (linia != null)
+            {
+                int llistaMaxLength = llista.getMaxLength();
+                if (llista.getNumelem() == llistaMaxLength)
+                {
+                    LlistaMembres llista2 = llista;
+                    llista = new LlistaMembres(llistaMaxLength*2);
+
+                    for (int i = 0; i < llista.getNumelem(); i++)
+                    {
+                        llista.afegirMembre(llista2.getMembreAt(i));
+                    }
+                }
+
+                trossos = new Scanner(linia);
+                trossos.useDelimiter(";");
+                trossos.useLocale(Locale.ENGLISH);
+                
+                opcio = trossos.nextInt();
+
+                if (opcio == 0)
+                {
+                    nom = trossos.next();
+                    correu = trossos.next();
+                    
+                }
+            }
 
             
 

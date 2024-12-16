@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class LlistaMembres implements Serializable
+public class LlistaMembres
 {
     // Atributs
     private Membre[] tabla;
@@ -63,6 +61,11 @@ public class LlistaMembres implements Serializable
     public int getNumelem() 
     {
         return numElem;
+    }
+
+    public int getMaxLength()
+    {
+        return tabla.length;
     }
 
     /**
