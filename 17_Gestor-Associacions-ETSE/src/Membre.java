@@ -1,4 +1,6 @@
-public class Membre
+import java.io.Serializable;
+
+public class Membre implements Serializable
 {
     static int NUM_MAX = 3;
     private String alias;
@@ -143,6 +145,16 @@ public class Membre
     public void setDataBaixa(Data data, int i) 
     {
         dataBaixa[i] = data;
+    }
+
+    public int getNumDatesAlta()
+    {
+        return dataAlta.length;
+    }
+
+    public int getNumDatesBaixa()
+    {
+        return dataBaixa.length;
     }
 
     /**

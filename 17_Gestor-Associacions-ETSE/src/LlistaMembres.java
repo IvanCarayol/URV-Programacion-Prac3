@@ -1,4 +1,6 @@
-public class LlistaMembres
+import java.io.Serializable;
+
+public class LlistaMembres implements Serializable
 {
     // Atributs
     private Membre[] tabla;
@@ -96,15 +98,25 @@ public class LlistaMembres
      */
     public void afegirMembre(Membre membre) 
     {
-        if (numElem < tabla.length) 
+        boolean noExisteix = true;
+
+        for (int i = 0; i < numElem && noExisteix; i++)
         {
-            tabla[numElem] = membre;
-            numElem++;
-        } 
-        else 
-        {
-            System.out.println("No hay espacio disponible en la tabla.");
+            if (membre.getAlias().equals(tabla[i].getAlias()))
+            {
+                noExisteix = false;
+            }
         }
+
+        if (noExisteix)
+        {
+            if (numElem < tabla.length) 
+            {
+                tabla[numElem] = membre;
+                numElem++;
+            }
+        }
+        
     }
 
     // Método toString para mostrar toda la tabla temporal 
