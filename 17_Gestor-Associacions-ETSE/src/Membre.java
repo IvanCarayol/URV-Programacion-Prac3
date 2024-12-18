@@ -4,9 +4,9 @@ public class Membre implements Serializable
 {
     static int NUM_MAX = 3;
     private String alias;
-    private Data[] dataAlta = new Data[NUM_MAX];
+    private LlistaDates datesAlta;
     private String correu;
-    private Data[] dataBaixa = new Data[NUM_MAX];
+    private LlistaDates datesBaixa;
     private LlistaAssociacio associacions;
 
     /**
@@ -19,26 +19,9 @@ public class Membre implements Serializable
     {
         this.alias = alias;
         this.correu = correu;
+        datesAlta = new LlistaDates(NUM_MAX);
+        datesBaixa = new LlistaDates(NUM_MAX);
         associacions = new LlistaAssociacio(NUM_MAX);
-    }
-
-    /**
-     * Constructor de la classe Membre estant assignat a una associació
-     * 
-     * @param alias         Alias del membre
-     * @param correu        Correu electronic del membre
-     * @param dataAlta      Data de alta a la associació
-     * @param associacio    Associació assignada al membre
-     * @param dataBaixa     Data de baixa a la associació
-     */
-    public Membre(String alias, String correu, Data dataAlta, Associacio associacio, Data dataBaixa) 
-    {
-        this.alias = alias;
-        this.dataAlta[0] = dataAlta;
-        this.correu = correu;
-        this.dataBaixa[0] = dataBaixa;
-        this.associacions = new LlistaAssociacio(NUM_MAX);
-        associacions.setAsociacioAt(0, associacio);
     }
 
     /**
@@ -50,22 +33,14 @@ public class Membre implements Serializable
      * @param dataBaixa     Llista dates de baixa a la associació
      * @param associacio    LLista associacions assignada al membre
      */
-    public Membre(String alias, String correu, Data[] dataAlta, Data[] dataBaixa, LlistaAssociacio associacions)
+    public Membre(String alias, String correu, LlistaDates datesAlta, LlistaAssociacio associacions, LlistaDates datesBaixa)
     {
         this.alias = alias;
         this.correu = correu;
-        setDates(dataAlta, dataBaixa);
+        this.datesAlta = datesAlta;
+        if (datesBaixa != null) { this.datesBaixa = datesBaixa; }else { datesBaixa = new LlistaDates(NUM_MAX); }
+        this.datesBaixa = datesBaixa;
         this.associacions = associacions;
-    }
-
-    public void setDates(Data[] datesAlta, Data[] datesBaixa)
-    {
-        for (int i = 0; i < datesAlta.length; i++)
-        {
-            dataAlta[i] = datesAlta[i];
-            if (datesBaixa[i] != null){
-                dataBaixa[i] = datesBaixa[i];}
-        }
     }
 
     /**
@@ -78,35 +53,32 @@ public class Membre implements Serializable
         return this.alias;
     }
 
-    /**
-     * Retorna la data de alta a la associació indicada 
-     * @param i Index llista assiciacions membre
-     * 
-     * @return data de alta associació
-     */
-    public Data getDataAlta(int i) 
-    {
-        return dataAlta[i];
-    }
-
-    /**
+      /**
      * Retorna el correu electronic del membre
-     * @return correu electronic membre
+     * 
+     * @return Correu electronic del membre
      */
     public String getCorreu() 
     {
-        return correu;
+        return this.correu;
     }
 
     /**
-     * Retorna la data de baixa a la associacio indicada
-     * @param i Index llista assiciacions membre
-     * 
-     * @return Data baixa associació
+     * Retorna la llista de dates de alta de les associacions del membre 
+     * @return Llista de dates de alta
      */
-    public Data getDataBaixa(int i) 
+    public LlistaDates getLlistaDatesAlta()
     {
-        return dataBaixa[i];
+        return datesAlta;
+    }
+
+    /**
+     * Retorna la llista de dates de Baixa de les associacions del membre 
+     * @return Llista de dates de Baixa
+     */
+    public LlistaDates getLlistaDatesBaixa()
+    {
+        return datesBaixa;
     }
 
     /**
@@ -125,36 +97,6 @@ public class Membre implements Serializable
     public void setAlias(String alias) 
     {
         this.alias = alias;
-    }
-
-    /**
-     * Assigna la data de alta del membre a la associació indicada
-     * @param data  Data de alta
-     * @param i     Index de la llista de associacións del membre
-     */
-    public void setDataAlta(Data data, int i) 
-    {
-        dataAlta[i] = data;
-    }
-
-    /**
-     * Assigna la data de baixa del membre a la associació indicada
-     * @param data  Data de baixa
-     * @param i     Index de la llista de associacións del membre
-     */
-    public void setDataBaixa(Data data, int i) 
-    {
-        dataBaixa[i] = data;
-    }
-
-    public int getNumDatesAlta()
-    {
-        return dataAlta.length;
-    }
-
-    public int getNumDatesBaixa()
-    {
-        return dataBaixa.length;
     }
 
     /**
@@ -186,8 +128,8 @@ public class Membre implements Serializable
 
         if (numAssociacions < 3) 
         {
-            associacions.setAsociacioAt(numAssociacions, associacio);
-            this.dataAlta[numAssociacions] = dataIni;
+            associacions.afegirAsociacio(associacio);
+            this.datesAlta.afegirData(dataIni);
         } 
         else 
         {
@@ -210,10 +152,10 @@ public class Membre implements Serializable
             for (int i = 0; i < numAssociacions; i++) 
             {
                 text += i + "). " + associacions.getAsociacioAt(i).getNom();
-                text += "Data alta: " + dataAlta[i];
-                if (dataBaixa[i] != null) 
+                text += "Data alta: " + datesAlta.getDataInPos(i);
+                if (i < datesBaixa.getNumelem()) 
                 {
-                    text += "Data baixa: " + dataBaixa[i];
+                    text += "Data baixa: " + datesBaixa.getDataInPos(i);
                 }
             }
         }

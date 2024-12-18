@@ -29,25 +29,25 @@ public class Dades
                 if (membre instanceof Professor)
                 {
                     buffer = "1;";
-                    buffer += escriureNomiCorreu(membre);
+                    buffer += escriureNomiCorreu(membre)+";";
                     buffer += ((Professor)membre).getNomDepartament()+";";
-                    buffer += ((Professor)membre).getNumeroDespatx()+";";
+                    buffer += ((Professor)membre).getNumeroDespatx()+"";
                     buffer += escriureAssociacions(membre);
                     
                 }
                 else if (membre instanceof Alumne)
                 {
                     buffer = "2;";
-                    buffer += escriureNomiCorreu(membre);
+                    buffer += escriureNomiCorreu(membre)+";";
                     buffer += ((Alumne)membre).getTitulacio()+";";
-                    buffer += ((Alumne)membre).isGraduat() ? "1;" : "0;";
+                    buffer += ((Alumne)membre).isGraduat() ? "1" : "0";
                     buffer += escriureAssociacions(membre);
 
                 }
                 else 
                 {
                     buffer = "0;";
-                    buffer += escriureNomiCorreu(membre);
+                    buffer += escriureNomiCorreu(membre)+"";
                     buffer += escriureAssociacions(membre);
                 }
                 fitxerOut.write(buffer);
@@ -88,16 +88,17 @@ public class Dades
             {
                 Associacio associacio = membre.getLlistaAssociacions().getAsociacioAt(i);
 
-                buffer += ";"+membre.getDataAlta(i).getDia()+"/";
-                buffer += membre.getDataAlta(i).getMes()+"/";
-                buffer += membre.getDataAlta(i).getAny();
+                buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getDia();
+                buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getMes();
+                buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getAny();
+
                 buffer += ";"+associacio.getNom();
                 
-                if (membre.getNumDatesBaixa() < i)
+                if (i < membre.getLlistaDatesBaixa().getNumelem())
                 {
-                    buffer += ";"+membre.getDataBaixa(i).getDia()+"/";
-                    buffer += membre.getDataBaixa(i).getMes()+"/";
-                    buffer += membre.getDataBaixa(i).getAny();
+                    buffer += ";"+membre.getLlistaDatesBaixa().getDataInPos(i).getDia();
+                    buffer += ";"+membre.getLlistaDatesBaixa().getDataInPos(i).getMes();
+                    buffer += ";"+membre.getLlistaDatesBaixa().getDataInPos(i).getAny();
                 }
             }
 
@@ -113,7 +114,8 @@ public class Dades
     {
         LlistaMembres membres = new LlistaMembres(10);
         int numAssociacions = associacions.getNumelem();
-    
+        String arxiu = ruta+"membres.txt";
+
         for (int i = 0; i < numAssociacions; i++)
         {
             Associacio associacio = associacions.getAsociacioAt(i);
@@ -128,36 +130,39 @@ public class Dades
 
         try 
         {
-            BufferedReader fitxerIn = new BufferedReader(new FileReader(ruta+"membres.txt"));
+            BufferedReader fitxerIn = new BufferedReader(new FileReader(arxiu));
             
             String linia;
-            linia = fitxerIn.readLine();
             Scanner trossos;
             int opcio, despatx;
 
             String nom, correu, departament, nomTitulacio;
             Titulacio titulacio = null;
-            Data[] dataAlta = new Data[3];
-            Data[] dataBaixa = new Data[3];
+            LlistaDates dataAlta = new LlistaDates(3);
+            LlistaDates dataBaixa = new LlistaDates(3);
             boolean isGraduat;
             Membre membre;
 
-            LlistaAssociacio associacionsMembre = new LlistaAssociacio(3);
+            LlistaAssociacio associacionsMembre;
 
-            while (linia != null)
+            linia = fitxerIn.readLine();
+            
+            while (linia != null) 
             {
                 trossos = new Scanner(linia);
                 trossos.useDelimiter(";");
                 trossos.useLocale(Locale.ENGLISH);
-                
+    
                 opcio = trossos.nextInt();
+
+                associacionsMembre = new LlistaAssociacio(3);
 
                 if (opcio == 0)
                 {
                     nom = trossos.next();
                     correu = trossos.next();
                     llegirAssociacionsMembres(trossos, dataAlta, associacionsMembre, dataBaixa, associacions);
-                    membre = new Membre(nom, correu, dataAlta, dataBaixa, associacionsMembre);
+                    membre = new Membre(nom, correu, dataAlta, associacionsMembre, dataBaixa);
                 }
                 else if (opcio == 1)
                 {
@@ -166,12 +171,13 @@ public class Dades
                     departament = trossos.next();
                     despatx = trossos.nextInt();
                     llegirAssociacionsMembres(trossos, dataAlta, associacionsMembre, dataBaixa, associacions);
-                    membre = new Professor(nom, correu, departament, despatx, dataAlta, associacionsMembre, dataBaixa);
+                    membre = new Professor (nom, correu, departament, despatx, dataAlta, associacionsMembre, dataBaixa);
                 }
                 else
                 {
                     nom = trossos.next();
                     correu = trossos.next();
+
                     nomTitulacio = trossos.next();
                     boolean noTrobat = true;
 
@@ -180,58 +186,68 @@ public class Dades
                         if (nomTitulacio.equals(titulacions.getTitulacioAt(i).getNom()))
                         {
                             titulacio = titulacions.getTitulacioAt(i);
+                            noTrobat = false;
                         }
                     }
 
-                    isGraduat = trossos.nextBoolean();
+                    isGraduat = trossos.nextInt() != 0;
                     llegirAssociacionsMembres(trossos, dataAlta, associacionsMembre, dataBaixa, associacions);
-                    membre = new Alumne(nom, correu, dataAlta, dataBaixa, associacionsMembre, titulacio, isGraduat);
+                    membre = new Alumne(nom, correu, titulacio, isGraduat, dataAlta, associacionsMembre, dataBaixa);
                 }
-                membres.afegirMembre(membre);
-            
+                membres = afegirMembre(membres, membre);
+                linia = fitxerIn.readLine();
             }
-
             fitxerIn.close();
-            return membres;
         } 
-        catch (Exception e) 
+        catch (FileNotFoundException e) 
         {
-            System.out.println("Error");
+            System.out.println("No s'ha trobat el fitxer: "+arxiu);
+        }
+        catch (IOException e)
+        {
+            System.out.println("S'ha produit un error en l'arxiu: "+arxiu);
         }
         return membres;
     }
 
     public static LlistaMembres afegirMembre(LlistaMembres membres, Membre membre)
     {
-        LlistaMembres temp = membres;
+        LlistaMembres temp;
 
-        if (temp.getNumelem() == temp.getMaxLength())
+        if (membres.getNumelem() == membres.getMaxLength())
         {
             int newSize = membres.getMaxLength()*2;
-            membres = new LlistaMembres(temp.getMaxLength()*2);
+            temp = new LlistaMembres(membres.getMaxLength()*2);
 
             for (int i = 0; i < newSize; i++)
             {
-                membres.afegirMembre(temp.getMembreAt(i));
+                temp.afegirMembre(membres.getMembreAt(i));
             }
-            membres.afegirMembre(membre);
         }
-        return membres;
+        else
+        {
+            temp = membres;
+        }
+        temp.afegirMembre(membre);
+        return temp;
     }
 
-    public static void llegirAssociacionsMembres(Scanner linia, Data[] dataAlta, LlistaAssociacio associacionsMembre, Data[] dataBaixa, LlistaAssociacio associacions)
+    public static void llegirAssociacionsMembres(Scanner linia, LlistaDates dataAlta, LlistaAssociacio associacionsMembre, LlistaDates dataBaixa, LlistaAssociacio associacions)
     {
-        int i = 0;
+        int dia, mes, any;
         while (linia.hasNext()) 
         {
-            dataAlta[i].setDia(linia.nextInt());
-            dataAlta[i].setMes(linia.nextInt());
-            dataAlta[i].setAny(linia.nextInt());
+            dia = linia.nextInt();
+            mes = linia.nextInt();
+            any = linia.nextInt();
+            dataAlta.afegirData(new Data(dia, mes, any));
+
             boolean noTrobat = true;
+            String nom = linia.next();
 
             for (int j = 0; j < associacions.getNumelem() && noTrobat; j++)
             {
-                if (linia.next().equals(associacions.getAsociacioAt(j).getNom()))
+                if (nom.equals(associacions.getAsociacioAt(j).getNom()))
                 {
                     associacionsMembre.afegirAsociacio(associacions.getAsociacioAt(j));
                     noTrobat = false;
@@ -240,11 +256,11 @@ public class Dades
             
             if (linia.hasNext())
             {
-                dataBaixa[i].setDia(linia.nextInt());
-                dataBaixa[i].setMes(linia.nextInt());
-                dataBaixa[i].setAny(linia.nextInt());
+                dia = linia.nextInt();
+                mes = linia.nextInt();
+                any = linia.nextInt();
+                dataBaixa.afegirData(new Data(dia, mes, any));
             }
-            i++;
         }
     }
 

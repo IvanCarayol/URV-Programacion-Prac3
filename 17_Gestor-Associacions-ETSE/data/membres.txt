@@ -1,4 +1,4 @@
-2;Oscar Ruiz;oscar.ruiz@estudiants.urv.catGEI;0;;8/1/24;Hola0
-2;Ivan Carayol;ivan.carayol@estudiants.urv.catGEI;1;;21/11/23;Hola1
+2;Oscar Ruiz;oscar.ruiz@estudiants.urv.cat;GEI;0;8;1;24;Hola0
+2;Ivan Carayol;ivan.carayol@estudiants.urv.cat;GEI;1
 0;Gaizka Alonso;gaizka.alonso@estudiants.urv.cat
-1;Marc Rozas;marc.rozas@estudiants.urv.catDepartament de Enginyeria Informatica y Matematiques;210;;3/2/24;Hola0;10/11/24;Hola3
+1;Marc Rozas;marc.rozas@estudiants.urv.cat;Departament de Enginyeria Informatica y Matematiques;210;3;2;24;Hola0;22;5;24;10;11;24;Hola3

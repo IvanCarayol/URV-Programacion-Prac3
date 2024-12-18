@@ -122,8 +122,10 @@ public class tests {
 
         System.out.println("\nPROVES CLASSE MEMBRE");
 
-        Data datIni = new Data(25, 11, 2023);
-        Data dat = new Data(2, 2, 2024);
+        LlistaDates datIni = new LlistaDates(3);
+        datIni.afegirData(new Data(25, 11, 2023));
+
+        LlistaDates dat = new LlistaDates(3);
         Membre ivan = new Membre("Ivan", "Ivan@urv.es");
 
         Titulacio titP = new Titulacio("Gei");
@@ -131,10 +133,13 @@ public class tests {
         titulacions.afegirTitulacio(titP);
         LlistaMembres membres =new LlistaMembres(5);
         // Prueba de Associacion
+        
         Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
-        ivan.afegirAsociacio(asso, datIni);
+        ivan.afegirAsociacio(asso, datIni.getDataInPos(0));
 
-        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, asso, null);
+        LlistaAssociacio associacions = new LlistaAssociacio(3);
+        associacions.afegirAsociacio(asso);
+        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, associacions, null);
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
 
@@ -147,21 +152,22 @@ public class tests {
 
         Associacio asso2 = new Associacio("Astronomia", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
         lAsso.afegirAsociacio(asso2);
-        Data datas[] = new Data[2];
-        datas[0] = new Data(1, 1, 2024);
-        datas[1] = new Data(5, 6, 2024);
-        Data datas2[] = new Data[2];
         
-        Membre llusep = new Membre("Llusep", "llusep27@gmail.com", datas, datas2, lAsso);
+        LlistaDates datas = new LlistaDates(3);
+        datas.afegirData(new Data(1, 1, 2024));
+        datas.afegirData(new Data(5, 6, 2024));
+        LlistaDates datas2 = new LlistaDates(3);
+        
+        Membre llusep = new Membre("Llusep", "llusep27@gmail.com", datas, lAsso, datas2);
 
         System.out.println("Utiliztacio del constructor de membre si esta en més associacions");
         System.out.println(llusep);
 
 
         System.out.println("\nPROVES CLASSE ACCIO\n");
-
-        Accio accio = new Accio("Nose", "tucro trato", llusep, lAsso, dat);
-        Accio accio2 = new Accio("Compas", "tucro trato", llusep, lAsso, dat);
+        dat.afegirData(new Data(1, 3, 2023));
+        Accio accio = new Accio("Nose", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
+        Accio accio2 = new Accio("Compas", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
 
         System.out.println(accio);
         System.out.println(accio2);
@@ -176,13 +182,13 @@ public class tests {
 
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
 
-        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, true, dat, 0, 15000);
+        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, true, dat.getDataInPos(0), 0, 15000);
 
         System.out.println(demost);
 
         System.out.println("\nPROVES CLASSE XERRADA");
 
-        Xerrades xerra = new Xerrades("Estopa", "Nuevo album", llusep, lAsso, dat, 20);
+        Xerrades xerra = new Xerrades("Estopa", "Nuevo album", llusep, lAsso, dat.getDataInPos(0), 20);
 
         xerra.afegirMembreValoracio(valoracio5);
         xerra.afegirMembreValoracio(valoracio4);
@@ -193,6 +199,10 @@ public class tests {
         //Creamos algunas fechas de alta y baja
         Data dataAlta1 = new Data(10, 1, 2020);
         Data dataBaixa1 = new Data(15, 12, 2021);
+        LlistaDates datesAlta1 = new LlistaDates(3);
+        LlistaDates datesBaixa1 = new LlistaDates(3);
+        datesAlta1.afegirData(dataAlta1);
+        datesBaixa1.afegirData(dataBaixa1);
 
         //Creamos els membres provisionals
         LlistaMembres llistaMembresAsociacio = new LlistaMembres(4);
@@ -209,7 +219,7 @@ public class tests {
         lista.afegirAsociacio(associacio1);
 
         //Crear un objeto Professor
-        Professor professor1 = new Professor("Profesor1", "profesor1@universidad.com", "Matemáticas", 101, new Data[]{dataAlta1}, lista, new Data[]{dataBaixa1});
+        Professor professor1 = new Professor("Profesor1", "profesor1@universidad.com", "Matemáticas", 101, datesAlta1, lista, datesBaixa1);
         
         //Imprimir información del Profesor 1
         System.out.println("Profesor 1:");
@@ -226,7 +236,7 @@ public class tests {
         System.out.println("\nPROVES CLASSE ALUMNE");
 
         // Crear un objeto Alumne
-        Alumne alumne1 = new Alumne("Alumno1", "alumno1@universidad.com", new Data[] {dataAlta1}, new Data[] {dataBaixa1}, lista, titP, true);
+        Alumne alumne1 = new Alumne("Alumno1", "alumno1@universidad.com", titP, true, datesAlta1, lista, datesBaixa1);
 
         // Imprimir información del Alumne 1
         System.out.println("Alumno 1:");

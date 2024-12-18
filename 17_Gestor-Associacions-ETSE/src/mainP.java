@@ -54,22 +54,36 @@ public class mainP {
 
         membres  = new LlistaMembres(10);
 
-        Membre oscar = new Alumne("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", new Titulacio("GEI"), false, new Data(8, 1, 24), associacions.getAsociacioAt(0), null);
-        Membre ivan = new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat", new Titulacio("GEI"), true, new Data(21, 11, 23), associacions.getAsociacioAt(1), new Data(18, 10, 24));
+        LlistaDates datesAlta = new LlistaDates(3);
+        LlistaDates datesBaixa = new LlistaDates(3);
+        LlistaAssociacio associacionsM = new LlistaAssociacio(3);
+        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
+        datesAlta.afegirData(new Data(8, 1, 24));
+
+        Membre oscar = new Alumne("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", new Titulacio("GEI"), false, datesAlta, associacionsM, datesBaixa);
+
+        datesAlta = new LlistaDates(3);
+        datesBaixa = new LlistaDates(3);
+        associacionsM = new LlistaAssociacio(3);
+
+        datesAlta.afegirData(new Data(21, 11, 23));
+        datesBaixa.afegirData(new Data(18, 10, 24));
+
+        Membre ivan = new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat", new Titulacio("GEI"), true, datesAlta, associacionsM, datesBaixa);
         Membre gaizka = new Membre("Gaizka Alonso", "gaizka.alonso@estudiants.urv.cat");
 
-        LlistaAssociacio associacionsMarc = new LlistaAssociacio(2);
-        associacionsMarc.afegirAsociacio(associacions.getAsociacioAt(0));
-        associacionsMarc.afegirAsociacio(associacions.getAsociacioAt(3));
+        associacionsM = new LlistaAssociacio(3);
+        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
+        associacionsM.afegirAsociacio(associacions.getAsociacioAt(3));
+        
+        datesAlta = new LlistaDates(3);
+        datesAlta.afegirData(new Data(3, 2, 24));
+        datesAlta.afegirData(new Data(10, 11, 24));
 
-        Data[] datesAltaMarc = new Data[2];
-        datesAltaMarc[0] = new Data(3, 2, 24);
-        datesAltaMarc[1] = new Data(10, 11, 24);
+        datesBaixa = new LlistaDates(3);
+        datesBaixa.afegirData(new Data(22, 5, 24));
 
-        Data[] datesBaixaMarc = new Data[2];
-        datesBaixaMarc[0] = new Data(22, 5, 24);
-
-        Membre marc = new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 210, datesAltaMarc, associacionsMarc, datesBaixaMarc);
+        Membre marc = new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 210, datesAlta, associacionsM, datesBaixa);
 
         llistaMembres = new LlistaMembres(4);
         llistaMembres.afegirMembre(oscar);

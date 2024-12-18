@@ -22,23 +22,6 @@ public class Professor extends Membre
     }
 
     /**
-     * Constructor de la classe Professor estant assignat a una associació.
-     * 
-     * @param nom            El nom del professor.
-     * @param correu         El correu electrònic del professor.
-     * @param nomDepartament El nom del departament del professor.
-     * @param numeroDespatx  El número del despatx del professor.
-     * @param dataAlta       La data d'alta del professor.
-     * @param associacions   La llista d'associacions del professor.
-     * @param dataBaixa      La data de baixa del professor
-     */
-    public Professor(String alias, String correu, String nomDepartament, int numeroDespatx, Data dataAlta, Associacio associacio, Data dataBaixa) {
-        super(alias,correu,dataAlta, associacio, dataBaixa);
-        this.nomDepartament = nomDepartament;
-        this.numeroDespatx = numeroDespatx;
-    }
-
-    /**
      * Constructor de la classe Professor estant assignat a varies associacions.
      * 
      * @param nom            El nom del professor.
@@ -49,9 +32,9 @@ public class Professor extends Membre
      * @param associacions   La llista d'associacions del professor.
      * @param dataBaixa      Llista dates de baixa de associacions
      */
-    public Professor (String alias, String correu, String nomDepartament, int numeroDespatx, Data[] dataAlta, LlistaAssociacio associacions, Data[] dataBaixa)
+    public Professor (String alias, String correu, String nomDepartament, int numeroDespatx, LlistaDates datesAlta, LlistaAssociacio associacions, LlistaDates datesBaixa)
     {
-        super(alias, correu, dataAlta, dataBaixa, associacions);
+        super(alias, correu, datesAlta, associacions, datesBaixa);
 
         this.nomDepartament = nomDepartament;
         this.numeroDespatx = numeroDespatx;

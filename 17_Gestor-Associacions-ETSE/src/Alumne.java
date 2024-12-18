@@ -20,38 +20,19 @@ public class Alumne extends Membre
     }
 
     /**
-     * Constructor de la classe alumnse estant assignat a una associació
-     * 
-     * @param alias         Nom del alumne
-     * @param correu        Correu electronic del alumne
-     * @param titulacio     Titulacio del alumne
-     * @param graduat       Graduat?
-     * @param dataAlta      Data de alta del alumne a la associació
-     * @param associacio    Associació assignada al alumne
-     * @param dataBaixa     Data de baixa del alumne a la associació
-     */
-    public Alumne(String alias, String correu, Titulacio titulacio, boolean graduat, Data dataAlta, Associacio associacio, Data dataBaixa)
-    {
-        super(alias, correu, dataAlta, associacio, dataBaixa);
-
-        this.titulacio = titulacio;
-        this.graduat = graduat;
-    }
-
-    /**
      * Constructor de la classe alumnse estant assignat a varies associacions
      * 
      * @param alias         Nom del alumne
      * @param correu        Correu electronic del alumne
-     * @param dataAlta      Llista dates de alta del alumne a la associació
-     * @param dataBaixa     Llista date de baixa del alumne a la associació
-     * @param associacio    Llista associacion assignades al alumne
      * @param titulacio     Titulacio del alumne
      * @param graduat       Graduat?
+     * @param dataAlta      Llista dates de alta del alumne a la associació
+     * @param associacio    Llista associacion assignades al alumne
+     * @param dataBaixa     Llista date de baixa del alumne a la associació
      */
-    public Alumne(String alias, String correu, Data[] dataAlta, Data[] dataBaixa, LlistaAssociacio associacions, Titulacio titulacio, boolean graduat)
+    public Alumne(String alias, String correu, Titulacio titulacio, boolean graduat, LlistaDates datesAlta, LlistaAssociacio associacions, LlistaDates datesBaixa)
     {
-        super(alias, correu, dataAlta, dataBaixa, associacions);
+        super(alias, correu, datesAlta, associacions, datesBaixa);
 
         this.titulacio = titulacio;
         this.graduat = graduat;

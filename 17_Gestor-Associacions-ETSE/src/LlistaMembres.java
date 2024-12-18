@@ -127,7 +127,7 @@ public class LlistaMembres implements Serializable
 
         for (int i = 0; i < numElem; i++) 
         {
-            text+="Membre "+i + 1+": "+tabla[i].toString()+"\n";
+            text+="Membre "+i+": "+tabla[i].toString()+"\n";
         }
         return text;
     }
