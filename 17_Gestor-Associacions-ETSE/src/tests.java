@@ -1,5 +1,3 @@
-import java.sql.Time;
-
 public class tests {
     public static void main(String[] args) {
 

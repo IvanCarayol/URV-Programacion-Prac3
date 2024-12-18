@@ -1,5 +1,3 @@
-import java.io.File;
-
 public class mainP {
     public static void main(String[] args) {
         // 2.1 Llistar associacions
@@ -66,6 +64,7 @@ public class mainP {
         datesBaixa = new LlistaDates(3);
         associacionsM = new LlistaAssociacio(3);
 
+        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
         datesAlta.afegirData(new Data(21, 11, 23));
         datesBaixa.afegirData(new Data(18, 10, 24));
 

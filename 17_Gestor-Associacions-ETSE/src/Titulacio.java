@@ -1,4 +1,4 @@
-public class Titulacio {
+public class Titulacio{
 
     // Atributo
     private String nom;

@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Data implements Serializable{
+public class Data {
     private int dia;
     private int mes;
     private int any;
