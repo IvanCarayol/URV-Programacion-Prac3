@@ -1,4 +1,5 @@
 import java.io.File;
+import interficie.*;
 
 public class mainGrafic 
 {

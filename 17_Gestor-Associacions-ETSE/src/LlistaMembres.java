@@ -31,10 +31,6 @@ public class LlistaMembres implements Serializable
                 numElem = position + 1; //Actualitza el número d'elements si es necesari
             }
         } 
-        else 
-        {
-            System.out.println("Posició fora dels límits.");
-        }
     }
 
     /**
@@ -51,7 +47,6 @@ public class LlistaMembres implements Serializable
         } 
         else 
         {
-            System.out.println("Posició fora dels límits.");
             return null;
         }
     }
@@ -86,10 +81,6 @@ public class LlistaMembres implements Serializable
             tabla[numElem - 1] = null;  //Buidar la última posició
             numElem--;  //Decrementar el numero d'elements
         } 
-        else 
-        {
-            System.out.println("Posició fora dels límits.");
-        }
     }
 
     /**

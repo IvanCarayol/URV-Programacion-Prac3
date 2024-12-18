@@ -1,3 +1,4 @@
+package interficie;
 import javax.swing.*;
 
 public class Finestra extends JFrame

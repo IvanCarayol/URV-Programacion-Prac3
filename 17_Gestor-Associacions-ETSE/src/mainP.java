@@ -58,7 +58,7 @@ public class mainP {
         associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
         datesAlta.afegirData(new Data(8, 1, 24));
 
-        Membre oscar = new Alumne("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", new Titulacio("GEI"), false, datesAlta, associacionsM, datesBaixa);
+        Alumne oscar = new Alumne("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", new Titulacio("GEI"), false, datesAlta, associacionsM, datesBaixa);
 
         datesAlta = new LlistaDates(3);
         datesBaixa = new LlistaDates(3);
@@ -68,7 +68,7 @@ public class mainP {
         datesAlta.afegirData(new Data(21, 11, 23));
         datesBaixa.afegirData(new Data(18, 10, 24));
 
-        Membre ivan = new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat", new Titulacio("GEI"), true, datesAlta, associacionsM, datesBaixa);
+        Alumne ivan = new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat", new Titulacio("GEI"), true, datesAlta, associacionsM, datesBaixa);
         Membre gaizka = new Membre("Gaizka Alonso", "gaizka.alonso@estudiants.urv.cat");
 
         associacionsM = new LlistaAssociacio(3);
@@ -82,7 +82,7 @@ public class mainP {
         datesBaixa = new LlistaDates(3);
         datesBaixa.afegirData(new Data(22, 5, 24));
 
-        Membre marc = new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 210, datesAlta, associacionsM, datesBaixa);
+        Professor marc = new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 210, datesAlta, associacionsM, datesBaixa);
 
         llistaMembres = new LlistaMembres(4);
         llistaMembres.afegirMembre(oscar);
