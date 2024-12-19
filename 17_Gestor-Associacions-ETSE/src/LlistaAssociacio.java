@@ -34,6 +34,22 @@ public class LlistaAssociacio implements Serializable{
         }
     }
 
+    public Associacio getAssociacioAmbNom(String nom)
+    {
+        boolean noTrobat = true;
+        Associacio associacio = null;
+
+        for (int  i = 0; i < numelem && noTrobat; i++)
+        {
+            if(tabla[i].getNom().equals(nom))
+            {
+                associacio = tabla[i];
+                noTrobat = false;
+            }
+        }
+        return associacio;
+    }
+
     // Función para eliminar un elemento en una posición específica
     public void eliminarAsociacioAt(int position) {
         if (position >= 0 && position < numelem) {

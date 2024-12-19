@@ -122,7 +122,7 @@ public class Membre implements Serializable
      * @param associacio    Associació a assignar
      * @param dataIni       Data de assignació
      */
-    public void afegirAsociacio(Associacio associacio, Data dataIni) 
+    public void afegiraAsociacio(Associacio associacio, Data dataIni) 
     {
         int numAssociacions = associacions.getNumelem();
 

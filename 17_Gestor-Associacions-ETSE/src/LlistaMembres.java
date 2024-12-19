@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.lang.reflect.Member;
 
 public class LlistaMembres implements Serializable
 {
@@ -52,6 +53,29 @@ public class LlistaMembres implements Serializable
     }
 
     /**
+     * Retorna el membre de la taula amb el nom indicat per parametre 
+     * @param nom  Nom del membre
+     *
+     * @return  Membre amb el nom
+     */
+    public Membre getMembreAmbNom(String nom)
+    {
+        boolean noTrobat = true;
+        Membre membre = null;
+
+        for (int i = 0; i < tabla.length && noTrobat; i++)
+        {
+            if (tabla[i].getAlias().equals(nom))
+            {
+                membre = tabla[i];
+                noTrobat = false;
+            }
+        }
+
+        return membre;
+    }
+
+    /**
      * Retorna el numero de membres a la taula
      * @return  nombre de membres
      */
@@ -60,6 +84,10 @@ public class LlistaMembres implements Serializable
         return numElem;
     }
 
+    /**
+     * Retorna el numero de màxim membres a la taula
+     * @return  nombre num màxim membres
+     */
     public int getMaxLength()
     {
         return tabla.length;

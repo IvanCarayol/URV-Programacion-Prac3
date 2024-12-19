@@ -134,7 +134,7 @@ public class tests {
         // Prueba de Associacion
         
         Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
-        ivan.afegirAsociacio(asso, datIni.getDataInPos(0));
+        ivan.afegiraAsociacio(asso, datIni.getDataInPos(0));
 
         LlistaAssociacio associacions = new LlistaAssociacio(3);
         associacions.afegirAsociacio(asso);

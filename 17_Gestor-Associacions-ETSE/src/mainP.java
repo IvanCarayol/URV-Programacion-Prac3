@@ -106,5 +106,23 @@ public class mainP {
         System.out.println(membres);
 
 
+        //Llista membres a una asociacio
+        String nomAssociacio = "URBots";
+        llistarMembresAssociacio(associacions, nomAssociacio);
+
+        //Donar de alta un membre a una associacio
+
+        nomAssociacio = "URBots";
+    }
+
+    private static void llistarMembresAssociacio(LlistaAssociacio associacions, String nom)
+    {
+        LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
+        System.out.println(membres);
+    }
+
+    private static void donarAltaMembre(LlistaAssociacio associacions, LlistaMembres membres, String nomMembre, String nomAssocio)
+    {
+        
     }
 }
