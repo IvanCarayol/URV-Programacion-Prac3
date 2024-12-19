@@ -1,9 +1,5 @@
 import java.util.Random;
 
-import javax.swing.GroupLayout.Alignment;
-
-import org.xml.sax.SAXException;
-
 public class mainP {
     public static void main(String[] args) {
         // 2.1 Llistar associacions
@@ -35,9 +31,6 @@ public class mainP {
         //Prueba Guardado y Cargado de Asociaciones
         LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
         LlistaMembres llistaMembres = new LlistaMembres(20);
-
-        LlistaDates datesAlta = new LlistaDates(3);
-        LlistaDates datesBaixa = new LlistaDates(3);
 
         String[] nomsAssociacions = {
             "URBots", "URVoltage", "GreenTeam", "PhysicsSociety", "MathClub",
