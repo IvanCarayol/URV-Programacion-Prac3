@@ -1,4 +1,6 @@
-public class LlistaTitulacions {
+import java.io.Serializable;
+
+public class LlistaTitulacions implements Serializable{
 
     // Atributos
     private Titulacio[] tabla;

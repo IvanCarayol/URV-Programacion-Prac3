@@ -35,20 +35,14 @@ public class Dades
                     buffer += escriureAssociacions(membre);
                     
                 }
-                else if (membre instanceof Alumne)
+                else
                 {
-                    buffer = "2;";
+                    buffer = "0;";
                     buffer += escriureNomiCorreu(membre)+";";
                     buffer += ((Alumne)membre).getTitulacio()+";";
                     buffer += ((Alumne)membre).isGraduat() ? "1" : "0";
                     buffer += escriureAssociacions(membre);
 
-                }
-                else 
-                {
-                    buffer = "0;";
-                    buffer += escriureNomiCorreu(membre)+"";
-                    buffer += escriureAssociacions(membre);
                 }
                 fitxerOut.write(buffer);
                 fitxerOut.newLine();
@@ -87,12 +81,11 @@ public class Dades
             for (int i = 0; i < numAssociacions; i++)
             {
                 Associacio associacio = membre.getLlistaAssociacions().getAsociacioAt(i);
+                buffer += ";"+associacio.getNom();
 
                 buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getDia();
                 buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getMes();
                 buffer += ";"+membre.getLlistaDatesAlta().getDataInPos(i).getAny();
-
-                buffer += ";"+associacio.getNom();
                 
                 if (i < membre.getLlistaDatesBaixa().getNumelem())
                 {
@@ -134,13 +127,11 @@ public class Dades
             
             String linia;
             Scanner trossos;
-            int opcio, despatx;
+            int despatx;
 
             String nom, correu, departament, nomTitulacio;
             Titulacio titulacio = null;
-            LlistaDates dataAlta = new LlistaDates(3);
-            LlistaDates dataBaixa = new LlistaDates(3);
-            boolean isGraduat;
+            boolean isGraduat, opcio;
             Membre membre;
 
             LlistaAssociacio associacionsMembre;
@@ -149,22 +140,17 @@ public class Dades
             
             while (linia != null) 
             {
+                LlistaDates dataAlta = new LlistaDates(3);
+                LlistaDates dataBaixa = new LlistaDates(3);
                 trossos = new Scanner(linia);
                 trossos.useDelimiter(";");
                 trossos.useLocale(Locale.ENGLISH);
     
-                opcio = trossos.nextInt();
+                opcio = trossos.nextInt() != 0;
 
                 associacionsMembre = new LlistaAssociacio(3);
 
-                if (opcio == 0)
-                {
-                    nom = trossos.next();
-                    correu = trossos.next();
-                    llegirAssociacionsMembres(trossos, dataAlta, associacionsMembre, dataBaixa, associacions);
-                    membre = new Membre(nom, correu, dataAlta, associacionsMembre, dataBaixa);
-                }
-                else if (opcio == 1)
+                if (opcio)
                 {
                     nom = trossos.next();
                     correu = trossos.next();
@@ -217,9 +203,10 @@ public class Dades
         if (membres.getNumelem() == membres.getMaxLength())
         {
             int newSize = membres.getMaxLength()*2;
-            temp = new LlistaMembres(membres.getMaxLength()*2);
+            System.out.println(newSize);
+            temp = new LlistaMembres(newSize);
 
-            for (int i = 0; i < newSize; i++)
+            for (int i = 0; i < membres.getNumelem(); i++)
             {
                 temp.afegirMembre(membres.getMembreAt(i));
             }
@@ -237,11 +224,6 @@ public class Dades
         int dia, mes, any;
         while (linia.hasNext()) 
         {
-            dia = linia.nextInt();
-            mes = linia.nextInt();
-            any = linia.nextInt();
-            dataAlta.afegirData(new Data(dia, mes, any));
-
             boolean noTrobat = true;
             String nom = linia.next();
 
@@ -253,8 +235,13 @@ public class Dades
                     noTrobat = false;
                 }
             }
+
+            dia = linia.nextInt();
+            mes = linia.nextInt();
+            any = linia.nextInt();
+            dataAlta.afegirData(new Data(dia, mes, any));
             
-            if (linia.hasNext())
+            if (linia.hasNextInt())
             {
                 dia = linia.nextInt();
                 mes = linia.nextInt();

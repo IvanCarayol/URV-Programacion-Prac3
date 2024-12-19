@@ -1,4 +1,6 @@
-public class Titulacio{
+import java.io.Serializable;
+
+public class Titulacio implements Serializable{
 
     // Atributo
     private String nom;

@@ -1,3 +1,9 @@
+import java.util.Random;
+
+import javax.swing.GroupLayout.Alignment;
+
+import org.xml.sax.SAXException;
+
 public class mainP {
     public static void main(String[] args) {
         // 2.1 Llistar associacions
@@ -19,82 +25,93 @@ public class mainP {
 
         LlistaAssociacio associacions;
         LlistaMembres membres;
-        LlistaTitulacions titulacions = new LlistaTitulacions(1);
+        LlistaTitulacions titulacions = new LlistaTitulacions(4);
 
         titulacions.afegirTitulacio(new Titulacio("GEI"));
+        titulacions.afegirTitulacio(new Titulacio("ADE"));
+        titulacions.afegirTitulacio(new Titulacio("GEE"));
+        titulacions.afegirTitulacio(new Titulacio("FIB"));
 
         //Prueba Guardado y Cargado de Asociaciones
-        LlistaAssociacio llistaAssociacio = new LlistaAssociacio(10);
-        LlistaMembres llistaMembres = new LlistaMembres(3);
+        LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
+        LlistaMembres llistaMembres = new LlistaMembres(20);
 
-        for (int i = 0; i < llistaMembres.getMaxLength(); i++)
+        LlistaDates datesAlta = new LlistaDates(3);
+        LlistaDates datesBaixa = new LlistaDates(3);
+
+        String[] nomsAssociacions = {
+            "URBots", "URVoltage", "GreenTeam", "PhysicsSociety", "MathClub",
+            "HistoryCircle", "URCulture", "GEIClub", "TechForum", "URBusiness",
+            "URLiterature", "URScience", "TechClub", "RoboticsTeam", "LiteratureSociety",
+            "BusinessClub", "URMath", "CulturaClub", "UREco", "URPhysics"
+        };
+
+        String[] correosAssociacions = {
+            "urbots@associacions.urv.cat", "urvoltage@associacions.urv.cat", "greenteam@associacions.urv.cat", 
+            "physicssociety@associacions.urv.cat", "mathclub@associacions.urv.cat", "historycircle@associacions.urv.cat", 
+            "urculture@associacions.urv.cat", "geiclub@associacions.urv.cat", "techforum@associacions.urv.cat", 
+            "urbusiness@associacions.urv.cat", "urliterature@associacions.urv.cat", "urscience@associacions.urv.cat", 
+            "techclub@associacions.urv.cat", "roboticsteam@associacions.urv.cat", "literaturesociety@associacions.urv.cat", 
+            "businessclub@associacions.urv.cat", "urmath@associacions.urv.cat", "culturaclub@associacions.urv.cat", 
+            "ureco@associacions.urv.cat", "urphysics@associacions.urv.cat"
+        };
+        
+        
+
+        // Nombres y apellidos de ejemplo para los miembros
+        String[][] nomsMembres = {
+            {"Oscar Ruiz", "Ivan Carayol", "Gaizka Alonso"},
+            {"Marc Rozas", "Pau Vila", "Clara Serra"},
+            {"Anna Puig", "Joan Segarra", "Marta Font"},
+            {"Laura Pons", "Jordi Roca", "Sara Esteve"},
+            {"Toni Camps", "Maria Llop", "Carla Vidal"}
+        };
+
+        String[][] correosAlumnos = {
+            {"oscar.ruiz@estudiants.urv.cat", "ivan.carayol@estudiants.urv.cat", "gaizka.alonso@estudiants.urv.cat"},
+            {"marc.rozas@estudiants.urv.cat", "pau.vila@estudiants.urv.cat", "clara.serra@estudiants.urv.cat"},
+            {"anna.puig@estudiants.urv.cat", "joan.segarra@estudiants.urv.cat", "marta.font@estudiants.urv.cat"},
+            {"laura.pons@estudiants.urv.cat", "jordi.roca@estudiants.urv.cat", "sara.esteve@estudiants.urv.cat"},
+            {"toni.camps@estudiants.urv.cat", "maria.llop@estudiants.urv.cat", "carla.vidal@estudiants.urv.cat"}
+        };
+
+        Random rand = new Random();
+        Alumne alumne;
+        for (int i = 0; i < 20; i++)
         {
-            Membre membre1 = new Membre("Hola"+i+"", "hola"+i+"@estudiants.urv.cat");
-            llistaMembres.afegirMembre(membre1);
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            
-            Associacio associacio = new Associacio("Hola"+i+"", "Hola", llistaMembres.getMembreAt(0), llistaMembres.getMembreAt(2), llistaMembres.getMembreAt(1), null, llistaMembres);
-            llistaAssociacio.afegirAsociacio(associacio);
+            LlistaMembres llista = new LlistaMembres(3);
+            for (int j = 0; j < 3; j++)
+            {   
+                alumne = new Alumne(nomsMembres[i % 5][j], correosAlumnos[i % 5][j], titulacions.getTitulacioAt(rand.nextInt(4)), rand.nextInt(1) != 0);
+                llistaMembres.afegirMembre(alumne);
+                llista .afegirMembre(alumne);
+            }
+            LlistaTitulacions titolsMembres = new LlistaTitulacions(3);
+            alumne = (Alumne)llista.getMembreAt(0);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            alumne = (Alumne)llista.getMembreAt(1);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            alumne = (Alumne)llista.getMembreAt(2);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            llistaAssociacio.afegirAsociacio(new Associacio(nomsAssociacions[i], correosAssociacions[i], llista.getMembreAt(0), llista.getMembreAt(1), llista.getMembreAt(2), titolsMembres, llista));
         }
 
         Dades.guardaAssociacions(llistaAssociacio);
 
         associacions = Dades.carregaAssociacions();
 
-        /*for (int i = 0; i < associacions.getNumelem(); i++)
+        for (int i = 0; i < associacions.getNumelem(); i++)
         {
             System.out.println(associacions.getAsociacioAt(i).getNom());
-        }*/
+        }
 
         //Prueba Guardado y Cargado miembros
-
-        membres  = new LlistaMembres(10);
-
-        LlistaDates datesAlta = new LlistaDates(3);
-        LlistaDates datesBaixa = new LlistaDates(3);
-        LlistaAssociacio associacionsM = new LlistaAssociacio(3);
-        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
-        datesAlta.afegirData(new Data(8, 1, 24));
-
-        Alumne oscar = new Alumne("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", new Titulacio("GEI"), false, datesAlta, associacionsM, datesBaixa);
-
-        datesAlta = new LlistaDates(3);
-        datesBaixa = new LlistaDates(3);
-        associacionsM = new LlistaAssociacio(3);
-
-        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
-        datesAlta.afegirData(new Data(21, 11, 23));
-        datesBaixa.afegirData(new Data(18, 10, 24));
-
-        Alumne ivan = new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat", new Titulacio("GEI"), true, datesAlta, associacionsM, datesBaixa);
-        Membre gaizka = new Membre("Gaizka Alonso", "gaizka.alonso@estudiants.urv.cat");
-
-        associacionsM = new LlistaAssociacio(3);
-        associacionsM.afegirAsociacio(associacions.getAsociacioAt(0));
-        associacionsM.afegirAsociacio(associacions.getAsociacioAt(3));
-        
-        datesAlta = new LlistaDates(3);
-        datesAlta.afegirData(new Data(3, 2, 24));
-        datesAlta.afegirData(new Data(10, 11, 24));
-
-        datesBaixa = new LlistaDates(3);
-        datesBaixa.afegirData(new Data(22, 5, 24));
-
-        Professor marc = new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 210, datesAlta, associacionsM, datesBaixa);
-
-        llistaMembres = new LlistaMembres(4);
-        llistaMembres.afegirMembre(oscar);
-        llistaMembres.afegirMembre(ivan);
-        llistaMembres.afegirMembre(gaizka);
-        llistaMembres.afegirMembre(marc);
-
-        Dades.guardarMembres(llistaMembres);
 
         membres = new LlistaMembres(0);
         membres = Dades.llegirMembres(associacions, titulacions);
         
         System.out.println(membres);
+
+
     }
 }

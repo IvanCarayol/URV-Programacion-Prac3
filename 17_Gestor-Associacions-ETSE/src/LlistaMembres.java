@@ -107,7 +107,6 @@ public class LlistaMembres implements Serializable
                 numElem++;
             }
         }
-        
     }
 
     // Método toString para mostrar toda la tabla temporal 
