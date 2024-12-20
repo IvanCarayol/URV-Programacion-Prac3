@@ -2,11 +2,11 @@ import interficie.*;
 public class tests {
     public static void main(String[] args) {
 
-        Membre membre1 = new Membre("Pep", "pep33@gmail.com");
-        Membre membre2 = new Membre("Fernando", "fernando32@gmail.com");
-        Membre membre3 = new Membre("Joan", "joan31@gmail.com");
-        Membre membre4 = new Membre("Josep", "josep30@gmail.com");
-        Membre membre5 = new Membre("Pau", "pau29@gmail.com");
+        Membre membre1 = new Alumne("Pep", "pep33@gmail.com", null, false);
+        Membre membre2 = new Alumne("Fernando", "fernando32@gmail.com", null, false);
+        Membre membre3 = new Alumne("Joan", "joan31@gmail.com", null, false);
+        Membre membre4 = new Alumne("Josep", "josep30@gmail.com", null, false);
+        Membre membre5 = new Alumne("Pau", "pau29@gmail.com", null, false);
         //Probes clase valoracio
         System.out.println("PROVES CLASSE VALORACIONS");
 
@@ -125,7 +125,7 @@ public class tests {
         datIni.afegirData(new Data(25, 11, 2023));
 
         LlistaDates dat = new LlistaDates(3);
-        Membre ivan = new Membre("Ivan", "Ivan@urv.es");
+        Membre ivan = new Alumne("Ivan", "Ivan@urv.es", new Titulacio("ADE"), false);
 
         Titulacio titP = new Titulacio("Gei");
         LlistaTitulacions titulacions =new LlistaTitulacions(4);
@@ -138,7 +138,7 @@ public class tests {
 
         LlistaAssociacio associacions = new LlistaAssociacio(3);
         associacions.afegirAsociacio(asso);
-        Membre Lluis = new Membre("Lluis", "lluis28@gmail.com", datIni, associacions, null);
+        Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",null, false, datIni, associacions, null);
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
 
@@ -157,7 +157,7 @@ public class tests {
         datas.afegirData(new Data(5, 6, 2024));
         LlistaDates datas2 = new LlistaDates(3);
         
-        Membre llusep = new Membre("Llusep", "llusep27@gmail.com", datas, lAsso, datas2);
+        Membre llusep = new Alumne("Llusep", "llusep27@gmail.com", new Titulacio("GEI"), false, datas, lAsso, datas2);
 
         System.out.println("Utiliztacio del constructor de membre si esta en més associacions");
         System.out.println(llusep);

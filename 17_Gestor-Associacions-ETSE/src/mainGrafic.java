@@ -14,7 +14,7 @@ public class mainGrafic
 
         Membre profe = new Professor("oscar", "oscar.ruiz@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 201);
         Membre alumne = new Alumne("Pol", "pol.hernandez@estudiants.urv.cat", gei, false);
-        Membre membre = new Membre("Manuel", "manuel.gonzalez@estudiants.urv.cat");
+        Membre membre = new Alumne("Manuel", "manuel.gonzalez@estudiants.urv.cat", gei, true);
         LlistaMembres llistaMembres = new LlistaMembres(3);
     }    
 }
