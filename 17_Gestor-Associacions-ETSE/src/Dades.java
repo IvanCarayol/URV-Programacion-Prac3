@@ -352,4 +352,86 @@ public class Dades
         }
         return titulacions;
     }
+
+    public static LlistaAccio carregaAccions()
+    {
+        ObjectInputStream fitxer;
+        LlistaAccio accions = new LlistaAccio(0);
+
+        try
+        {
+            fitxer = new ObjectInputStream(new FileInputStream(ruta+"associacions.ser"));
+            accions = (LlistaAccio)fitxer.readObject();
+            fitxer.close();
+            return accions;
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error en l'arxiu de entrada");
+        }
+        catch (ClassCastException e)
+        {
+            System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe LlistaAssociacions."+e);
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe LlistaAssociacions."+e);
+        }
+        return accions;
+    }
+
+
+    public static LlistaAccio llegirAccions(LlistaMembres membres, LlistaAssociacio asso) {
+        String arxiu = ruta + "accions.txt";
+        try {
+            Scanner fit = new Scanner(new FileReader(arxiu));
+            
+            // Leer el primer número del archivo
+            int num = fit.nextInt();
+            LlistaAccio accions = new LlistaAccio(num);
+            
+            // Leer el resto de líneas del archivo
+            while (fit.hasNextLine()) {
+                String linia = fit.nextLine();
+                
+                String[] inf = linia.split(";");
+                    
+                
+                Membre responsable = membres.getMembreAmbNom(inf[1]);
+                    
+                    // Crear instancia de Data
+                    String[] dateParts = inf[3].split("/");
+                    int dia = Integer.parseInt(dateParts[0]);
+                    int mes = Integer.parseInt(dateParts[1]);
+                    int any = Integer.parseInt(dateParts[2]);
+                    Data data = new Data(dia, mes, any);
+                    
+                    num = inf.length - 3;
+                    LlistaAssociacio ass = new LlistaAssociacio(num);
+
+                    for(int i = 0; i < num;i++) {
+                        
+                        ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+4]));
+                    }
+                    
+                    // Crear una nueva instancia de `Accio`
+                    Accio accio = new Accio(inf[0], inf[1], responsable, ass, data);
+                    accions.afegirAccio(accio);
+                
+            }
+            
+            fit.close();
+            return accions;
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("No s'ha trobat el fitxer: " + arxiu);
+        } catch (IOException e) {
+            System.out.println("S'ha produit un error en l'arxiu: " + arxiu);
+        }
+        
+        return null;
+    }
+    
+    
+    
 }
