@@ -5,16 +5,14 @@ public class mainGrafic
 {
     public static void main(String[] args)
     {
-        File fitAssociacions = new File("sources/associacions.txt");
-        File fitMembres = new File("sources/membres.txt");
+        LlistaAssociacio llistaAssociacions;
+        LlistaMembres llistaMembres;
+        LlistaTitulacions llistaTitulacions;
+
+        llistaTitulacions = Dades.carregaTitulacions();
+        llistaAssociacions = Dades.carregaAssociacions();
+        llistaMembres = Dades.llegirMembres(llistaAssociacions, llistaTitulacions);
 
         MainWindow.iniciarFinestra();
-
-        Titulacio gei = new Titulacio("GEI");
-
-        Membre profe = new Professor("oscar", "oscar.ruiz@estudiants.urv.cat", "Departament de Enginyeria Informatica y Matematiques", 201);
-        Membre alumne = new Alumne("Pol", "pol.hernandez@estudiants.urv.cat", gei, false);
-        Membre membre = new Alumne("Manuel", "manuel.gonzalez@estudiants.urv.cat", gei, true);
-        LlistaMembres llistaMembres = new LlistaMembres(3);
     }    
 }

@@ -50,6 +50,11 @@ public class LlistaTitulacions implements Serializable{
         return numelem;
     }
 
+    // Getter para el tamaño maximo de la lista
+    public int getMaxElem() {
+        return tabla.length;
+    }
+
     // Función para eliminar un elemento en una posición específica
     public void eliminarTitulacioAt(int position) {
         if (position >= 0 && position < numelem) {

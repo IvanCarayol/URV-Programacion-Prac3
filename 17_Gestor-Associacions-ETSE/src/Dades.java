@@ -299,4 +299,57 @@ public class Dades
         }
         return associacions;
     }
+
+    public static void guardaTitulacions(LlistaTitulacions titulacions)
+    {
+        try
+        {
+            BufferedWriter fitxer = new BufferedWriter(new FileWriter(ruta+"titulacions.txt"));
+            int numTitulacions = titulacions.getNumelem();
+
+            for (int i = 0; i < numTitulacions; i++)
+            {
+                fitxer.write(titulacions.getTitulacioAt(i).getNom());
+                fitxer.newLine();
+            }
+            fitxer.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Hi ha hagut un error amb el fitxer");
+        }
+    }
+
+    public static LlistaTitulacions carregaTitulacions()
+    {
+        LlistaTitulacions titulacions = new LlistaTitulacions(1);
+        try
+        {
+            BufferedReader fitxer = new BufferedReader(new FileReader(ruta+"titulacions.txt"));
+
+            String linia ="";
+            linia = fitxer.readLine();
+
+            while (linia != null) 
+            {
+                if (titulacions.getNumelem() == titulacions.getMaxElem())
+                {
+                    LlistaTitulacions temp = titulacions;
+                    titulacions = new LlistaTitulacions(temp.getMaxElem()*2);
+
+                    for (int i = 0; i < temp.getNumelem(); i++)
+                    {
+                        titulacions.afegirTitulacio(temp.getTitulacioAt(i));
+                    }
+                }
+                titulacions.afegirTitulacio(new Titulacio(linia));
+                linia = fitxer.readLine();
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Hi ha hagut un error amb el fitxer");
+        }
+        return titulacions;
+    }
 }

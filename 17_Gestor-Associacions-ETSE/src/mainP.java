@@ -28,6 +28,8 @@ public class mainP {
         titulacions.afegirTitulacio(new Titulacio("GEE"));
         titulacions.afegirTitulacio(new Titulacio("FIB"));
 
+        Dades.guardaTitulacions(titulacions);
+
         //Prueba Guardado y Cargado de Asociaciones
         LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
         LlistaMembres llistaMembres = new LlistaMembres(20);
