@@ -122,9 +122,5 @@ public class mainP {
         LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
         System.out.println(membres);
     }
-
-    private static void donarAltaMembre(LlistaAssociacio associacions, LlistaMembres membres, String nomMembre, String nomAssocio)
-    {
-        
-    }
+    
 }

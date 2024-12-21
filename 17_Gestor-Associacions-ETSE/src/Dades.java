@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "data/";
+    private static String ruta = "../data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -345,6 +345,7 @@ public class Dades
                 titulacions.afegirTitulacio(new Titulacio(linia));
                 linia = fitxer.readLine();
             }
+            fitxer.close();
         }
         catch (IOException e)
         {
@@ -353,52 +354,24 @@ public class Dades
         return titulacions;
     }
 
-    public static LlistaAccio carregaAccions()
-    {
-        ObjectInputStream fitxer;
-        LlistaAccio accions = new LlistaAccio(0);
-
-        try
-        {
-            fitxer = new ObjectInputStream(new FileInputStream(ruta+"associacions.ser"));
-            accions = (LlistaAccio)fitxer.readObject();
-            fitxer.close();
-            return accions;
-        }
-        catch (IOException e)
-        {
-            System.out.println("Error en l'arxiu de entrada");
-        }
-        catch (ClassCastException e)
-        {
-            System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe LlistaAssociacions."+e);
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe LlistaAssociacions."+e);
-        }
-        return accions;
-    }
-
-
     public static LlistaAccio llegirAccions(LlistaMembres membres, LlistaAssociacio asso) {
         String arxiu = ruta + "accions.txt";
         try {
             Scanner fit = new Scanner(new FileReader(arxiu));
             
             // Leer el primer número del archivo
-            int num = fit.nextInt();
-            LlistaAccio accions = new LlistaAccio(num);
+            int numA = fit.nextInt();
+            LlistaAccio accions = new LlistaAccio(numA);
             String linia = fit.nextLine();
+            linia = fit.nextLine();
             
             // Leer el resto de líneas del archivo
-            for(int j = 0; j < num;j++) {
+            for(int j = 0; j < numA;j++) {
                 linia = fit.nextLine();
                 
                 String[] inf = linia.split(";");
                     
-                
-                Membre responsable = membres.getMembreAmbNom(inf[1]);
+                Membre responsable = membres.getMembreAmbNom(inf[2]);
                     
                     // Crear instancia de Data
                     String[] dateParts = inf[3].split("/");
@@ -407,10 +380,10 @@ public class Dades
                     int any = Integer.parseInt(dateParts[2]);
                     Data data = new Data(dia, mes, any);
                     
-                    num = inf.length - 3;
-                    LlistaAssociacio ass = new LlistaAssociacio(num);
-
-                    for(int i = 0; i < num;i++) {
+                    int numAss = inf.length - 4;
+                    LlistaAssociacio ass = new LlistaAssociacio(numAss);
+                    
+                    for(int i = 0; i < numAss;i++) {
                         
                         ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+4]));
                     }

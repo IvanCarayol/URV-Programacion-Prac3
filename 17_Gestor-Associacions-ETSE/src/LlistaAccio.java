@@ -12,10 +12,15 @@ public class LlistaAccio {
     // Método para agregar una acción a la lista
     public void afegirAccio(Accio accio) {
         
+        // sera escalable ya que no se puede decir en un inicio cuantas habran
         if (contador < listaAccions.length) {
             listaAccions[contador] = accio;  
             contador++;
-        } 
+        } else {
+            actualizarArray();
+            listaAccions[contador] = accio;  
+            contador++;
+        }
     }
 
     // Método para obtener el contador de elementos
@@ -69,5 +74,14 @@ public class LlistaAccio {
         }
 
         return lacc;
+    }
+
+    private void actualizarArray() {
+        Accio[] lisAux = new Accio[contador+1];
+
+        for(int i = 0; i < contador;i++) {
+            lisAux[i] = listaAccions[i];
+        }
+        listaAccions = lisAux;
     }
 }
