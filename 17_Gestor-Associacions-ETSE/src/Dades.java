@@ -389,10 +389,11 @@ public class Dades
             // Leer el primer número del archivo
             int num = fit.nextInt();
             LlistaAccio accions = new LlistaAccio(num);
+            String linia = fit.nextLine();
             
             // Leer el resto de líneas del archivo
-            while (fit.hasNextLine()) {
-                String linia = fit.nextLine();
+            for(int j = 0; j < num;j++) {
+                linia = fit.nextLine();
                 
                 String[] inf = linia.split(";");
                     
@@ -425,8 +426,6 @@ public class Dades
             
         } catch (FileNotFoundException e) {
             System.out.println("No s'ha trobat el fitxer: " + arxiu);
-        } catch (IOException e) {
-            System.out.println("S'ha produit un error en l'arxiu: " + arxiu);
         }
         
         return null;

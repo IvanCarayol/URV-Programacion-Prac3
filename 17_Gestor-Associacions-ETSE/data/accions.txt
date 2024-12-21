@@ -1,0 +1,5 @@
+3
+nom;titol;membreNom;dia/mes/año;ass;ass...
+prueba1;prueba1T;Jordi Gómez;23/1/2023;
+prueba2;prueba2T;Daniel Pérez;23/1/2023;
+prueba3;prueba3T;Víctor Pons;23/1/2023;
