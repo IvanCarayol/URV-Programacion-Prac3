@@ -17,6 +17,10 @@ public class Xerrades extends Accio {
         nElem = 0;
     }
 
+    public int numAssisten() {
+        return lMembres.getNumelem();
+    }
+
     /**
      * afegir membre amb la seva valoracio
      * @param membre de tipus Membre

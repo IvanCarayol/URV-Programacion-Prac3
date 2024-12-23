@@ -84,4 +84,12 @@ public class Accio {
 
         return text;
     }
+
+    public boolean esAssociacioDeAccio(Associacio as) {
+
+        Associacio asAux = llistaAssociacio.getAssociacioAmbNom(as.getNom());
+
+        if(asAux == null) return false;
+        return false;
+    }
 }

@@ -64,13 +64,12 @@ public class LlistaAccio {
         for(int i = 0; i < contador;i++) {
             
             LlistaAssociacio lassoc = listaAccions[i].getLlistaAssociacio();
-            int h = lassoc.getNumelem();
-            for(int j = 0; j < h;j++) {
-                System.out.println("wdawdawdawda\n");
-                if(lassoc.getAsociacioAt(j).getNom().equals(nomAsso)) {
-                    lacc.afegirAccio(listaAccions[i]);
-                }
+            Associacio asA = lassoc.getAssociacioAmbNom(nomAsso);
+                
+            if(asA != null) {
+                lacc.afegirAccio(listaAccions[i]);
             }
+            
         }
 
         return lacc;

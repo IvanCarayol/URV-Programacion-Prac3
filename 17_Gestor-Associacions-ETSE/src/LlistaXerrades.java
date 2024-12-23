@@ -2,13 +2,18 @@ public class LlistaXerrades {
     private Xerrades[] llista; // Array para almacenar las xerrades
     private int nElem; // Número actual de xerrades almacenadas
 
-    private static int MAX = 500;
+    private static int MAX = 30;
 
     /**
      * Constructor que inicializa la llista de xerrades amb un tamany fixe.
      */
     public LlistaXerrades() {
         this.llista = new Xerrades[MAX];
+        this.nElem = 0;
+    }
+
+    public LlistaXerrades(int num) {
+        this.llista = new Xerrades[num];
         this.nElem = 0;
     }
 
@@ -33,6 +38,13 @@ public class LlistaXerrades {
         }
 
         return validas;
+    }
+
+    public void afegirXerrada(Xerrades xer){
+        if(nElem < llista.length) {
+            llista[nElem] = xer;
+            nElem++;
+        }
     }
 
     public boolean afegirXerrada(String nomXerrada, String titolXerrada, Membre responsable, LlistaAssociacio llistaAssociacions, Data dataXerrada){
@@ -65,6 +77,21 @@ public class LlistaXerrades {
         nElem++;
 
         return true;
+    }
+
+    public LlistaXerrades xerradesMesAssisten(int num) {
+        
+        LlistaXerrades xer = new LlistaXerrades(nElem);
+
+        for(int i = 0; i < nElem;i++) {
+            if (llista[i].numAssisten() > num) {
+                xer.afegirXerrada(llista[i]);
+            }
+
+        }
+
+        return xer;
+
     }
 }
 
