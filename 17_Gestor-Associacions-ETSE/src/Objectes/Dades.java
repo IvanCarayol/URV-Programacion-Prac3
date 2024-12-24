@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "../data/";
+    private static String ruta = "data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -107,7 +107,7 @@ public class Dades
 
     public static LlistaMembres llegirMembres(LlistaAssociacio associacions, LlistaTitulacions titulacions)
     {
-        LlistaMembres membres = new LlistaMembres(10);
+        LlistaMembres membres = new LlistaMembres(100);
         int numAssociacions = associacions.getNumelem();
         String arxiu = ruta+"membres.txt";
 
@@ -278,7 +278,7 @@ public class Dades
     public static LlistaAssociacio carregaAssociacions()
     {
         ObjectInputStream fitxer;
-        LlistaAssociacio associacions = new LlistaAssociacio(0);
+        LlistaAssociacio associacions = new LlistaAssociacio(100);
 
         try
         {
@@ -289,7 +289,7 @@ public class Dades
         }
         catch (IOException e)
         {
-            System.out.println("Error en l'arxiu de entrada");
+            System.out.println("Error en l'arxiu de entrada"+e);
         }
         catch (ClassCastException e)
         {
@@ -324,7 +324,7 @@ public class Dades
 
     public static LlistaTitulacions carregaTitulacions()
     {
-        LlistaTitulacions titulacions = new LlistaTitulacions(1);
+        LlistaTitulacions titulacions = new LlistaTitulacions(10);
         try
         {
             BufferedReader fitxer = new BufferedReader(new FileReader(ruta+"titulacions.txt"));
