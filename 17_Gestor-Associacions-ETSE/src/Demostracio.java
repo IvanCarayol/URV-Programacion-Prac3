@@ -5,7 +5,7 @@ public class Demostracio extends Accio {
     private double cost_material;
     
     // Constructort_material = cost;
-    public Demostracio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, boolean valida, Data data, int oferit, double cost) {
+    public Demostracio(String nom, String titol, Membre responsable, LlistaAssociacio lAssocia, Data data, boolean valida, int oferit, double cost) {
         // Llama al constructor de Accio con los parámetros requeridos
         super(nom, titol, responsable, lAssocia, data);
 
