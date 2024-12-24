@@ -21,6 +21,14 @@ public class Xerrades extends Accio {
         return lMembres.getNumelem();
     }
 
+    public int getNumValoracions(){
+        return lValoracions.getnElem();
+    }
+
+    public Valoracio getValoracioIndex(int index) { 
+        return lValoracions.getValo(index); 
+    }
+
     /**
      * afegir membre amb la seva valoracio
      * @param membre de tipus Membre
@@ -34,6 +42,17 @@ public class Xerrades extends Accio {
         }
     }
 
+    /**
+     * Añade una valoración para la xerrada.
+     * @param valoracio La valoración a añadir. 
+    */ 
+    public void valorarXerrada(Valoracio valoracio) {
+        if (valoracio != null && valoracio.valoracioValida(valoracio.getValoracio())){ 
+            lValoracions.afegirValoracio(valoracio); 
+        } else { 
+            throw new IllegalArgumentException("La valoración no es válida."); 
+        } 
+    }
 
     @Override
     public String toString() {

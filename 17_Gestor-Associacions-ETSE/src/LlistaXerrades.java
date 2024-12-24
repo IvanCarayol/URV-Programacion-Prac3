@@ -93,5 +93,50 @@ public class LlistaXerrades {
         return xer;
 
     }
+    
+    /** 
+     * Devuelve la xerrada mejor valorada. * 
+     * 
+     * @return La xerrada con la mejor valoración. 
+    */
+
+    public Xerrades getXerradaMejorValorada() { 
+        if (nElem == 0) { 
+            return null; // Cas que no hi hagin xerrades
+        } 
+
+        Xerrades mejorValorada = llista[0];     // Inicialitzem la primera xerrada de la llista com la millor valorada
+        double mejorValoracionPromedio = calcularValoracionPromedio(mejorValorada); // Calculem la seva valoracio
+        
+        for (int i = 1; i < nElem; i++) { 
+            double valoracionPromedio = calcularValoracionPromedio(llista[i]);
+            if (valoracionPromedio > mejorValoracionPromedio) { 
+                mejorValorada = llista[i]; 
+                mejorValoracionPromedio = valoracionPromedio; 
+            } 
+        } 
+        return mejorValorada;
+    }
+
+    /** 
+     * Calcula la valoración promedio de una xerrada. 
+     * @param xerrada La xerrada para la que se va a calcular la valoración promedio. 
+     * @return La valoración promedio. */ 
+    private double calcularValoracionPromedio(Xerrades xerrada) {
+        
+        double sumaValoraciones = 0;
+        int numValoraciones = xerrada.getNumValoracions();  //Numero total de valoracions d'una xerrada
+        
+        if (numValoraciones == 0){
+            return 0;
+        }
+
+        for (int i = 0; i < numValoraciones; i++) {
+            sumaValoraciones += xerrada.getValoracioIndex(i).getValoracio();
+        }
+
+        return sumaValoraciones/numValoraciones;
+    } 
 }
+
 
