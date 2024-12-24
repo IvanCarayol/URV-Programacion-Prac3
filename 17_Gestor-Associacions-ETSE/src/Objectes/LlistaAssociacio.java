@@ -46,6 +46,7 @@ public class LlistaAssociacio implements Serializable{
             {
                 associacio = tabla[i];
                 noTrobat = false;
+                System.out.println("ass");
             }
         }
         return associacio;

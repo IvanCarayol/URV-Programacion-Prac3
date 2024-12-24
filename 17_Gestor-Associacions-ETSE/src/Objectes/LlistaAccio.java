@@ -85,4 +85,22 @@ public class LlistaAccio {
         }
         listaAccions = lisAux;
     }
+
+    public LlistaAccio llistarEnFranja(Data inici, Data fi) {
+        // Array temporal para almacenar las xerrades filtradas
+        LlistaAccio validas = new LlistaAccio(contador);
+
+        for (int i = 0; i < contador; i++) {
+
+            if (listaAccions[i] instanceof Xerrades) {
+
+                Data dataXerrada = listaAccions[i].getData();
+                if (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada)){
+                    validas.afegirAccio(listaAccions[i]);
+                }
+            }
+        }
+
+        return validas;
+    }
 }
