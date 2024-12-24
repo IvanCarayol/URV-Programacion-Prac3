@@ -1,4 +1,3 @@
-package Objectes;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -383,25 +382,57 @@ public class Dades
                 int any = Integer.parseInt(dateParts[2]);
                 Data data = new Data(dia, mes, any);
                 
-                int numAss = inf.length - 4;
-                LlistaAssociacio ass = new LlistaAssociacio(numAss);
-                
-                for(int i = 0; i < numAss;i++) {
-                    
-                    ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+4]));
-                }
-                
                 int op = Integer.parseInt(inf[0]);
-                
+                int numAss;
+                LlistaAssociacio ass;
+
                 switch (op) {
                     case 0:
+
+                        numAss = inf.length - 5;
+                        ass = new LlistaAssociacio(numAss);
+                        
+                        for(int i = 0; i < numAss;i++) {
+                            
+                            ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+5]));
+                        }
+
                         // Crear una nueva instancia de `Accio`
-                        Accio accio = new Accio(inf[0], inf[1], responsable, ass, data);
+                        Accio accio = new Accio(inf[1], inf[2], responsable, ass, data);
+                        accions.afegirAccio(accio);
+                        break;
+
+                    case 1:
+
+                        numAss = inf.length - 6;
+                        ass = new LlistaAssociacio(numAss);
+                        
+                        for(int i = 0; i < numAss;i++) {
+                            
+                            ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+6]));
+                        }
+
+                        // Crear una nueva instancia de `Xerrada`
+                        Xerrades xerr = new Xerrades(inf[0], inf[1], responsable, ass, data, Integer.parseInt(inf[5]));
+                        accions.afegirAccio(xerr);
+                        break;
+
+                    case 2:
+
+                        numAss = inf.length - 8;
+                        ass = new LlistaAssociacio(numAss);
+                        
+                        for(int i = 0; i < numAss;i++) {
+                            
+                            ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+8]));
+                        }
+
+                        // Crear una nueva instancia de `Demostracio`
+                        boolean val = inf[5].equals("1");
+                        Demostracio demo = new Demostracio(inf[0], inf[1], responsable, ass, data, val, Integer.parseInt(inf[6]), Double.parseDouble(inf[7]));
+                        accions.afegirAccio(demo);
                         break;
                 
-                    default:
-                        break;
-                        
                 }
 
                 
