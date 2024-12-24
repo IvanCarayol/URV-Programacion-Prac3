@@ -1,3 +1,5 @@
+package funcions;
+
 public class Demostracio extends Accio {
 
     private boolean valida;

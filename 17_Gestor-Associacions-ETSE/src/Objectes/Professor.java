@@ -1,4 +1,4 @@
-
+package funcions;
 public class Professor extends Membre 
 {
     private String nomDepartament; 

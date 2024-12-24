@@ -1,3 +1,4 @@
+package funcions;
 
 public class Accio {
     private String codi;

@@ -1,3 +1,4 @@
+package funcions;
 import java.io.Serializable;
 
 public class LlistaDates implements Serializable

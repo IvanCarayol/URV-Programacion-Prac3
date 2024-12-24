@@ -1,3 +1,4 @@
+package funcions;
 public class Alumne extends Membre
 {
     private boolean graduat = false;

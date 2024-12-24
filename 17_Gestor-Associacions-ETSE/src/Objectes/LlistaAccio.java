@@ -1,3 +1,5 @@
+package funcions;
+
 public class LlistaAccio {
     private Accio[] listaAccions;  // Array para almacenar objetos de tipo Accio
     private int contador;          // Contador de elementos agregados

@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import funcions.*;
+
 public class mainP {
     public static void main(String[] args) {
         // 2.1 Llistar associacions

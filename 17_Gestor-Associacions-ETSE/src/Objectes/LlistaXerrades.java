@@ -1,3 +1,5 @@
+package funcions;
+
 public class LlistaXerrades {
     private Xerrades[] llista; // Array para almacenar las xerrades
     private int nElem; // Número actual de xerrades almacenadas

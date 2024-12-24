@@ -1,4 +1,4 @@
-
+package funcions;
 public class Xerrades extends Accio {
 
     private LlistaMembres lMembres;      
