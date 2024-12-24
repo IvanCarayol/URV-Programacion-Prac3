@@ -362,7 +362,7 @@ public class Dades
             Scanner fit = new Scanner(new FileReader(arxiu));
             
             // Leer el primer número del archivo
-            int numA = fit.nextInt();
+            int numA = fit.nextInt();   
             LlistaAccio accions = new LlistaAccio(numA);
             String linia = fit.nextLine();
             linia = fit.nextLine();
