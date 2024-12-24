@@ -1,6 +1,6 @@
 import java.util.Random;
 
-import funcions.*;
+import Objectes.*;
 
 public class mainP {
     public static void main(String[] args) {

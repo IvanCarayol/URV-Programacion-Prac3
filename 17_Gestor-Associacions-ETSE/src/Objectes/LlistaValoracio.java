@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 
 /**
  * Classe que representa una llista de valoracions

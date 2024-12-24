@@ -1,6 +1,7 @@
 package interficie;
-import funcions.*;
 import javax.swing.*;
+
+import Objectes.*;
 
 public class Finestra extends JFrame
 {

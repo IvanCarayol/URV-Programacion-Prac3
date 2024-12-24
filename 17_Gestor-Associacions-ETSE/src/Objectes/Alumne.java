@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 public class Alumne extends Membre
 {
     private boolean graduat = false;

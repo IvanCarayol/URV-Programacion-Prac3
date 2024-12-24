@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 
 public class LlistaAccio {
     private Accio[] listaAccions;  // Array para almacenar objetos de tipo Accio

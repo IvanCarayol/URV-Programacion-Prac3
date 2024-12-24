@@ -1,4 +1,4 @@
-import funcions.*;
+import Objectes.*;
 import interficie.*;
 public class tests {
     public static void main(String[] args) {

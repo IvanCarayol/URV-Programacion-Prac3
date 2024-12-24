@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 /**
  * Classe que representa una valoració feta per un membre.
  * Conté el nom del membre i la valoració numèrica.

@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 import java.io.Serializable;
 
 public class LlistaTitulacions implements Serializable{

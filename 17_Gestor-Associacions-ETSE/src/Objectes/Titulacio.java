@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 import java.io.Serializable;
 
 public class Titulacio implements Serializable{

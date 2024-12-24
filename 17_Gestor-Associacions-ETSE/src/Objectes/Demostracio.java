@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 
 public class Demostracio extends Accio {
 

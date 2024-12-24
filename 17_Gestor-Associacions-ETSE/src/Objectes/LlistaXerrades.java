@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 
 public class LlistaXerrades {
     private Xerrades[] llista; // Array para almacenar las xerrades

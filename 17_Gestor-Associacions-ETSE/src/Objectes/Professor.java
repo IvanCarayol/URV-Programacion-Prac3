@@ -1,4 +1,4 @@
-package funcions;
+package Objectes;
 public class Professor extends Membre 
 {
     private String nomDepartament; 
