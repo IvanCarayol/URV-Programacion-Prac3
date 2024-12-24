@@ -364,33 +364,46 @@ public class Dades
             LlistaAccio accions = new LlistaAccio(numA);
             String linia = fit.nextLine();
             linia = fit.nextLine();
+            linia = fit.nextLine();
+            linia = fit.nextLine();
             
             // Leer el resto de líneas del archivo
-            for(int j = 0; j < numA;j++) {
+            while(fit.hasNext()) {
                 linia = fit.nextLine();
                 
                 String[] inf = linia.split(";");
                     
-                Membre responsable = membres.getMembreAmbNom(inf[2]);
+                Membre responsable = membres.getMembreAmbNom(inf[3]);
                     
-                    // Crear instancia de Data
-                    String[] dateParts = inf[3].split("/");
-                    int dia = Integer.parseInt(dateParts[0]);
-                    int mes = Integer.parseInt(dateParts[1]);
-                    int any = Integer.parseInt(dateParts[2]);
-                    Data data = new Data(dia, mes, any);
+                // Crear instancia de Data
+                String[] dateParts = inf[4].split("/");
+                int dia = Integer.parseInt(dateParts[0]);
+                int mes = Integer.parseInt(dateParts[1]);
+                int any = Integer.parseInt(dateParts[2]);
+                Data data = new Data(dia, mes, any);
+                
+                int numAss = inf.length - 4;
+                LlistaAssociacio ass = new LlistaAssociacio(numAss);
+                
+                for(int i = 0; i < numAss;i++) {
                     
-                    int numAss = inf.length - 4;
-                    LlistaAssociacio ass = new LlistaAssociacio(numAss);
-                    
-                    for(int i = 0; i < numAss;i++) {
+                    ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+4]));
+                }
+                
+                int op = Integer.parseInt(inf[0]);
+                
+                switch (op) {
+                    case 0:
+                        // Crear una nueva instancia de `Accio`
+                        Accio accio = new Accio(inf[0], inf[1], responsable, ass, data);
+                        break;
+                
+                    default:
+                        break;
                         
-                        ass.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+4]));
-                    }
-                    
-                    // Crear una nueva instancia de `Accio`
-                    Accio accio = new Accio(inf[0], inf[1], responsable, ass, data);
-                    accions.afegirAccio(accio);
+                }
+
+                
                 
             }
             

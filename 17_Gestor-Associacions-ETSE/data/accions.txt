@@ -1,5 +1,13 @@
-3
-nom;titol;membreNom;dia/mes/año;ass;ass...
-prueba1;prueba1T;Jordi Gómez;23/1/2023;URBots
-prueba2;prueba2T;Daniel Pérez;23/1/2023;URVoltage
-prueba3;prueba3T;Víctor Pons;23/1/2023;URCulture
+9
+tipo:nom;titol;membreNom;dia/mes/año;ass;ass...
+tipo:nom;titol;membreNom;dia/mes/año;num;ass;ass...
+tipo:nom;titol;membreNom;dia/mes/año;boolVal;numOferit;doubleCost;ass;ass...
+0;prueba1;prueba1T;Jordi Gómez;23/1/2023;URBots
+0;prueba2;prueba2T;Daniel Pérez;23/1/2023;URVoltage
+0;prueba3;prueba3T;Víctor Pons;23/1/2023;URCulture
+1;prueba4;prueba4T;Jordi Gómez;23/1/2023;5;eURBots;URVoltage
+2;prueba5;prueba5T;Pablo Torres;23/1/2023;1;2;200;eURBots;URVoltage
+2;prueba6;prueba6T;Cristina Blanch;11/3/2022;1;2;100;URCulture;URScience
+0;prueba7;prueba7T;Víctor Pons;23/1/2023;URCulture
+2;prueba8;prueba8T;Adrián Sánchez;25/9/2021;0;5;500;URBots;URCulture
+1;prueba4;prueba4T;Jordi Gómez;23/1/2023;5;eURBots;URVoltage

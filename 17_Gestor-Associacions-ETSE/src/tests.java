@@ -181,7 +181,7 @@ public class tests {
 
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
 
-        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, true, dat.getDataInPos(0), 0, 15000);
+        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, dat.getDataInPos(0), true, 0, 15000);
 
         System.out.println(demost);
 
