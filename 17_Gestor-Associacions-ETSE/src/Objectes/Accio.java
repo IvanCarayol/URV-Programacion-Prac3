@@ -21,11 +21,11 @@ public class Accio {
         
     /**
      * Creacio del codi de cada accio
-     * @param tit tipus String es al titol
+     * @param n tipus String es al titol
      */
-    private void creacio_codi(String tit) {
+    private void creacio_codi(String n) {
         String codeAux = "";
-        codeAux+= tit.substring(0, 3);
+        codeAux+= n.substring(0, 3);
         codeAux+= num_id + "";
         num_id++;
         this.codi = codeAux;
@@ -86,11 +86,16 @@ public class Accio {
         return text;
     }
 
+    /**
+     * Mira si hay una associacion en la accion indicada
+     * @param as associacion
+     * @return  boolean true o false si esta o no esta
+     */
     public boolean esAssociacioDeAccio(Associacio as) {
 
         Associacio asAux = llistaAssociacio.getAssociacioAmbNom(as.getNom());
 
         if(asAux == null) return false;
-        return false;
+        return true;
     }
 }

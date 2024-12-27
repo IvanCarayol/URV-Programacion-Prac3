@@ -52,6 +52,4 @@ public class Demostracio extends Accio {
         
         return text;
     }
-
-    
 }
