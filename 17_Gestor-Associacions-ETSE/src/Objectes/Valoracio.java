@@ -9,6 +9,7 @@ public class Valoracio {
     
     private Membre membre;
     private int valoracio;
+    private String IDXerrada;
 
     /**
      * Constructor amb paràmetres.

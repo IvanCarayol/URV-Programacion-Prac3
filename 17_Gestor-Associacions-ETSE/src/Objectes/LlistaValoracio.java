@@ -8,6 +8,7 @@ public class LlistaValoracio {
 
     private Valoracio[] valoracions;
     private int nElem;
+    private String IDXerrada;
 
     /**
      * Constructor per defecte.
@@ -18,9 +19,10 @@ public class LlistaValoracio {
         this.nElem = 0;
     }
 
-    public LlistaValoracio(int n) {
+    public LlistaValoracio(int n, String IDXerrada) {
         this.valoracions = new Valoracio[n];
         this.nElem = 0;
+        this.IDXerrada = IDXerrada;
     }
 
     /**
@@ -83,6 +85,10 @@ public class LlistaValoracio {
         return nElem;
     } 
 
+    public String getIDXerrada(){
+        return IDXerrada;
+    }
+
     public Valoracio getValo(int n) {
         if (n < 0 || n >= nElem) {  
             throw new IndexOutOfBoundsException("Índex fora de rang: " + n);
@@ -96,7 +102,7 @@ public class LlistaValoracio {
      * @return una nova instància de LlistaValoracio amb els mateixos elements
      */
     public LlistaValoracio copia() {
-        LlistaValoracio copiaLlista = new LlistaValoracio(nElem); 
+        LlistaValoracio copiaLlista = new LlistaValoracio(nElem, this.IDXerrada); 
         for (int i = 0; i < nElem; i++) {
             copiaLlista.afegirValoracio(valoracions[i].copia());  
         }

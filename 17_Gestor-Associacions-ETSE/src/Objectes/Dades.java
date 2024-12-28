@@ -458,5 +458,41 @@ public class Dades
         return null;
     }
     
-    
+    public static LlistaValoracio[] llegirValoracions(LlistaMembres membre) {
+        String linia;
+        String[] partes; 
+        String arxiu = ruta + "valoracions.txt";
+        int valoracio;
+        Valoracio valoracions;
+        int numeroXerradas;
+        try{
+            Scanner fit = new Scanner(new FileReader(arxiu));
+            numeroXerradas = fit.nextInt();
+            fit.nextLine();
+            LlistaValoracio[] llistes = new LlistaValoracio[numeroXerradas];
+            int y = 0;
+            while(fit.hasNext()){
+                String nombreXerrada = fit.nextLine();          //Leemos el nombre de la xerrada
+                int nElementos = fit.nextInt();
+                fit.nextLine();
+                LlistaValoracio llista = new LlistaValoracio(nElementos, nombreXerrada);
+                
+                for (int i = 0; i < nElementos; i++){
+                    linia = fit.nextLine();
+                    partes = linia.split(";");
+                    Membre membreValoracio = membre.getMembreAmbNom(partes[0]);
+                    valoracio = Integer.parseInt(partes[1]);
+                    valoracions = new Valoracio(membreValoracio, valoracio);
+                    llista.afegirValoracio(valoracions);
+                }
+                llistes[y] = llista;
+                y++;
+            }
+            fit.close();
+            return(llistes);
+        } catch (FileNotFoundException e) {
+            System.out.println("No s'ha trobat el fitxer: " + arxiu);
+        }
+        return null;
+    }
 }
