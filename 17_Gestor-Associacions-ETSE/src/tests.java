@@ -41,7 +41,7 @@ public class tests {
         System.out.println("Valoracio modificada (còpia): " + copiaValoracio);
 
         System.out.println("\nPROVES CLASSE LLISTAVALORACIONS");
-        LlistaValoracio llista = new LlistaValoracio(5);
+        LlistaValoracio llista = new LlistaValoracio(5,"");
 
         Valoracio valoracio1 = new Valoracio(membre1, 7);
         Valoracio valoracio2 = new Valoracio(membre2, 2);

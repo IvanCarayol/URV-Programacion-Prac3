@@ -12,7 +12,7 @@ public class Xerrades extends Accio {
         super(nom, titol, responsable, lAssocia, date);
 
         lMembres = new LlistaMembres(n_max);
-        lValoracions = new LlistaValoracio(n_max);
+        lValoracions = new LlistaValoracio(n_max, nom);
         nElemMAX = n_max;
         nElem = 0;
     }
