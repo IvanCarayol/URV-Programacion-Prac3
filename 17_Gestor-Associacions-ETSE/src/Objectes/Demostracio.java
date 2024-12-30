@@ -16,7 +16,7 @@ public class Demostracio extends Accio {
         cost_material = cost;
     }
 
-    public boolean isValida() {
+    public boolean getValida() {
         return valida;
     }
 

@@ -218,10 +218,31 @@ public class tests {
         System.out.println("Prueba toString");
         System.out.println(laccio);
 
+        Xerrades xerra2 = new Xerrades("Estopa", "Nuevo album", llusep, lAsso, dat.getDataInPos(0), 20);
+        laccio.afegirAccio(xerra2);
+
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
 
-        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, dat.getDataInPos(0), true, 0, 15000);
+        Demostracio demost = new Demostracio("laprueba", "especial", llusep, lAsso, dat.getDataInPos(0), true, 1, 15000);
 
+        if(demost.getValida()) {
+            System.out.println("Demostració valida");
+        } else {
+            System.out.println("Demostració no es valida");
+        }
+
+        demost.setValida(false);
+        if(demost.getValida()) {
+            System.out.println("Demostració valida");
+        } else {
+            System.out.println("Demostració no es valida");
+        }
+
+        System.out.println("vegades oferit: " + demost.getVegades_oferit());
+        demost.setVegades_oferit(2);
+        System.out.println("Cost material: " + demost.getCost_material());
+        demost.setCost_material(5432);
+        System.out.println("Cost material: " + demost.getCost_material());
         System.out.println(demost);
 
         System.out.println("\nPROVES CLASSE XERRADA");
