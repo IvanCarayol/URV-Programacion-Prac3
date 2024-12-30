@@ -140,5 +140,3 @@ public class LlistaXerrades {
         return sumaValoraciones/numValoraciones;
     } 
 }
-
-

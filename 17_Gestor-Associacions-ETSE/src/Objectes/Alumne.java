@@ -81,7 +81,12 @@ public class Alumne extends Membre
         String text;
         text = super.toString();
 
-        text += "Titulacio: "+titulacio.getNom()+"\n";
+        if (titulacio != null){
+            text += "Titulacio: "+titulacio.getNom()+"\n";
+        } else{
+            text += "Titulacio: No disponible\n";
+        }
+       
         if (graduat) {text += "Graduat: Si\n";} 
             else { text += "Graduat: No\n"; }
         return text;

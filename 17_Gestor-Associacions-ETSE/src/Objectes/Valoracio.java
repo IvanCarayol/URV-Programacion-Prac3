@@ -9,7 +9,6 @@ public class Valoracio {
     
     private Membre membre;
     private int valoracio;
-    private String IDXerrada;
 
     /**
      * Constructor amb paràmetres.
@@ -72,7 +71,7 @@ public class Valoracio {
      */
     @Override
     public String toString() {
-        return ("Valoracio del membre "+membre.getAlias()+" es igual a "+valoracio+".");
+        return ("Valoracio del membre "+membre.getAlias()+" igual a "+valoracio+".");
     }
 
     /**

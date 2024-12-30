@@ -13,11 +13,11 @@ public class tests {
 
         //Constructor amb parametres
         Valoracio valoracio = new Valoracio(membre1, 7);
-        System.out.println("Valoracio (constructor  amb parametres): "+ valoracio);
+        System.out.println(valoracio);
 
         //Prova getters
-        System.out.println("Membre de valoracio: " + valoracio.getMembre());
-        System.out.println("Valoració de valoracio: " + valoracio.getValoracio());
+        System.out.println("Membre de valoracio:\n" + valoracio.getMembre());
+        System.out.println("Valoració donada: " + valoracio.getValoracio());
 
         //Prova dels setters
         valoracio.setMembre(membre2);
