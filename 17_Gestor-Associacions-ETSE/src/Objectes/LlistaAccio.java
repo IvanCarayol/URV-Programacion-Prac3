@@ -43,10 +43,6 @@ public class LlistaAccio {
         return listaAccions;
     }
 
-    public Accio getNAccions(int num) {
-        return listaAccions[num];
-    }
-
     // Método para mostrar la lista de acciones
     @Override
     public String toString() {
