@@ -19,12 +19,12 @@ public class Xerrades extends Accio {
         nValo = 0;
     }
 
-    public int numAssisten() {
-        return lMembres.getNumelem();
+    public int getnumMembres() {
+        return nMem;
     }
 
     public int getNumValoracions(){
-        return lValoracions.getnElem();
+        return nValo;
     }
 
     public Valoracio getValoracioIndex(int index) { 

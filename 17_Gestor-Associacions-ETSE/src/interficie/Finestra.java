@@ -34,7 +34,7 @@ public class Finestra extends JFrame
             data[i][2] = demo.getTitol(); 
             data[i][3] = demo.getResponsable().getAlias(); 
             data[i][4] = demo.getData().toString();
-            data[i][5] = String.valueOf(demo.isValida()); 
+            data[i][5] = String.valueOf(demo.getValida()); 
             data[i][6] = String.valueOf(demo.getVegades_oferit()); 
             data[i][7] = String.valueOf(demo.getCost_material());
         }

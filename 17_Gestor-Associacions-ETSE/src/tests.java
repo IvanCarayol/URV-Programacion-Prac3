@@ -252,6 +252,11 @@ public class tests {
         xerra.afegirMembreValoracio(valoracio5);
         xerra.afegirMembreValoracio(valoracio4);
 
+        System.out.println("Num Mem Xerrada: " + xerra.getnumMembres());
+        System.out.println("Num Mem Xerrada: " + xerra.getNumValoracions());
+        System.out.println("Valoracio x: " + xerra.getValoracioIndex(0));
+        xerra.afegirMembre(membre5);
+
         System.out.println(xerra);
 
         System.out.println("Nombre de valoracions afegides: " + xerra.getNumValoracions());
