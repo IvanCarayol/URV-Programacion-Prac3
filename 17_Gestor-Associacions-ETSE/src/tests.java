@@ -169,6 +169,27 @@ public class tests {
         Accio accio = new Accio("Nose", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
         Accio accio2 = new Accio("Compas", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
 
+        System.out.println(accio.getCodi());
+        System.out.println(accio.getNom());
+        System.out.println(accio.getTitol());
+
+        accio.setTitol("cambioTit");
+        System.out.println(accio.getTitol());
+
+        LlistaAssociacio associacioAux = accio.getLlistaAssociacio();
+        System.out.println(associacioAux);
+
+        System.out.println(accio.getResponsable());
+
+        accio.setResponsable(Lluis);
+
+        System.out.println(accio.getData());
+        Data dts = new Data(10, 1, 2020);
+        accio.setData(dts);
+
+        System.out.println(accio.getData());
+        if(accio.esAssociacioDeAccio(asso)) System.out.println("Esta");
+
         System.out.println(accio);
         System.out.println(accio2);
 
@@ -194,6 +215,28 @@ public class tests {
         xerra.afegirMembreValoracio(valoracio4);
 
         System.out.println(xerra);
+
+        System.out.println("Nombre de valoracions afegides: " + xerra.getNumValoracions());
+
+        Valoracio valoracioInvalida = new Valoracio(membre1, 15);
+
+        // Afegir valoracio a la xerrada 
+        try { 
+            xerra.valorarXerrada(valoracio1); 
+            System.out.println("Valoració 1 afegida amb èxit."); 
+        } catch (IllegalArgumentException e) { 
+            System.out.println("Error afegint valoració 1: " + e.getMessage()); 
+        }
+
+        // Afegir valoracio invalida a la xerrada 
+        try { 
+            xerra.valorarXerrada(valoracioInvalida); 
+            System.out.println("Valoració invalida afegida amb èxit."); 
+        } catch (IllegalArgumentException e) { 
+            System.out.println("Error afegint valoració invalida: " + e.getMessage()); 
+        }
+
+        System.out.println("Nombre de valoracions afegides: " + xerra.getNumValoracions());
 
         System.out.println("\nPROVES CLASSE PROFESSOR");
         //Creamos algunas fechas de alta y baja
