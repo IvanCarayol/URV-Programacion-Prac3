@@ -314,6 +314,55 @@ public class tests {
         System.out.println("\n¿El Alumne 1 está graduado?");
         System.out.println(alumne1.isGraduat() ? "Sí" : "No");
 
+        System.out.println("\nPROVES CLASSE DATA");
+
+        Data data = new Data(15, 5, 2023);
+        System.out.println("Data creada: "+data);
+
+        // Probar getters 
+        if (data.getDia() == 15 && data.getMes() == 5 && data.getAny() == 2023) { 
+            System.out.println("Test getters PASSAT"); 
+        } else { 
+            System.out.println("Test getters FALLAT"); 
+        } 
+
+        // Proba setters
+        data.setDia(20);
+        data.setMes(6);
+        data.setAny(2024);
+
+        if (data.getDia() == 20 && data.getMes() == 6 && data.getAny() == 2024) { 
+            System.out.println("Test setters PASSAT"); 
+        } else { 
+            System.out.println("Test setters FALLAT"); 
+        } 
+
+        // Probar copia 
+        Data copiaData = data.copia(); 
+        if (copiaData != data && copiaData.getDia() == data.getDia() && copiaData.getMes() == data.getMes() && copiaData.getAny() == data.getAny()) { 
+            System.out.println("Test copia PASSAT"); 
+        } else { 
+            System.out.println("Test copia FALLAT"); 
+        }
+        
+        // Probar comparar
+        Data data1 = new Data(15, 5, 2023); 
+        Data data2 = new Data(10, 5, 2023); 
+        Data data3 = new Data(5, 5, 2023); 
+        Data data4 = new Data(15, 6, 2023);
+
+        if(data.compararDatas(data1, data2)){
+            System.out.println("Test primera posterior PASSAT"); 
+        } else { 
+            System.out.println("Test primera posterior FALLAT"); 
+        }
+
+        if(!data.compararDatas(data3, data4)){
+            System.out.println("Test segona posterior PASSAT"); 
+        } else { 
+            System.out.println("Test segona posterior FALLAT"); 
+        }
+
         //MainWindow.iniciarFinestra();
 
     }
