@@ -148,10 +148,14 @@ public class tests {
         System.out.println(ivan);
 
         LlistaAssociacio lAsso = new LlistaAssociacio(3);
+        LlistaAssociacio lAsso2 = new LlistaAssociacio(3);
         lAsso.afegirAsociacio(asso);
-
+        
         Associacio asso2 = new Associacio("Astronomia", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
         lAsso.afegirAsociacio(asso2);
+        lAsso2.afegirAsociacio(asso2);
+
+        
         
         LlistaDates datas = new LlistaDates(3);
         datas.afegirData(new Data(1, 1, 2024));
@@ -167,7 +171,8 @@ public class tests {
         System.out.println("\nPROVES CLASSE ACCIO\n");
         dat.afegirData(new Data(1, 3, 2023));
         Accio accio = new Accio("Nose", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
-        Accio accio2 = new Accio("Compas", "tucro trato", llusep, lAsso, dat.getDataInPos(0));
+        Accio accio2 = new Accio("Compas", "Al ritmo", llusep, lAsso, dat.getDataInPos(0));
+        Accio accio3 = new Accio("Tercer", "Prueba", llusep, lAsso2, dat.getDataInPos(0));
 
         System.out.println(accio.getCodi());
         System.out.println(accio.getNom());
@@ -196,9 +201,21 @@ public class tests {
         System.out.println("\nPROVES CLASSE LLISTAACCIO\n");
 
         LlistaAccio laccio = new LlistaAccio(4);
+        
         laccio.afegirAccio(accio);
-        laccio.afegirAccio(accio2);
 
+        System.out.println(laccio.getContador());
+        System.out.println(laccio.getAccio(0));
+        Accio[] accions = laccio.getListaAccions();
+        System.out.println("longitut: " + accions.length);
+
+        laccio.afegirAccio(accio2);
+        laccio.afegirAccio(accio3);
+
+        System.out.println("Accions de una associacio");
+        System.out.println(laccio.accioDeUnaAssociacio(asso));
+
+        System.out.println("Prueba toString");
         System.out.println(laccio);
 
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
@@ -297,7 +314,7 @@ public class tests {
         System.out.println("\n¿El Alumne 1 está graduado?");
         System.out.println(alumne1.isGraduat() ? "Sí" : "No");
 
-        MainWindow.iniciarFinestra();
+        //MainWindow.iniciarFinestra();
 
     }
 }
