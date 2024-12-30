@@ -86,7 +86,7 @@ public class LlistaXerrades {
         LlistaXerrades xer = new LlistaXerrades(nElem);
 
         for(int i = 0; i < nElem;i++) {
-            if (llista[i].numAssisten() > num) {
+            if (llista[i].getnumMembres() > num) {
                 xer.afegirXerrada(llista[i]);
             }
 
