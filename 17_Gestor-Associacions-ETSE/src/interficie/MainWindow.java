@@ -12,7 +12,6 @@ public class MainWindow
     private static JPanel barraSuperior;
 
     private static int[] numFila = new int[20];
-    private static int estat = 0;
 
     public static void iniciarFinestra()
     {
@@ -35,15 +34,7 @@ public class MainWindow
     {
         reiniciarNelementsContenidors();
         mainWindow.getContentPane().removeAll();
-
-        switch (estat) {
-            case 0:
-                finestraPrincipal();
-                break;
-        
-            default:
-                break;
-        }
+        finestraPrincipal();
         mainWindow.getContentPane().setBackground(Color.WHITE);
         mainWindow.revalidate();
         mainWindow.repaint();

@@ -1,6 +1,5 @@
 package Objectes;
 import java.io.Serializable;
-import java.lang.reflect.Member;
 
 public class LlistaMembres implements Serializable
 {

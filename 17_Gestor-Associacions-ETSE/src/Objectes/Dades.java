@@ -14,7 +14,7 @@ public class Dades
         {
             BufferedWriter fitxerOut = new BufferedWriter(new FileWriter(ruta+"membres.txt"));
             String buffer;
-            
+
             for (int i = 0; i < membres.getNumelem(); i++)
             {
                 Membre membre = membres.getMembreAt(i);

@@ -7,10 +7,11 @@ public class Main {
         LlistaTitulacions titulacions;
         LlistaAccio accions;
         associacions = Dades.carregaAssociacions();
+        
         titulacions = Dades.carregaTitulacions();
         membres = Dades.llegirMembres(associacions, titulacions);
         accions = Dades.llegirAccions(membres, associacions);
-        Data d = new Data(25, 11, 2023); // fecha de prueba
+        Data d = new Data(25, 11, 2023); // fecha de prueba*/
 
         // codi...
 

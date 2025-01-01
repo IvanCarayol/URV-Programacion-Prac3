@@ -1,6 +1,29 @@
+import java.io.IOException;
+import java.util.Random;
+
 import Objectes.*;
 import interficie.*;
 public class tests {
+
+    private static void netejarPantalla()
+    {
+        try
+        {
+            if (System.getProperty("os.name").contains("Windows"))
+            {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }
+            else
+            {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        }
+        catch (IOException | InterruptedException ex)
+        {
+            System.out.println("Error al netejar la consola");
+        }
+    }
+
     public static void main(String[] args) {
 
         Membre membre1 = new Alumne("Pep", "pep33@gmail.com", null, false);
@@ -388,6 +411,118 @@ public class tests {
         } else { 
             System.out.println("Test segona posterior FALLAT"); 
         }
+        
+        //Probar guardat i carrega de una llista de associacions
+        System.out.println("\nPROVES GUARDAR I CARREGAR LLISTA ASSOCIACIONS");
+        
+        associacions = new LlistaAssociacio(0);
+        membres = new LlistaMembres(0);
+        titulacions = new LlistaTitulacions(4);
+
+        titulacions.afegirTitulacio(new Titulacio("GEI"));
+        titulacions.afegirTitulacio(new Titulacio("ADE"));
+        titulacions.afegirTitulacio(new Titulacio("GEE"));
+        titulacions.afegirTitulacio(new Titulacio("FIB"));
+
+        LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
+        LlistaMembres llistaMembres = new LlistaMembres(20);
+
+        String[] nomsAssociacions = {
+            "URBots", "URVoltage", "GreenTeam", "PhysicsSociety", "MathClub",
+            "HistoryCircle", "URCulture", "GEIClub", "TechForum", "URBusiness",
+            "URLiterature", "URScience", "TechClub", "RoboticsTeam", "LiteratureSociety",
+            "BusinessClub", "URMath", "CulturaClub", "UREco", "URPhysics"
+        };
+
+        String[] correosAssociacions = {
+            "urbots@associacions.urv.cat", "urvoltage@associacions.urv.cat", "greenteam@associacions.urv.cat", 
+            "physicssociety@associacions.urv.cat", "mathclub@associacions.urv.cat", "historycircle@associacions.urv.cat", 
+            "urculture@associacions.urv.cat", "geiclub@associacions.urv.cat", "techforum@associacions.urv.cat", 
+            "urbusiness@associacions.urv.cat", "urliterature@associacions.urv.cat", "urscience@associacions.urv.cat", 
+            "techclub@associacions.urv.cat", "roboticsteam@associacions.urv.cat", "literaturesociety@associacions.urv.cat", 
+            "businessclub@associacions.urv.cat", "urmath@associacions.urv.cat", "culturaclub@associacions.urv.cat", 
+            "ureco@associacions.urv.cat", "urphysics@associacions.urv.cat"
+        };
+        
+        
+
+        // Nombres y apellidos de ejemplo para los miembros
+        String[][] nomsMembres = {
+            {"Oscar Ruiz", "Ivan Carayol", "Gaizka Alonso"},
+            {"Marc Rozas", "Pau Vila", "Clara Serra"},
+            {"Anna Puig", "Joan Segarra", "Marta Font"},
+            {"Laura Pons", "Jordi Roca", "Sara Esteve"},
+            {"Toni Camps", "Maria Llop", "Carla Vidal"}
+        };
+
+        String[][] correosAlumnos = {
+            {"oscar.ruiz@estudiants.urv.cat", "ivan.carayol@estudiants.urv.cat", "gaizka.alonso@estudiants.urv.cat"},
+            {"marc.rozas@estudiants.urv.cat", "pau.vila@estudiants.urv.cat", "clara.serra@estudiants.urv.cat"},
+            {"anna.puig@estudiants.urv.cat", "joan.segarra@estudiants.urv.cat", "marta.font@estudiants.urv.cat"},
+            {"laura.pons@estudiants.urv.cat", "jordi.roca@estudiants.urv.cat", "sara.esteve@estudiants.urv.cat"},
+            {"toni.camps@estudiants.urv.cat", "maria.llop@estudiants.urv.cat", "carla.vidal@estudiants.urv.cat"}
+        };
+
+        Random rand = new Random();
+        Alumne alumne;
+        for (int i = 0; i < 20; i++)
+        {
+            LlistaMembres llistaM = new LlistaMembres(3);
+            for (int j = 0; j < 3; j++)
+            {   
+                alumne = new Alumne(nomsMembres[i % 5][j], correosAlumnos[i % 5][j], titulacions.getTitulacioAt(rand.nextInt(4)), rand.nextInt(1) != 0);
+                llistaMembres.afegirMembre(alumne);
+                llistaM.afegirMembre(alumne);
+            }
+            LlistaTitulacions titolsMembres = new LlistaTitulacions(3);
+            alumne = (Alumne)llistaM.getMembreAt(0);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            alumne = (Alumne)llistaM.getMembreAt(1);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            alumne = (Alumne)llistaM.getMembreAt(2);
+            titolsMembres.afegirTitulacio(alumne.getTitulacio());
+            llistaAssociacio.afegirAsociacio(new Associacio(nomsAssociacions[i], correosAssociacions[i], llistaM.getMembreAt(0), llistaM.getMembreAt(1), llistaM.getMembreAt(2), titolsMembres, llistaM));
+        }
+
+        Dades.guardaAssociacions(llistaAssociacio);
+        LlistaAssociacio llistaLLegida = Dades.carregaAssociacions();
+
+        System.out.print("La guardada i carregada es igual a la original? ");
+        
+        if (llistaAssociacio.toString().equals(llistaLLegida.toString()))
+        {
+            System.out.println("SI");
+        }
+        else
+        {
+            System.out.println("NO");
+        }
+
+        System.out.println("\nPROVES GUARDAR I CARREGAR LLISTA MEMBRES");
+        llistaMembres = Dades.llegirMembres(llistaAssociacio, titulacions);
+        
+        LlistaMembres llistaMembres2 = new LlistaMembres(4);
+
+        llistaMembres2.afegirMembre(new Professor("Oscar Ruiz", "oscar.ruiz@estudiants.urv.cat", "Departament de Informatica", 102));
+        llistaMembres2.afegirMembre(new Alumne("Ivan Carayol", "ivan.carayol@estudiants.urv.cat",titulacions.getTitulacioAt(0), false));
+        llistaMembres2.afegirMembre(new Alumne("Gaizka Alonso", "gaizka.alonso@estudiants.urv.cat",titulacions.getTitulacioAt(2), true));
+        llistaMembres2.afegirMembre(new Professor("Marc Rozas", "marc.rozas@estudiants.urv.cat", "Departament de Economia", 203));
+
+        Dades.guardarMembres(llistaMembres2);
+        LlistaMembres temp = Dades.llegirMembres(new LlistaAssociacio(0), titulacions);
+
+        System.out.print("La guardada i carregada es igual a la original? ");
+        
+        if (llistaMembres2.toString().equals(temp.toString()))
+        {
+            System.out.println("SI");
+        }
+        else
+        {
+            System.out.println("NO");
+        }
+
+        Dades.guardarMembres(llistaMembres);
 
         //MainWindow.iniciarFinestra();
 
