@@ -71,17 +71,25 @@ public class Accio {
     // Método para mostrar la información de la acción
     
     public String toString() {
+        
+        
         String text = "Accio{" +
                 "codi=" + codi +
                 ", nom= " + nom +
                 ", titol= " + titol +
                 ", responsable=" + responsable.getAlias() +
                 ", llistaAssociacio: (";
-        for(int i = 0; i < llistaAssociacio.getNumelem() - 1;i++) {
-            text += llistaAssociacio.getAsociacioAt(i).getNom() + ", ";
+
+        int num = llistaAssociacio.getNumelem();
+        Associacio assocacioAux;
+        for(int i = 0; i < num - 1;i++) {
+            assocacioAux = llistaAssociacio.getAsociacioAt(i);
+            text += assocacioAux.getNom() + ", ";
             
         }
-        text += llistaAssociacio.getAsociacioAt(llistaAssociacio.getNumelem() - 1).getNom() + ")}";
+        
+        assocacioAux = llistaAssociacio.getAsociacioAt(num-1);
+        text += assocacioAux.getNom() + ")}";
 
         return text;
     }

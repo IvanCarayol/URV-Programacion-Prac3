@@ -11,7 +11,10 @@ public class LlistaAccio {
         this.contador = 0;  // Al principio, no hay elementos agregados
     }
 
-    // Método para agregar una acción a la lista
+    /**
+     * Método para agregar una acción a la lista
+     * @param accio
+     */
     public void afegirAccio(Accio accio) {
         
         // sera escalable ya que no se puede decir en un inicio cuantas habran
@@ -54,6 +57,11 @@ public class LlistaAccio {
         return txt;
     }
 
+    /**
+     * Retorna una llista d'accions que contenen una associacio concreta
+     * @param asso
+     * @return LlistaAccio
+     */
     public LlistaAccio accioDeUnaAssociacio(Associacio asso) {
 
         LlistaAccio lacc = new LlistaAccio(contador);
@@ -73,6 +81,9 @@ public class LlistaAccio {
         return lacc;
     }
 
+    /**
+     * Aumenta la llista
+     */
     private void actualizarArray() {
         Accio[] lisAux = new Accio[contador+1];
 
@@ -98,5 +109,23 @@ public class LlistaAccio {
         }
 
         return validas;
+    }
+
+    public LlistaAccio xerradesMesAssisten(int num) {
+        
+        LlistaAccio lxer = new LlistaAccio(contador);
+
+        for(int i = 0; i < contador;i++) {
+            if (listaAccions[i] instanceof Xerrades) {
+                Xerrades xerrada = (Xerrades)listaAccions[i];
+                if (xerrada.getnumMembres() == num) {
+                    lxer.afegirAccio(xerrada);
+                }
+            }
+
+        }
+
+        return lxer;
+
     }
 }

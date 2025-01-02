@@ -224,7 +224,7 @@ public class tests {
         System.out.println("\nPROVES CLASSE LLISTAACCIO\n");
 
         LlistaAccio laccio = new LlistaAccio(4);
-        
+
         laccio.afegirAccio(accio);
 
         System.out.println(laccio.getContador());
@@ -523,6 +523,22 @@ public class tests {
         }
 
         Dades.guardarMembres(llistaMembres);
+
+        System.out.println("\nPROVES CARREGAR LLISTA ACCIONS");
+
+        LlistaAccio llistaAccions = Dades.llegirAccions(llistaMembres, llistaAssociacio);
+        System.out.println("\n" + llistaAssociacio);
+
+        System.out.print("Carregat correctament? ");
+
+        if(llistaAccions != null) {
+            System.out.println("SI");
+        }
+        else
+        {
+            System.out.println("NO");
+        }
+        //System.out.println("\n" + llistaAccions);
 
         //MainWindow.iniciarFinestra();
 

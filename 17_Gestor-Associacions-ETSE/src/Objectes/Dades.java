@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "data/";
+    private static String ruta = "../data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -393,7 +393,6 @@ public class Dades
                         for(int i = 0; i < numAssociacio;i++) {
                             
                             associacios.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+5]));
-                            System.out.println("Inicio");
                         }
 
                         // Crear una nueva instancia de `Accio`
@@ -404,16 +403,17 @@ public class Dades
                     case 1:
 
                         numAssociacio = inf.length - 6;
+                        
                         associacios = new LlistaAssociacio(numAssociacio);
                         
                         for(int i = 0; i < numAssociacio;i++) {
+                            Associacio associacioAux = asso.getAssociacioAmbNom(inf[i+6]);
+                            associacios.afegirAsociacio(associacioAux);
                             
-                            associacios.afegirAsociacio(asso.getAssociacioAmbNom(inf[i+6]));
                         }
                         
                         // Crear una nueva instancia de `Xerrada`
-                        Xerrades xerr = new Xerrades(inf[1], inf[2], responsable, associacios, data, Integer.parseInt(inf[5]));
-                        
+                        Accio xerr = new Xerrades(inf[1], inf[2], responsable, associacios, data, Integer.parseInt(inf[5]));
                         accions.afegirAccio(xerr);
                         break;
 
@@ -486,4 +486,6 @@ public class Dades
         }
         return null;
     }
+
+    
 }

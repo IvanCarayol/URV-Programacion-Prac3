@@ -27,6 +27,7 @@ public class LlistaAssociacio implements Serializable{
 
     // Getter para una posición concreta de la tabla
     public Associacio getAsociacioAt(int position) {
+        
         if (position >= 0 && position < numelem) {
             return tabla[position];
         } else {
@@ -46,7 +47,6 @@ public class LlistaAssociacio implements Serializable{
             {
                 associacio = tabla[i];
                 noTrobat = false;
-                System.out.println("ass");
             }
         }
         return associacio;
@@ -68,6 +68,7 @@ public class LlistaAssociacio implements Serializable{
 
     // Función para añadir un elemento en la siguiente posición libre
     public void afegirAsociacio(Associacio asociacio) {
+        
         if (numelem < tabla.length) {
             tabla[numelem] = asociacio;
             numelem++;
