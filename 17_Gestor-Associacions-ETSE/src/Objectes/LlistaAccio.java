@@ -102,7 +102,7 @@ public class LlistaAccio {
             if (listaAccions[i] instanceof Xerrades) {
 
                 Data dataXerrada = listaAccions[i].getData();
-                if (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada)){
+                if ((inici.compararDatas(dataXerrada, inici) == null) || (dataXerrada.compararDatas(fi, dataXerrada) == null) || (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada))) {
                     validas.afegirAccio(listaAccions[i]);
                 }
             }
@@ -110,6 +110,59 @@ public class LlistaAccio {
 
         return validas;
     }
+
+    public Xerrades getXerradaMejorValorada() { 
+        if (contador == 0) { 
+            return null; // Cas que no hi hagin xerrades
+        } 
+
+        double mejorValoracionPromedio = 0;
+        Xerrades mejorValorada = null;
+
+        int y = 0;
+        while (!(listaAccions[y] instanceof Xerrades) && y < contador){
+            y++;
+        }
+
+        if (y == contador){
+            return null;
+        }
+
+        mejorValorada = (Xerrades) listaAccions[y];
+        mejorValoracionPromedio = calcularValoracionPromedio(mejorValorada);
+
+        for (int i = y + 1; i < contador; i++) { 
+            if (listaAccions[i] instanceof Xerrades){
+                Xerrades valorar = (Xerrades) listaAccions[i];
+                double valoracionPromedio = calcularValoracionPromedio(valorar);
+                if (valoracionPromedio > mejorValoracionPromedio) { 
+                    mejorValorada =  valorar; 
+                    mejorValoracionPromedio = valoracionPromedio; 
+                } 
+            }           
+        } 
+        return mejorValorada;
+    }
+
+    /** 
+     * Calcula la valoración promedio de una xerrada. 
+     * @param xerrada La xerrada para la que se va a calcular la valoración promedio. 
+     * @return La valoración promedio. */ 
+    private double calcularValoracionPromedio(Xerrades xerrada) {
+        
+        double sumaValoraciones = 0;
+        int numValoraciones = xerrada.getNumValoracions();  //Numero total de valoracions d'una xerrada
+        
+        if (numValoraciones == 0){
+            return 0;
+        }
+
+        for (int i = 0; i < numValoraciones; i++) {
+            sumaValoraciones += xerrada.getValoracioIndex(i).getValoracio();
+        }
+
+        return sumaValoraciones/numValoraciones;
+    } 
 
     public LlistaAccio xerradesMesAssisten(int num) {
         
