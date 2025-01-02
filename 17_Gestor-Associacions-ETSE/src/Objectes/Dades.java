@@ -487,5 +487,17 @@ public class Dades
         return null;
     }
 
+    public static void organizarValoraciones(LlistaValoracio[] valoracions, LlistaAccio accions){
+        for (int i = 0; i < accions.getContador(); i++){
+            if (accions.getAccio(i) instanceof Xerrades){
+                for (int y = 0; y < valoracions.length; y++){
+                    if (valoracions[y].getIDXerrada().equals(accions.getAccio(i).getNom())){
+                        Xerrades xer = (Xerrades) accions.getAccio(i);
+                        xer.setLlistaValoracions(valoracions[y]);
+                    }
+                }
+            }
+        }
+    }
     
 }

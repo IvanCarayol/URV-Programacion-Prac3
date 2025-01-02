@@ -23,6 +23,10 @@ public class Xerrades extends Accio {
         return nMem;
     }
 
+    public void setLlistaValoracions(LlistaValoracio valoracions){
+        lValoracions = valoracions;
+    }
+
     public int getNumValoracions(){
         return nValo;
     }
