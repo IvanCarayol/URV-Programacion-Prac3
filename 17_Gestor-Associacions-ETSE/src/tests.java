@@ -242,7 +242,27 @@ public class tests {
         System.out.println(laccio);
 
         Xerrades xerra2 = new Xerrades("Estopa", "Nuevo album", llusep, lAsso, dat.getDataInPos(0), 20);
+        xerra2.setData(new Data(12, 12, 2024));
+        xerra2.valorarXerrada(valoracio5);
+        xerra2.valorarXerrada(valoracio4);
+        xerra2.valorarXerrada(valoracio1);
         laccio.afegirAccio(xerra2);
+
+        System.out.println(laccio);
+
+        Xerrades xerra3 = new Xerrades("Hombres G", "La chica cocodrilo", llusep, lAsso, dat.getDataInPos(0), 20);
+        xerra3.setData(new Data(10, 12, 2024));
+        xerra3.valorarXerrada(valoracio3);
+        xerra3.valorarXerrada(valoracio2);
+        xerra3.valorarXerrada(valoracio1);
+        laccio.afegirAccio(xerra3);
+
+        LlistaAccio xerradesEnFranja = laccio.llistarEnFranja(new Data(10, 12, 2024), new Data (15, 1, 2025));
+        System.out.println("Xerrades entre 10/12/2024 - 15/1/2025:\n"+xerradesEnFranja);
+
+        Xerrades millorValorada = laccio.getXerradaMejorValorada();
+        System.out.println("Xerrada millor valorada:\n"+millorValorada);
+
 
         System.out.println("\nPROVES CLASSE DEMOSTRACIO");
 
