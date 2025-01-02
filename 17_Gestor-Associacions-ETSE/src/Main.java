@@ -6,11 +6,14 @@ public class Main {
         LlistaMembres membres;
         LlistaTitulacions titulacions;
         LlistaAccio accions;
+        LlistaValoracio[] valoracions;
         associacions = Dades.carregaAssociacions();
         
         titulacions = Dades.carregaTitulacions();
         membres = Dades.llegirMembres(associacions, titulacions);
         accions = Dades.llegirAccions(membres, associacions);
+        valoracions = Dades.llegirValoracions(membres);
+        System.out.println("ALGO"+valoracions[0]);
         Data d = new Data(25, 11, 2023); // fecha de prueba*/
 
         // codi...

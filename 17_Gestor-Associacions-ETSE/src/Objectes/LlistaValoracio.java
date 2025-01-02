@@ -59,28 +59,6 @@ public class LlistaValoracio {
         return false;
     }
 
-    /**
-     * Obté totes les valoracions en forma de cadena.
-     * 
-     * @return una cadena amb totes les valoracions, separades per salts de línia, 
-     *         excepte després de la última valoració.
-     */
-    public String toString() {
-        String aux = "";
-    
-        for (int i = 0; i < valoracions.length; i++) {
-            if (valoracions[i] != null) {  
-                aux += valoracions[i].toString();
-            }
-    
-            if (i < valoracions.length - 1 && valoracions[i] != null) { 
-                aux += "\n";
-            }
-        }
-        return aux;
-    }
-    
-
     public int getnElem() {
         return nElem;
     } 
@@ -120,4 +98,27 @@ public class LlistaValoracio {
         }
         valoracions[nElem - 1] = null; 
     }
+
+        /**
+     * Obté totes les valoracions en forma de cadena.
+     * 
+     * @return una cadena amb totes les valoracions, separades per salts de línia, 
+     *         excepte després de la última valoració.
+     */
+    public String toString() {
+        String aux = "";
+    
+        for (int i = 0; i < valoracions.length; i++) {
+            if (valoracions[i] != null) {  
+                aux += valoracions[i].toString();
+                aux += " Per la xerrada "+IDXerrada;
+            }
+    
+            if (i < valoracions.length - 1 && valoracions[i] != null) { 
+                aux += "\n";
+            }
+        }
+        return aux;
+    }
+    
 }
