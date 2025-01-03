@@ -233,5 +233,21 @@ public class LlistaAccio {
         }
         return demostracionsResultants;
     } 
+
+    public Demostracio[] demostracionsPerAssociacio (String nomAssociacio, Demostracio[] demostracions){
+        Demostracio[] resultants = new Demostracio[demostracions.length];
+        int j = 0;
+        for (int i = 0; i < demostracions.length; i++){
+            LlistaAssociacio associacioNoms = demostracions[i].getLlistaAssociacio();
+            for (int y = 0; y < associacioNoms.getNumelem(); y++){
+                if(associacioNoms.getAsociacioAt(y).getNom().equals(nomAssociacio)){
+                    resultants[j] = demostracions[i];
+                    j++;
+                    break;
+                }
+            }
+        }
+        return resultants;
+    }
         
 }
