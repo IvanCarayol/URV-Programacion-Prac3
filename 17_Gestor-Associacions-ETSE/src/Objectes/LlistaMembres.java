@@ -165,6 +165,77 @@ public class LlistaMembres implements Serializable
         return alumnes;
     }
 
+    public Membre retornaMembreMesActiu()
+    {
+        Membre MmesActiu = tabla[0];
+        LlistaDates datesMesActiu = MmesActiu.getLlistaDatesAlta();
+        Data dataMesAntiga = null;
+        int nAssociacions = 0;
+
+        if (datesMesActiu != null)
+        {
+            dataMesAntiga = obtenirDataMesAntiga(datesMesActiu);
+            nAssociacions = datesMesActiu.getNumelem();
+
+            datesMesActiu = MmesActiu.getLlistaDatesBaixa();
+            if (datesMesActiu != null)
+            {
+                nAssociacions -= datesMesActiu.getNumelem();
+            }
+        }
+
+        for (int i = 1; i < numElem; i++)
+        {
+            Membre membre = tabla[i];
+            LlistaDates dates = membre.getLlistaDatesAlta();
+            Data mesAntiga;
+            int numAssociacions = 0;
+            
+            if (dates != null)
+            {
+                mesAntiga = obtenirDataMesAntiga(dates);
+                numAssociacions = dates.getNumelem();
+
+                dates = membre.getLlistaDatesBaixa();
+                if (dates != null)
+                {
+                    numAssociacions -= dates.getNumelem(); 
+                }
+
+                if (numAssociacions > nAssociacions || dataMesAntiga == null)
+                {
+                    MmesActiu = membre;
+                    nAssociacions = numAssociacions;
+                    dataMesAntiga = mesAntiga;
+                }
+                else if (numAssociacions == nAssociacions)
+                {
+                    if(Data.compararDatas(dataMesAntiga, mesAntiga))
+                    {
+                        MmesActiu = membre;
+                        nAssociacions = numAssociacions;
+                        dataMesAntiga = mesAntiga;
+                    }
+                }
+            }
+        }
+        return MmesActiu;
+    }
+
+    private Data obtenirDataMesAntiga(LlistaDates dates)
+    {
+        Data data = dates.getDataInPos(0);
+
+        for (int i = 0; i < dates.getNumelem()-1; i++)
+        {
+            if (Data.compararDatas(dates.getDataInPos(i), dates.getDataInPos(i+1)))
+            {
+                data = dates.getDataInPos(i+1);
+            }
+        }
+        return data;
+    }
+
     // Método toString para mostrar toda la tabla temporal 
     @Override
     public String toString() 

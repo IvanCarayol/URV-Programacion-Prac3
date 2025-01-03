@@ -127,16 +127,25 @@ public class mainP {
         LlistaTitulacions titulacions = new LlistaTitulacions(4); 
         titulacions = Dades.carregaTitulacions();
         LlistaAssociacio associacions = Dades.carregaAssociacions();
+        for (int i = 4; i < 9; i++)
+        {
+            associacions.getAssociacioAmbNom("GreenTeam").getMembres().eliminarMembreAt(i);
+        }
+        //System.out.println(associacions.getAssociacioAmbNom("GreenTeam").getMembres());
         LlistaMembres membres = Dades.llegirMembres(associacions, titulacions);
 
-        Membre oscar = membres.getMembreAmbNom("Oscar Ruiz");
-        Associacio greenTeam = associacions.getAssociacioAmbNom("GreenTeam");
-
-        oscar.afegiraAsociacio(greenTeam, new Data(4, 1, 2025));
+        Membre membre = membres.getMembreAmbNom("Oscar Ruiz");
         
-        Dades.guardarMembres(membres);
+        for (int i = 0; i < membre.getLlistaAssociacions().getNumelem(); i++)
+        {
+            System.out.println(membre.getLlistaAssociacions().getAsociacioAt(i).getNom());
+        }
+        
+        //Dades.guardarMembres(membres);
         Dades.guardaAssociacions(associacions);
 
-        System.out.println(associacions);
+        System.out.println("\nMEMBRE MES ACTIU:\n"+membres.retornaMembreMesActiu());
+
+        System.out.println(associacions.getAssociacioAmbNom("GreenTeam").getMembres());
     }
 }
