@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "17_Gestor-Associacions-ETSE/data/";
+    private static String ruta = "../data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -346,6 +346,107 @@ public class Dades
         }
         return titulacions;
     }
+
+    public static void escriureAccions(LlistaAccio accions) {
+        
+        String arxiu = ruta + "accions.txt";
+
+        try
+        {
+            BufferedWriter fitxer = new BufferedWriter(new FileWriter(arxiu));
+            int numAccions = accions.getContador();
+            
+            // escribimos el numero de acciones
+            fitxer.write(numAccions + "");
+            fitxer.newLine();
+
+            // ahora las 3 maneras de guardar la informacion
+            fitxer.write("tipo:nom;titol;membreNom;dia/mes/año;ass;ass...");
+            fitxer.newLine();
+
+            fitxer.write("tipo:nom;titol;membreNom;dia/mes/año;num;ass;ass...");
+            fitxer.newLine();
+
+            fitxer.write("tipo:nom;titol;membreNom;dia/mes/año;boolVal;numOferit;doubleCost;ass;ass...");
+            fitxer.newLine();
+
+
+            for (int i = 0; i < numAccions; i++)
+            {
+                String text = "";
+
+                // si es una xerrada
+                if(accions.getAccio(i) instanceof Xerrades) {
+
+                    Xerrades xerrada = (Xerrades)accions.getAccio(i);
+                    
+                    text = creaStringAccio(xerrada, 1);
+                    text += xerrada.getNumMax() + ";";
+
+                // si es una demostracio
+                } else if(accions.getAccio(i) instanceof Demostracio) {
+
+                    Demostracio demostracio = (Demostracio)accions.getAccio(i);
+                    
+                    text = creaStringAccio(demostracio, 2);
+
+                    if(demostracio.getValida()) {
+                        text += "1";
+                    } else {
+                        text += "0";
+                    }
+                    text += ";" + demostracio.getVegades_oferit() + ";" + demostracio.getCost_material() + ";";
+
+                // si es una accio normal
+                } else {
+                    text = creaStringAccio(accions.getAccio(i), 0);
+                }
+
+                // recorregut per totes les assosiacions
+                LlistaAssociacio lassosiacio = accions.getAccio(i).getLlistaAssociacio();
+                int numAssociacions = lassosiacio.getNumelem();
+                for(int j = 0; j < numAssociacions -1;j++) {
+                    text += lassosiacio.getAsociacioAt(j).getNom() + ";";
+                }
+                if(numAssociacions > 0) {
+                    text += lassosiacio.getAsociacioAt(numAssociacions-1).getNom();
+                }
+
+                fitxer.write(text);
+                fitxer.newLine();
+
+                
+            }
+            fitxer.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Hi ha hagut un error amb el fitxer");
+        }
+
+    }
+
+    private static String creaStringAccio(Accio accio, int opcio) {
+        String text = "";
+
+        switch (opcio) {
+            case 0:
+                text += "0;";
+                break;
+        
+            case 1:
+                text += "1;";
+                break;
+            case 2:
+                text += "2;";
+                break;
+        }
+
+        text += accio.getNom() + ";" + accio.getTitol() + ";" + accio.getResponsable().getAlias() + ";" + accio.getData() + ";";
+
+        return text;
+    }
+
 
     public static LlistaAccio llegirAccions(LlistaMembres membres, LlistaAssociacio asso) {
         String arxiu = ruta + "accions.txt";

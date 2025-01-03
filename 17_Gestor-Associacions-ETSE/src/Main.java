@@ -137,6 +137,12 @@ public class Main {
                     break;
 
                 case 18:
+
+                    System.out.println("Vols sobrescriure?(Si:1/No:0)");
+                    opcio = scanner.nextInt();
+                    if(opcio == 1) {
+                        Dades.escriureAccions(accions);
+                    }
                     scanner.close();
                     sortir = true;
             }

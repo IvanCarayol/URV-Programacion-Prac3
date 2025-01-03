@@ -1,18 +1,18 @@
-0;Oscar Ruiz;oscar.ruiz@estudiants.urv.cat;GEI;0
-0;Ivan Carayol;ivan.carayol@estudiants.urv.cat;ADE;0
+0;Oscar Ruiz;oscar.ruiz@estudiants.urv.cat;GEE;0
+0;Ivan Carayol;ivan.carayol@estudiants.urv.cat;FIB;0
 0;Gaizka Alonso;gaizka.alonso@estudiants.urv.cat;ADE;0
 0;Marc Rozas;marc.rozas@estudiants.urv.cat;GEI;0
-0;Pau Vila;pau.vila@estudiants.urv.cat;GEE;0
-0;Clara Serra;clara.serra@estudiants.urv.cat;GEE;0
-0;Anna Puig;anna.puig@estudiants.urv.cat;GEI;0
-0;Joan Segarra;joan.segarra@estudiants.urv.cat;FIB;0
-0;Marta Font;marta.font@estudiants.urv.cat;FIB;0
-0;Laura Pons;laura.pons@estudiants.urv.cat;GEE;0
-0;Jordi Roca;jordi.roca@estudiants.urv.cat;GEI;0
-0;Sara Esteve;sara.esteve@estudiants.urv.cat;GEE;0
-0;Toni Camps;toni.camps@estudiants.urv.cat;GEE;0
-0;Maria Llop;maria.llop@estudiants.urv.cat;ADE;0
-0;Carla Vidal;carla.vidal@estudiants.urv.cat;GEE;0
+0;Pau Vila;pau.vila@estudiants.urv.cat;FIB;0
+0;Clara Serra;clara.serra@estudiants.urv.cat;FIB;0
+0;Anna Puig;anna.puig@estudiants.urv.cat;GEE;0
+0;Joan Segarra;joan.segarra@estudiants.urv.cat;GEE;0
+0;Marta Font;marta.font@estudiants.urv.cat;GEI;0
+0;Laura Pons;laura.pons@estudiants.urv.cat;ADE;0
+0;Jordi Roca;jordi.roca@estudiants.urv.cat;GEE;0
+0;Sara Esteve;sara.esteve@estudiants.urv.cat;GEI;0
+0;Toni Camps;toni.camps@estudiants.urv.cat;GEI;0
+0;Maria Llop;maria.llop@estudiants.urv.cat;FIB;0
+0;Carla Vidal;carla.vidal@estudiants.urv.cat;GEI;0
 1;Anna López;anna.lopez@estudiants.urv.cat;Departament de Química;310;GreenTeam;12;8;23;PhysicsSociety;4;6;24
 0;Laura Fernández;laura.fernandez@estudiants.urv.cat;ADE;1;URScience;15;3;23;20;7;23
 1;Jordi Gómez;jordi.gomez@estudiants.urv.cat;Departament de Matematiques;110;MathClub;20;4;22;5;7;23

@@ -547,7 +547,7 @@ public class tests {
         System.out.println("\nPROVES CARREGAR LLISTA ACCIONS");
 
         LlistaAccio llistaAccions = Dades.llegirAccions(llistaMembres, llistaAssociacio);
-        System.out.println("\n" + llistaAssociacio);
+        //System.out.println("\n" + llistaAssociacio);
 
         System.out.print("Carregat correctament? ");
 
@@ -558,6 +558,7 @@ public class tests {
         {
             System.out.println("NO");
         }
+        Dades.escriureAccions(llistaAccions);
         //System.out.println("\n" + llistaAccions);
 
         //MainWindow.iniciarFinestra();

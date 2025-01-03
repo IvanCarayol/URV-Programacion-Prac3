@@ -71,6 +71,10 @@ public class Xerrades extends Accio {
         }
     }
 
+    public int getNumMax() {
+        return nElemMAX;
+    }
+
     @Override
     public String toString() {
         
