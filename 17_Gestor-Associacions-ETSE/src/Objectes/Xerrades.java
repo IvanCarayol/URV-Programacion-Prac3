@@ -80,10 +80,20 @@ public class Xerrades extends Accio {
         
         String text = super.toString(); 
         
-        for(int i = 0; i < lValoracions.getnElem(); i++) {
-            Valoracio val = lValoracions.getValo(i);
-            text += "(Membre: " + val.getMembre().getAlias() + " - Valoracio: " + val.getValoracio() + ")";
+        if(lValoracions.getnElem() != 0) {
+            text += "\nValoracions: \n";
+            text += "(";
+            for(int i = 0; i < lValoracions.getnElem(); i++) {
+                Valoracio val = lValoracions.getValo(i);
+                if(val != null) {
+                    text += val + "\n";
+                }
+            }
+            text += ")";
+        } else {
+            text += "No te valoracions";
         }
+
         return text;
     }
 

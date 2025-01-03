@@ -42,7 +42,6 @@ public class Main {
                     break;
     
                 case 4:
-                    System.out.println(accions.getAccio(3));
                     System.out.println("Filtre d'accions, escull l'opció que vulguis:");
                     System.out.println("    1. Tot");
                     System.out.println("    2. Xerrades");
