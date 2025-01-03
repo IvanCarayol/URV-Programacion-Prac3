@@ -89,7 +89,7 @@ public class Data implements Serializable{
      * @param data2 La segona data.
      * @return {@code true} si data1 és posterior a data2, {@code false} en cas contrari.
      */
-    public Boolean compararDatas(Data data1, Data data2) {
+    public static Boolean compararDatas(Data data1, Data data2) {
         if (data1.getAny() > data2.getAny()) {
             return true;
         } else if (data1.getAny() == data2.getAny()) {
@@ -99,7 +99,7 @@ public class Data implements Serializable{
                 if (data1.getDia() > data2.getDia()) {
                     return true;
                 } else if (data1.getDia() == data2.getDia()){
-                    return null;
+                    return false;
                 }
             }
         }

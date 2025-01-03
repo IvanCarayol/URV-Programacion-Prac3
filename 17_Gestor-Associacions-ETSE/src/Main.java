@@ -95,6 +95,7 @@ public class Main {
                     break;
 
                 case 12:
+                    System.out.println(membres.retornaMembreMesActiu());
                     break;
 
                 case 13:

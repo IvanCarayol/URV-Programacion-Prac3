@@ -205,7 +205,7 @@ public class tests {
         System.out.println(accio.getTitol());
 
         LlistaAssociacio associacioAux = accio.getLlistaAssociacio();
-        System.out.println(associacioAux);
+        //System.out.println(associacioAux);
 
         System.out.println(accio.getResponsable());
 
@@ -420,13 +420,13 @@ public class tests {
         Data data3 = new Data(5, 5, 2023); 
         Data data4 = new Data(15, 6, 2023);
 
-        if(data.compararDatas(data1, data2)){
+        if(Data.compararDatas(data1, data2)){
             System.out.println("Test primera posterior PASSAT"); 
         } else { 
             System.out.println("Test primera posterior FALLAT"); 
         }
 
-        if(!data.compararDatas(data3, data4)){
+        if(!Data.compararDatas(data3, data4)){
             System.out.println("Test segona posterior PASSAT"); 
         } else { 
             System.out.println("Test segona posterior FALLAT"); 
