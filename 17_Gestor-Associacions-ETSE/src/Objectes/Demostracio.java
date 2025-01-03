@@ -40,6 +40,7 @@ public class Demostracio extends Accio {
         this.cost_material = cost_material;
     }
 
+
     @Override
     public String toString() {
         

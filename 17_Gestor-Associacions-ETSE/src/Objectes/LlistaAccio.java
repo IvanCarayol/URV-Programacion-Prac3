@@ -186,4 +186,19 @@ public class LlistaAccio {
 
         return lxer;
     }
+
+    public Demostracio[] demostracionsValides(){
+        Demostracio[] demostracionsResultants = new Demostracio[contador];
+        int y = 0;
+        for (int i = 0; i < contador; i++) { 
+            if (listaAccions[i] instanceof Demostracio){
+                Demostracio comprobar = (Demostracio) listaAccions[i];
+                if (comprobar.getValida()){
+                    demostracionsResultants[y] = comprobar;
+                    y++;
+                }
+            }           
+        } 
+        return demostracionsResultants;
+    }
 }
