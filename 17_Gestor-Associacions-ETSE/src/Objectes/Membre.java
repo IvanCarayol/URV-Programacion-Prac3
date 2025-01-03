@@ -45,13 +45,7 @@ public abstract class Membre implements Serializable
 
         for (int i = 0; i < associacions.getNumelem(); i++)
         {
-            LlistaMembres membresAssociacio = associacions.getAsociacioAt(i).getMembres();
-            if (membresAssociacio.getNumelem() < membresAssociacio.getMaxLength())
-            {
-                associacions.getAsociacioAt(i).afegeixMembre(this);
-            }
-            
-            
+            afegirMembreaAssociacio(associacions.getAsociacioAt(i));
         }
     }
 
@@ -144,7 +138,7 @@ public abstract class Membre implements Serializable
             {
                 associacions.afegirAsociacio(associacio);
                 this.datesAlta.afegirData(dataIni);
-                associacio.afegeixMembre(this);
+                afegirMembreaAssociacio(associacio);
             }
         } 
     }
@@ -173,6 +167,29 @@ public abstract class Membre implements Serializable
         }
 
         return text;
+    }
+
+    private void afegirMembreaAssociacio(Associacio associacio)
+    {
+        LlistaMembres llistaMAssociacio = associacio.getMembres();
+
+        if (llistaMAssociacio.getNumelem() < llistaMAssociacio.getMaxLength())
+        {
+            associacio.afegeixMembre(this);
+        }
+        else
+        {
+            LlistaMembres llistaMAmpliada = new LlistaMembres(llistaMAssociacio.getMaxLength()+1);
+
+            for (int i = 0; i < llistaMAssociacio.getMaxLength(); i++)
+            {
+                llistaMAmpliada.afegirMembre(llistaMAssociacio.getMembreAt(i));
+            }
+            llistaMAmpliada.afegirMembre(this);
+
+            associacio.setMembres(llistaMAmpliada);
+        }
+        
     }
 
     

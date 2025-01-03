@@ -88,7 +88,11 @@ public class Associacio implements Serializable{
             titulacions.afegirTitulacio(titula);
             
         }
-        
+    }
+
+    public void setMembres(LlistaMembres membres)
+    {
+        this.membres = membres;
     }
 
     // Método toString
