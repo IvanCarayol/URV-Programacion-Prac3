@@ -42,6 +42,17 @@ public abstract class Membre implements Serializable
         if (datesBaixa != null) { this.datesBaixa = datesBaixa; }else { datesBaixa = new LlistaDates(NUM_MAX); }
         this.datesBaixa = datesBaixa;
         this.associacions = associacions;
+
+        for (int i = 0; i < associacions.getNumelem(); i++)
+        {
+            LlistaMembres membresAssociacio = associacions.getAsociacioAt(i).getMembres();
+            if (membresAssociacio.getNumelem() < membresAssociacio.getMaxLength())
+            {
+                associacions.getAsociacioAt(i).afegeixMembre(this);
+            }
+            
+            
+        }
     }
 
     /**
@@ -129,13 +140,13 @@ public abstract class Membre implements Serializable
 
         if (numAssociacions < 3) 
         {
-            associacions.afegirAsociacio(associacio);
-            this.datesAlta.afegirData(dataIni);
+            if (associacions.getAssociacioAmbNom(associacio.getNom()) != null)
+            {
+                associacions.afegirAsociacio(associacio);
+                this.datesAlta.afegirData(dataIni);
+                associacio.afegeixMembre(this);
+            }
         } 
-        else 
-        {
-            System.out.println("ERROR: Ja està inscrit a 3 associacions");
-        }
     }
 
     public String toString() 
@@ -163,5 +174,7 @@ public abstract class Membre implements Serializable
 
         return text;
     }
+
+    
 
 }
