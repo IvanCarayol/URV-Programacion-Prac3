@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "../data/";
+    private static String ruta = "17_Gestor-Associacions-ETSE/data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -548,6 +548,44 @@ public class Dades
         }
         
         return null;
+    }
+    
+    public static void escriureValoracions(LlistaValoracio[] valoracions){
+        
+        String arxiu = ruta + "valoracions.txt";
+
+        try
+        {
+            BufferedWriter fitxer = new BufferedWriter(new FileWriter(arxiu));
+            int numAccions = valoracions.length;
+            
+            // escribimos el numero de listas de valoraciones
+            fitxer.write(numAccions + "");
+            fitxer.newLine();
+
+            for (int i = 0; i < valoracions.length; i++){
+                if (valoracions[i] != null){
+                    String nombre = valoracions[i].getIDXerrada();
+                    fitxer.write(nombre);
+                    fitxer.newLine();
+                    LlistaValoracio llista = valoracions[i];
+                    int numero = llista.getnElem();
+                    fitxer.write(numero + "");
+                    fitxer.newLine();
+                    for(int y = 0; y < valoracions[i].getnElem(); y++){
+                        Valoracio valo = valoracions[i].getValo(y);
+                        if(valo != null){
+                            String texto = valo.getMembre().getAlias() + ";" + valo.getValoracio();
+                            fitxer.write(texto);
+                            fitxer.newLine();
+                        }
+                    }
+                }
+            }
+            fitxer.close();
+        } catch (IOException e){
+            System.out.println("Error escrivint l'arxiu: "+ e.getMessage());
+        }
     }
     
     public static LlistaValoracio[] llegirValoracions(LlistaMembres membre) {

@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import Objectes.*;
-import interficie.MainWindow;
 
 public class Main {
     private final int SORTIR = 18;
@@ -142,6 +141,7 @@ public class Main {
                     opcio = scanner.nextInt();
                     if(opcio == 1) {
                         Dades.escriureAccions(accions);
+                        Dades.escriureValoracions(valoracions);
                     }
                     scanner.close();
                     sortir = true;

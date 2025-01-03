@@ -80,6 +80,10 @@ public class LlistaValoracio {
         return valoracions[n]; 
     }
 
+    public void setNElements(int nElem){
+        this.nElem = nElem;
+    }
+
     /**
      * Realitza una còpia de la llista de valoracions.
      * 

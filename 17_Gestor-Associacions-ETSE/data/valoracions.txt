@@ -1,8 +1,8 @@
 2
 prueba4
-2
+4
 Marc Rozas;2
 Oscar Ruiz;6
 prueba9
-1
+2
 Laura Fernández;5
