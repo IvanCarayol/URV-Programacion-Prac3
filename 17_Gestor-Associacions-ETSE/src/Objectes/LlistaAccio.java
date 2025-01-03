@@ -196,7 +196,7 @@ public class LlistaAccio {
         for(int i = 0; i < contador;i++) {
             if (listaAccions[i] instanceof Xerrades) {
                 Xerrades xerrada = (Xerrades)listaAccions[i];
-                if (xerrada.getnumMembres() == num) {
+                if (xerrada.getnumMembres() > num) {
                     lxer.afegirAccio(xerrada);
                 }
             }
