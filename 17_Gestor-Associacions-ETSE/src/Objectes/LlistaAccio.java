@@ -269,14 +269,19 @@ public class LlistaAccio {
         Demostracio[] resultants = new Demostracio[demostracions.length];
         int j = 0;
         for (int i = 0; i < demostracions.length; i++){
-            LlistaAssociacio associacioNoms = demostracions[i].getLlistaAssociacio();
-            for (int y = 0; y < associacioNoms.getNumelem(); y++){
-                if(associacioNoms.getAsociacioAt(y).getNom().equals(nomAssociacio)){
-                    resultants[j] = demostracions[i];
-                    j++;
-                    break;
+            if (demostracions[i] != null){
+                LlistaAssociacio associacioNoms = demostracions[i].getLlistaAssociacio();
+                if (associacioNoms != null){
+                    for (int y = 0; y < associacioNoms.getNumelem(); y++){
+                        if(associacioNoms.getAsociacioAt(y).getNom().equals(nomAssociacio)){
+                            resultants[j] = demostracions[i];
+                            j++;
+                            break;
+                        }
+                    }
                 }
             }
+            
         }
         return resultants;
     }
