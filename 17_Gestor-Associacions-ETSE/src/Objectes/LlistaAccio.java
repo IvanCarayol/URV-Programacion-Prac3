@@ -93,8 +93,15 @@ public class LlistaAccio {
         listaAccions = lisAux;
     }
 
+    /**
+     * Llista les accions en una franja de temps determinada.
+     * 
+     * @param inici La data d'inici de la franja.
+     * @param fi La data de finalització de la franja.
+     * @return Una LlistaAccio amb les xerrades dins de la franja especificada.
+     */
     public LlistaAccio llistarEnFranja(Data inici, Data fi) {
-        // Array temporal para almacenar las xerrades filtradas
+        // Array temporal per emmagatzemar les xerrades filtrades
         LlistaAccio validas = new LlistaAccio(contador);
 
         for (int i = 0; i < contador; i++) {
@@ -102,7 +109,8 @@ public class LlistaAccio {
             if (listaAccions[i] instanceof Xerrades) {
 
                 Data dataXerrada = listaAccions[i].getData();
-                if ((inici.compararDatas(dataXerrada, inici) == null) || (dataXerrada.compararDatas(fi, dataXerrada) == null) || (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada))) {
+                if ((inici.compararDatas(dataXerrada, inici) == null) || (dataXerrada.compararDatas(fi, dataXerrada) == null) || 
+                    (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada))) {
                     validas.afegirAccio(listaAccions[i]);
                 }
             }
@@ -111,6 +119,11 @@ public class LlistaAccio {
         return validas;
     }
 
+    /**
+     * Retorna la xerrada amb millor valoració.
+     * 
+     * @return La xerrada millor valorada. Retorna null si no hi ha xerrades.
+     */
     public Xerrades getXerradaMejorValorada() { 
         if (contador == 0) { 
             return null; // Cas que no hi hagin xerrades
@@ -143,12 +156,12 @@ public class LlistaAccio {
                         mejorValorada =  valorar; 
                         mejorValoracionPromedio = valoracionPromedio; 
                     }
-                    
                 }
             }           
         } 
         return mejorValorada;
     }
+
 
     /** 
      * Calcula la valoración promedio de una xerrada. 
@@ -170,6 +183,12 @@ public class LlistaAccio {
         return sumaValoraciones/numValoraciones;
     } 
 
+    /** 
+     * Llista les xerrades amb un nombre específic de membres assistents.
+     * 
+     * @param num El nombre de membres assistents. 
+     * @return Una LlistaAccio amb les xerrades que tenen el nombre especificat de membres assistents. 
+     */
     public LlistaAccio xerradesMesAssisten(int num) {
         
         LlistaAccio lxer = new LlistaAccio(contador);
@@ -219,6 +238,11 @@ public class LlistaAccio {
 
     }
     
+    /**
+     * Retorna un array de demostracions vàlides.
+     * 
+     * @return Un array de Demostracio amb les demostracions vàlides. 
+     */
     public Demostracio[] demostracionsValides(){
         Demostracio[] demostracionsResultants = new Demostracio[contador];
         int y = 0;
@@ -234,6 +258,13 @@ public class LlistaAccio {
         return demostracionsResultants;
     } 
 
+    /**
+     * Retorna un array de demostracions per a una associació específica.
+     * 
+     * @param nomAssociacio El nom de l'associació.
+     * @param demostracions Un array de demostracions.
+     * @return Un array de Demostracio amb les demostracions per a l'associació especificada.
+     */
     public Demostracio[] demostracionsPerAssociacio (String nomAssociacio, Demostracio[] demostracions){
         Demostracio[] resultants = new Demostracio[demostracions.length];
         int j = 0;
@@ -249,5 +280,4 @@ public class LlistaAccio {
         }
         return resultants;
     }
-        
 }

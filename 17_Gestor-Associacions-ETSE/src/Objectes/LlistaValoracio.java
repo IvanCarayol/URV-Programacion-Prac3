@@ -19,6 +19,11 @@ public class LlistaValoracio {
         this.nElem = 0;
     }
 
+    /**
+     * Constructor amb paràmetres.
+     * @param n Mida de l'array.
+     * @param IDXerrada Identificador de la xerrada. 
+     */
     public LlistaValoracio(int n, String IDXerrada) {
         this.valoracions = new Valoracio[n];
         this.nElem = 0;
@@ -65,14 +70,31 @@ public class LlistaValoracio {
         return false;
     }
 
+    /**
+     * Obté el nombre d'elements. 
+     * 
+     * @return El nombre d'elements. 
+     */
     public int getnElem() {
         return nElem;
     } 
 
+    /** 
+     * Obté l'identificador de la xerrada.
+     * 
+     * @return L'identificador de la xerrada. 
+     */
     public String getIDXerrada(){
         return IDXerrada;
     }
 
+    /**
+     * Obté una valoració a partir del seu índex.
+     * 
+     * @param n L'índex de la valoració.
+     * @return La valoració a l'índex especificat.
+     * @throws IndexOutOfBoundsException si l'índex està fora de rang. 
+     */
     public Valoracio getValo(int n) {
         if (n < 0 || n >= nElem) {  
             throw new IndexOutOfBoundsException("Índex fora de rang: " + n);
@@ -80,6 +102,10 @@ public class LlistaValoracio {
         return valoracions[n]; 
     }
 
+    /**
+     * Estableix el nombre d'elements.
+     * @param nElem El nou nombre d'elements. 
+     */
     public void setNElements(int nElem){
         this.nElem = nElem;
     }

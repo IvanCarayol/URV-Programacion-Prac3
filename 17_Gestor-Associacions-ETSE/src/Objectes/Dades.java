@@ -550,6 +550,11 @@ public class Dades
         return null;
     }
     
+    /** 
+     * Escriu les valoracions a un fitxer. 
+     * 
+     * @param valoracions Les valoracions a escriure. 
+     */
     public static void escriureValoracions(LlistaValoracio[] valoracions){
         
         String arxiu = ruta + "valoracions.txt";
@@ -587,6 +592,12 @@ public class Dades
         }
     }
     
+    /** 
+     * Llegeix les valoracions d'un fitxer. 
+     * 
+     * @param membre La llista de membres.
+     * @return Un array de LlistaValoracio amb les valoracions llegides. 
+     */
     public static LlistaValoracio[] llegirValoracions(LlistaMembres membre) {
         String linia;
         String[] partes; 
@@ -625,6 +636,12 @@ public class Dades
         return null;
     }
 
+    /**
+     * Organitza les valoracions dins de les accions.
+     * 
+     * @param valoracions Les valoracions a organitzar.
+     * @param accions Les accions on s'organitzaran les valoracions. 
+     */
     public static void organizarValoraciones(LlistaValoracio[] valoracions, LlistaAccio accions){
         for (int i = 0; i < accions.getContador(); i++){
             if (accions.getAccio(i) instanceof Xerrades){
