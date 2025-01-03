@@ -186,4 +186,51 @@ public class LlistaAccio {
 
         return lxer;
     }
+
+    public String toStringAmbOpcions(int opcio) {
+
+        String text = "";
+
+        switch (opcio) {
+            case 0:
+            text = toString();
+                break;
+        
+            case 1:
+                
+                text = "LlistaXerrades{\n";
+                for (int i = 0; i < contador; i++) {
+                    if(listaAccions[i] instanceof Xerrades) text += listaAccions[i] + "\n";
+                }
+                text += "}";
+
+                break;
+
+            case 2:
+                text = "LlistaDemostracions{\n";
+                for (int i = 0; i < contador; i++) {
+                    if(listaAccions[i] instanceof Demostracio) text += listaAccions[i] + "\n";
+                }
+                text += "}";
+                break;
+        }
+
+        return text;
+
+    }
+    
+    public Demostracio[] demostracionsValides(){
+        Demostracio[] demostracionsResultants = new Demostracio[contador];
+        int y = 0;
+        for (int i = 0; i < contador; i++) { 
+            if (listaAccions[i] instanceof Demostracio){
+                Demostracio comprobar = (Demostracio) listaAccions[i];
+                if (comprobar.getValida()){
+                    demostracionsResultants[y] = comprobar;
+                    y++;
+                }
+            }
+        } 
+        return demostracionsResultants;
+    }
 }

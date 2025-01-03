@@ -20,7 +20,7 @@ public class Main {
         accions = Dades.llegirAccions(membres, associacions);
         valoracions = Dades.llegirValoracions(membres);
         Dades.organizarValoraciones(valoracions, accions);
-  
+        
         Data d = new Data(25, 11, 2023); // fecha de prueba*/
 
         mostrarMenu();
@@ -42,7 +42,13 @@ public class Main {
                     break;
     
                 case 4:
-                    System.out.println(accions);
+                    System.out.println(accions.getAccio(3));
+                    System.out.println("Filtre d'accions, escull l'opció que vulguis:");
+                    System.out.println("    1. Tot");
+                    System.out.println("    2. Xerrades");
+                    System.out.println("    3. Demostracions");
+                    int num = scanner.nextInt();
+                    System.out.println(accions.toStringAmbOpcions(num));
                     break;
                     
                 case 5:
