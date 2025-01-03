@@ -45,6 +45,10 @@ public class Aplicacio extends JFrame {
         missatges.setEditable(false);
         JScrollPane scr = new JScrollPane(missatges);
         centre.add(scr, BorderLayout.SOUTH);
+
+        meuCont.add(centre, BorderLayaout.CENTER);
+
+        setVisible(true);
     }
     public static void main(String[] args) {
         LlistaAssociacio associacions;
@@ -61,6 +65,6 @@ public class Aplicacio extends JFrame {
         valoracions = Dades.llegirValoracions(membres);
         Dades.organizarValoraciones(valoracions, accions);
 
-
+        new Aplicacio(accions, associacions);
     }
 }

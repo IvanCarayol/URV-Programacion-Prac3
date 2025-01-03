@@ -13,6 +13,8 @@ public class AccioBotoTriaOpcio implements ActionListener{
     public void actionPerformered(ActionEvent e){
         if(e.getSource() == botoDA){
             mostrarDemostracionsActives();
+        } else if(e.getSource = botoDAA){
+            
         }
     }
 }
