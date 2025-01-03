@@ -568,8 +568,7 @@ public class Dades
                     String nombre = valoracions[i].getIDXerrada();
                     fitxer.write(nombre);
                     fitxer.newLine();
-                    LlistaValoracio llista = valoracions[i];
-                    int numero = llista.getnElem();
+                    int numero = valoracions[i].getnElem()/2;
                     fitxer.write(numero + "");
                     fitxer.newLine();
                     for(int y = 0; y < valoracions[i].getnElem(); y++){
