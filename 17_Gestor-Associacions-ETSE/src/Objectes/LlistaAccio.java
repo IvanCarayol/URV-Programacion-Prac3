@@ -192,11 +192,11 @@ public class LlistaAccio {
         String text = "";
 
         switch (opcio) {
-            case 0:
+            case 1:
             text = toString();
                 break;
         
-            case 1:
+            case 2:
                 
                 text = "LlistaXerrades{\n";
                 for (int i = 0; i < contador; i++) {
@@ -206,7 +206,7 @@ public class LlistaAccio {
 
                 break;
 
-            case 2:
+            case 3:
                 text = "LlistaDemostracions{\n";
                 for (int i = 0; i < contador; i++) {
                     if(listaAccions[i] instanceof Demostracio) text += listaAccions[i] + "\n";

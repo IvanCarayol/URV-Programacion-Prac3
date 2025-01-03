@@ -1,10 +1,11 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Objectes.*;
 
 public class Main {
     private final int SORTIR = 18;
-
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         LlistaAssociacio associacions;
         LlistaMembres membres;
@@ -25,11 +26,9 @@ public class Main {
 
         mostrarMenu();
         System.out.println("Quina opcio vols:");
-        Scanner scanner = new Scanner(System.in);
-        opcio = scanner.nextInt();
+        opcio = demanarOpcio();
+        //scanner.nextLine();
         while (!sortir){
-            System.out.println("Quina opcio vols:");
-            opcio = scanner.nextInt();
             switch (opcio) {
                 case 1:
                     System.out.println(associacions);
@@ -148,13 +147,19 @@ public class Main {
                     System.out.println("Vols sobrescriure?(Si:1/No:0)");
                     opcio = scanner.nextInt();
                     if(opcio == 1) {
+                        Dades.guardaAssociacions(associacions);
+                        Dades.guardarMembres(membres);
                         Dades.escriureAccions(accions);
                         Dades.escriureValoracions(valoracions);
                     }
-                    scanner.close();
                     sortir = true;
             }
+            mostrarMenu();
+            System.out.println("Quina opcio vols:");
+            opcio = demanarOpcio();
+            //scanner.nextLine();
         }
+        scanner.close();
     }
 
     public static void mostrarMenu(){
@@ -171,7 +176,6 @@ public class Main {
 
     private static void llistarMembresAssociacio(LlistaAssociacio associacions)
     {
-        Scanner scanner = new Scanner(System.in);
         String nom;
         int tipusMembre;
         System.out.println("Introdueix el nom de la associacio: ");
@@ -197,7 +201,6 @@ public class Main {
 
     private static void altaMembreAassociacio(LlistaAssociacio associacions, LlistaMembres membres)
     {
-        Scanner scanner = new Scanner(System.in);
         String nomMembre;
         String nomAssociacio;
         int dia, mes, any;
@@ -241,5 +244,30 @@ public class Main {
                 membre.afegiraAsociacio(associacio, new Data(dia, mes, any));
             }
         }
+    }
+
+    private static int demanarOpcio()
+    {
+        int opcio = 0;
+        
+        do
+        {
+            try
+            {
+                opcio = scanner.nextInt();
+
+                if (opcio < 1 || opcio > 18)
+                {
+                    System.out.println("Error: Has de introduir un numero enter del 1 al 18");
+                }
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Error: Has de introduir un numero enter del 1 al 18");
+            }
+            scanner.nextLine();
+        } while (opcio < 1 || opcio > 18);
+        
+        return opcio;
     }
 }
