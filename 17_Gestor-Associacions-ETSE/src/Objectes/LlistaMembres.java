@@ -137,6 +137,34 @@ public class LlistaMembres implements Serializable
         }
     }
 
+    public LlistaMembres retornaProfessors()
+    {
+        LlistaMembres professors = new LlistaMembres(numElem);
+
+        for (int i = 0; i < numElem; i++)
+        {
+            if (tabla[i] instanceof Professor)
+            {
+                professors.afegirMembre(tabla[i]);
+            }
+        }
+        return professors;
+    }
+
+    public LlistaMembres retornaAlumnes()
+    {
+        LlistaMembres alumnes = new LlistaMembres(numElem);
+
+        for (int i = 0; i < numElem; i++)
+        {
+            if (tabla[i] instanceof Alumne)
+            {
+                alumnes.afegirMembre(tabla[i]);
+            }
+        }
+        return alumnes;
+    }
+
     // Método toString para mostrar toda la tabla temporal 
     @Override
     public String toString() 
