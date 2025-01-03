@@ -466,7 +466,7 @@ public class Dades
                 String nombreXerrada = fit.nextLine();          //Leemos el nombre de la xerrada
                 int nElementos = fit.nextInt();
                 fit.nextLine();
-                LlistaValoracio llista = new LlistaValoracio(nElementos, nombreXerrada);
+                LlistaValoracio llista = new LlistaValoracio(nombreXerrada, nElementos);
                 
                 for (int i = 0; i < nElementos; i++){
                     linia = fit.nextLine();

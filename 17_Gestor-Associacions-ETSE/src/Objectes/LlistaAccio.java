@@ -138,7 +138,13 @@ public class LlistaAccio {
                 if (valoracionPromedio > mejorValoracionPromedio) { 
                     mejorValorada =  valorar; 
                     mejorValoracionPromedio = valoracionPromedio; 
-                } 
+                } else if (valoracionPromedio == mejorValoracionPromedio){
+                    if(valorar.getNumValoracions() >  mejorValorada.getNumValoracions()){
+                        mejorValorada =  valorar; 
+                        mejorValoracionPromedio = valoracionPromedio; 
+                    }
+                    
+                }
             }           
         } 
         return mejorValorada;
@@ -179,6 +185,5 @@ public class LlistaAccio {
         }
 
         return lxer;
-
     }
 }

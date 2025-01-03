@@ -36,7 +36,7 @@ public class Xerrades extends Accio {
     }
 
     /**
-     * afegir membre amb la seva valoracio
+     * Afegir membre amb la seva valoracio
      * @param membre de tipus Membre
      * @param valoracio de tipus Valoracio
      */

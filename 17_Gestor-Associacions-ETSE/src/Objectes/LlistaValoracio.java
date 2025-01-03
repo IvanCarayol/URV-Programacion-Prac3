@@ -25,6 +25,12 @@ public class LlistaValoracio {
         this.IDXerrada = IDXerrada;
     }
 
+    public LlistaValoracio(String IDXerrada, int numeroElementsActuals) {
+        this.valoracions = new Valoracio[TAMANY];
+        this.nElem = numeroElementsActuals;
+        this.IDXerrada = IDXerrada;
+    }
+
     /**
      * Afegeix una nova valoració a la llista si aquesta no esta plena.
      *
@@ -98,8 +104,29 @@ public class LlistaValoracio {
         }
         valoracions[nElem - 1] = null; 
     }
+    
+    /**
+     * Busca si es te la xerrada 
+     * @param xerrada nom de la xerrada
+     * @param valoracio array on es guardaran totes les llistes de valoracions
+     * @return si ha trobat la xerrada a la llista
+     */
 
-        /**
+    public boolean trobarXerrada(String xerrada, LlistaValoracio[] valoracio, int[] indexXerrada){
+        int i = 0;
+        boolean trobat = false;
+        while(!trobat && i < valoracions.length){
+            if(valoracio[i].getIDXerrada().equals(xerrada)){
+                trobat = true;
+            } else {
+                i++;
+            }
+        }
+        indexXerrada[0] = i;
+        return trobat;
+    }
+
+    /**
      * Obté totes les valoracions en forma de cadena.
      * 
      * @return una cadena amb totes les valoracions, separades per salts de línia, 
