@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Objectes.*;
@@ -25,8 +26,8 @@ public class Main {
 
         mostrarMenu();
         System.out.println("Quina opcio vols:");
-        opcio = scanner.nextInt();
-        scanner.nextLine();
+        opcio = demanarOpcio();
+        //scanner.nextLine();
         while (!sortir){
             switch (opcio) {
                 case 1:
@@ -155,8 +156,8 @@ public class Main {
             }
             mostrarMenu();
             System.out.println("Quina opcio vols:");
-            opcio = scanner.nextInt();
-            scanner.nextLine();
+            opcio = demanarOpcio();
+            //scanner.nextLine();
         }
         scanner.close();
     }
@@ -243,5 +244,30 @@ public class Main {
                 membre.afegiraAsociacio(associacio, new Data(dia, mes, any));
             }
         }
+    }
+
+    private static int demanarOpcio()
+    {
+        int opcio = 0;
+        
+        do
+        {
+            try
+            {
+                opcio = scanner.nextInt();
+
+                if (opcio < 1 || opcio > 18)
+                {
+                    System.out.println("Error: Has de introduir un numero enter del 1 al 18");
+                }
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Error: Has de introduir un numero enter del 1 al 18");
+            }
+            scanner.nextLine();
+        } while (opcio < 1 || opcio > 18);
+        
+        return opcio;
     }
 }
