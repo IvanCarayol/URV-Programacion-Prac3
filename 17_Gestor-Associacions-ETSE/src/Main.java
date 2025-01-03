@@ -20,7 +20,7 @@ public class Main {
         accions = Dades.llegirAccions(membres, associacions);
         valoracions = Dades.llegirValoracions(membres);
         Dades.organizarValoraciones(valoracions, accions);
-  
+        
         Data d = new Data(25, 11, 2023); // fecha de prueba*/
 
         mostrarMenu();
@@ -32,17 +32,24 @@ public class Main {
             opcio = scanner.nextInt();
             switch (opcio) {
                 case 1:
-                    
+                    System.out.println(associacions);
                     break;
             
                 case 2:
+                    llistarMembresAssociacio(associacions);
                     break;
     
                 case 3:
                     break;
     
                 case 4:
-                    System.out.println(accions);
+                    System.out.println(accions.getAccio(3));
+                    System.out.println("Filtre d'accions, escull l'opció que vulguis:");
+                    System.out.println("    1. Tot");
+                    System.out.println("    2. Xerrades");
+                    System.out.println("    3. Demostracions");
+                    int num = scanner.nextInt();
+                    System.out.println(accions.toStringAmbOpcions(num));
                     break;
                     
                 case 5:
@@ -69,6 +76,7 @@ public class Main {
                     break;
 
                 case 8:
+                    altaMembreAassociacio(associacions, membres);
                     break;
 
                 case 9:
@@ -159,5 +167,79 @@ public class Main {
         System.out.println("13.- Xerrades amb mes d'un cert nombre d'assistents\n14.- Valorar xerrada");
         System.out.println("15.- Xerrada millor valorada\n16.- Xerrades d'una persona");
         System.out.println("17.- Donar de baixa demostracions no actives i dissenyades abans d'una data\n18.- Sortir");
+    }
+
+    private static void llistarMembresAssociacio(LlistaAssociacio associacions)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String nom;
+        int tipusMembre;
+        System.out.println("Introdueix el nom de la associacio: ");
+        nom = scanner.nextLine();
+        System.out.println("Introdueix tipus de membre (1: Professor, 2: Alumne, 3: Tots):");
+        tipusMembre = scanner.nextInt();
+    
+        LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
+        LlistaMembres membresFiltrat;
+
+        switch (tipusMembre) {
+            case 1:
+                membresFiltrat = membres.retornaProfessors();
+                break;
+            case 2:
+                membresFiltrat = membres.retornaAlumnes();
+            default:
+                membresFiltrat = membres;
+                break;
+        }
+        System.out.println(membresFiltrat);
+    }
+
+    private static void altaMembreAassociacio(LlistaAssociacio associacions, LlistaMembres membres)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String nomMembre;
+        String nomAssociacio;
+        int dia, mes, any;
+
+        System.out.print("Introdueix el nom del membre: ");
+        nomMembre = scanner.nextLine();
+
+        Membre membre = membres.getMembreAmbNom(nomMembre);
+
+        if (membre == null)
+        {
+            System.out.println("El membre que estas buscant no existeix");
+        }
+        else if (membre.getLlistaAssociacions().getNumelem() > 2)
+        {
+            System.out.println("El membre ja ha estat al maxim numero de associacions permes");
+        }
+        else
+        {
+            System.out.print("\nIntrodueix el nom de la associacio:");
+            nomAssociacio = scanner.nextLine();
+            
+            if (associacions.getAssociacioAmbNom(nomAssociacio) == null)
+            {
+                System.out.println("La associacio no existeix");
+            }
+            else if (membre.getLlistaAssociacions().getAssociacioAmbNom(nomAssociacio) != null)
+            {
+                System.out.println("El membre ja esta inscrit a aquesta associacio");
+            }
+            else
+            {
+                System.out.print("\nIntrodueix la data de alta del membre a la associacio:\nDia: ");
+                dia = scanner.nextInt();
+                System.out.print("\nMes: ");
+                mes = scanner.nextInt();
+                System.out.print("\nAny: ");
+                any = scanner.nextInt();
+
+                Associacio associacio = associacions.getAssociacioAmbNom(nomAssociacio);
+                membre.afegiraAsociacio(associacio, new Data(dia, mes, any));
+            }
+        }
     }
 }
