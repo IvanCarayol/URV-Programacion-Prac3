@@ -134,12 +134,9 @@ public abstract class Membre implements Serializable
 
         if (numAssociacions < 3) 
         {
-            if (associacions.getAssociacioAmbNom(associacio.getNom()) != null)
-            {
-                associacions.afegirAsociacio(associacio);
-                this.datesAlta.afegirData(dataIni);
-                afegirMembreaAssociacio(associacio);
-            }
+            associacions.afegirAsociacio(associacio);
+            this.datesAlta.afegirData(dataIni);
+            afegirMembreaAssociacio(associacio);
         } 
     }
 

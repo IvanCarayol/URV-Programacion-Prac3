@@ -6,8 +6,8 @@ tipo:nom;titol;membreNom;dia/mes/año;boolVal;numOferit;doubleCost;ass;ass...
 0;prueba2;prueba2T;Daniel Pérez;23/1/2023;URVoltage
 0;prueba3;prueba3T;Víctor Pons;23/1/2023;URCulture
 1;prueba4;prueba4T;Jordi Gómez;23/1/2023;5;PhysicsSociety;URVoltage
-2;prueba5;prueba5T;Pablo Torres;23/1/2023;1;2;200;PhysicsSociety;GreenTeam
-2;prueba6;prueba6T;Cristina Blanch;11/3/2022;1;2;100;URCulture;URScience
+2;prueba5;prueba5T;Pablo Torres;23/1/2023;1;2;200.0;PhysicsSociety;GreenTeam
+2;prueba6;prueba6T;Cristina Blanch;11/3/2022;1;2;100.0;URCulture;URScience
 0;prueba7;prueba7T;Víctor Pons;23/1/2023;URCulture
-2;prueba8;prueba8T;Adrián Sánchez;25/9/2021;0;5;500;URBots;URCulture
+2;prueba8;prueba8T;Adrián Sánchez;25/9/2021;0;5;500.0;URBots;URCulture
 1;prueba9;prueba9T;Jordi Gómez;23/1/2023;5;PhysicsSociety;URVoltage

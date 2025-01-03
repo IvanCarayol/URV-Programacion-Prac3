@@ -73,7 +73,7 @@ public class LlistaAssociacio implements Serializable{
             tabla[numelem] = asociacio;
             numelem++;
         } else {
-            System.out.println("No hay espacio disponible en la tabla.");
+            System.out.println("No hay espacio disponible en la tabla NOOOO.");
         }
     }
 

@@ -21,7 +21,7 @@ public class mainP {
 
         // 2.10. Afegir una nova demostració*/
 
-        LlistaAssociacio associacions;
+        /*LlistaAssociacio associacions;
         LlistaMembres membres;
         LlistaTitulacions titulacions = new LlistaTitulacions(4);
 
@@ -123,6 +123,20 @@ public class mainP {
     {
         LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
         System.out.println(membres);
+    }*/
+        LlistaTitulacions titulacions = new LlistaTitulacions(4); 
+        titulacions = Dades.carregaTitulacions();
+        LlistaAssociacio associacions = Dades.carregaAssociacions();
+        LlistaMembres membres = Dades.llegirMembres(associacions, titulacions);
+
+        Membre oscar = membres.getMembreAmbNom("Oscar Ruiz");
+        Associacio greenTeam = associacions.getAssociacioAmbNom("GreenTeam");
+
+        oscar.afegiraAsociacio(greenTeam, new Data(4, 1, 2025));
+        
+        Dades.guardarMembres(membres);
+        Dades.guardaAssociacions(associacions);
+
+        System.out.println(associacions);
     }
-    
 }

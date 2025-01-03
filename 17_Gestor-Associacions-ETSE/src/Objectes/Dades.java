@@ -325,7 +325,7 @@ public class Dades
 
             while (linia != null) 
             {
-                if (titulacions.getNumelem() == titulacions.getMaxElem())
+                if (titulacions.getNumelem() >= titulacions.getMaxElem())
                 {
                     LlistaTitulacions temp = titulacions;
                     titulacions = new LlistaTitulacions(temp.getMaxElem()*2);

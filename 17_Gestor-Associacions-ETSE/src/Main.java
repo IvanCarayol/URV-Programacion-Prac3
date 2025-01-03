@@ -179,23 +179,33 @@ public class Main {
         int tipusMembre;
         System.out.println("Introdueix el nom de la associacio: ");
         nom = scanner.nextLine();
-        System.out.println("Introdueix tipus de membre (1: Professor, 2: Alumne, 3: Tots):");
-        tipusMembre = scanner.nextInt();
-    
-        LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
-        LlistaMembres membresFiltrat;
 
-        switch (tipusMembre) {
-            case 1:
-                membresFiltrat = membres.retornaProfessors();
-                break;
-            case 2:
-                membresFiltrat = membres.retornaAlumnes();
-            default:
-                membresFiltrat = membres;
-                break;
+        Associacio associacio = associacions.getAssociacioAmbNom(nom);
+
+        if (associacio != null)
+        {
+            System.out.println("Introdueix tipus de membre (1: Professor, 2: Alumne, 3: Tots):");
+            tipusMembre = scanner.nextInt();
+    
+            LlistaMembres membres = associacio.getMembres();
+            LlistaMembres membresFiltrat;
+
+            switch (tipusMembre) {
+                case 1:
+                    membresFiltrat = membres.retornaProfessors();
+                    break;
+                case 2:
+                    membresFiltrat = membres.retornaAlumnes();
+                default:
+                    membresFiltrat = membres;
+                    break;
+            }
+            System.out.println(membresFiltrat);
         }
-        System.out.println(membresFiltrat);
+        else
+        {
+            System.out.println("La associacion introducida no existe");
+        }
     }
 
     private static void altaMembreAassociacio(LlistaAssociacio associacions, LlistaMembres membres)
@@ -212,10 +222,6 @@ public class Main {
         if (membre == null)
         {
             System.out.println("El membre que estas buscant no existeix");
-        }
-        else if (membre.getLlistaAssociacions().getNumelem() > 2)
-        {
-            System.out.println("El membre ja ha estat al maxim numero de associacions permes");
         }
         else
         {
