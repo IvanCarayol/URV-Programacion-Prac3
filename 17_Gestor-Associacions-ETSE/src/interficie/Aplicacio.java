@@ -6,12 +6,12 @@ import javax.swing.*;
 import Objectes.*;
 
 public class Aplicacio extends JFrame {
-    private JPanel centre, centreM;
+    private JPanel centre, centreM, centreText;
     private JTextArea missatges;
+    private JTextField textAssociacio;
     private JButton botoDA, botoDAA;
     private LlistaAccio accions;
     private LlistaAssociacio associacions;
-    private JLabel labelAssociacio;
 
     public Aplicacio(LlistaAccio accions, LlistaAssociacio associacions) {
         super("Associacions i demostracions");
@@ -36,15 +36,20 @@ public class Aplicacio extends JFrame {
 
         centreM.add(botoDA);
         centreM.add(botoDAA);
-        centre.add(centreM, BorderLayout.CENTER);
+
+        // Nuevo panel para la etiqueta y el campo de texto
+        centreText = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        centreText.add(new JLabel("Nom de l'associacio:"));
+        textAssociacio = new JTextField(20);
+        centreText.add(textAssociacio);
+
+        centre.add(centreM, BorderLayout.NORTH);  // Mover el centroM al norte para que el centroText esté visible
+        centre.add(centreText, BorderLayout.CENTER);  // Añadir el nuevo panel al centro
 
         missatges = new JTextArea(20, 100);
         missatges.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(missatges);
         centre.add(scrollPane, BorderLayout.SOUTH);
-
-        labelAssociacio = new JLabel();
-        centre.add(labelAssociacio, BorderLayout.PAGE_END);
 
         meuCont.add(centre, BorderLayout.CENTER);
 
@@ -89,19 +94,22 @@ public class Aplicacio extends JFrame {
         missatges.setText("");
         Demostracio[] demostracionsActives = accions.demostracionsValides();
         for (int i = 0; i < demostracionsActives.length; i++) {
-            missatges.append(demostracionsActives.toString() + "\n");
+            missatges.append(demostracionsActives[i].toString() + "\n");
         }
     }
-    
-    private void mostrarDemostracionsActivesPerAssociacio() { 
-        missatges.setText(""); 
-        String nomAssociacio = JOptionPane.showInputDialog(this, "Introdueix el nom de l'associació:"); 
-        Demostracio[] demostracionsActives = accions.demostracionsValides();
-        for (int i = 0; i < demostracionsActives.length; i++) { 
-            if (demostracionsActives[i] != null) { 
-                missatges.append(demostracionsActives[i].toString() + "\n"); 
-            } 
-        } 
-        labelAssociacio.setText("Nom de l'associació: " + nomAssociacio); 
+
+    private void mostrarDemostracionsActivesPerAssociacio() {
+        missatges.setText("");
+        String nomAssociacio = textAssociacio.getText(); // Obtener el nombre de la asociación del campo de texto
+        if (nomAssociacio != null && !nomAssociacio.trim().isEmpty()) {
+            Demostracio[] demostracionsActives = accions.demostracionsPerAssociacio(nomAssociacio, accions.demostracionsValides());
+            for (int i = 0; i < demostracionsActives.length; i++) {
+                if (demostracionsActives[i] != null) {
+                    missatges.append(demostracionsActives[i].toString() + "\n");
+                }
+            }
+        } else {
+            missatges.append("Associació no trobada o nom no introduït.\n");
+        }
     }
 }
