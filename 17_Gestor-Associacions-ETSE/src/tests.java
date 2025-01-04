@@ -156,13 +156,24 @@ public class tests {
         titulacions.afegirTitulacio(titP);
         LlistaMembres membres =new LlistaMembres(5);
         // Prueba de Associacion
-        
+        System.out.println("\n\nPROVES CLASSE MEMBRE -- Subprova clase LlistaAssociacio");
         Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
         ivan.afegiraAsociacio(asso, datIni.getDataInPos(0));
 
-        LlistaAssociacio associacions = new LlistaAssociacio(3);
+        LlistaAssociacio associacions = new LlistaAssociacio(1);
+        System.out.println("\ncrea asociacio en una llista");
         associacions.afegirAsociacio(asso);
         Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",null, false, datIni, associacions, null);
+        associacions.toString();
+        System.out.println("\nllista de associacions plena");
+        associacions.afegirAsociacio(asso);
+        System.out.println("\nelimina asociacio de una llista");
+        associacions.eliminarAsociacioAt(0);
+        associacions.toString();
+        System.out.println("\nAssociacio buscada InfGei");
+        associacions.afegirAsociacio(asso);
+        System.out.println(associacions.getAssociacioAmbNom("InfGei"));
+        
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
 
