@@ -444,17 +444,33 @@ public class tests {
         }
         
         //Probar guardat i carrega de una llista de associacions
-        System.out.println("\nPROVES GUARDAR I CARREGAR LLISTA ASSOCIACIONS");
+        System.out.println("\nPROVES GUARDAR I CARREGAR LLISTA ASSOCIACIONS -- Subproves LlistaTitulacions");
         
         associacions = new LlistaAssociacio(0);
         membres = new LlistaMembres(0);
         titulacions = new LlistaTitulacions(4);
 
+        System.out.println("Afegir Titulacions"); 
         titulacions.afegirTitulacio(new Titulacio("GEI"));
         titulacions.afegirTitulacio(new Titulacio("ADE"));
         titulacions.afegirTitulacio(new Titulacio("GEE"));
         titulacions.afegirTitulacio(new Titulacio("FIB"));
+        System.out.println(titulacions.getNumelem());
 
+        System.out.println("Llista Plena"); 
+        titulacions.afegirTitulacio(new Titulacio("AAA"));
+
+        System.out.println("Eliminar una Titulacio"); 
+        titulacions.eliminarTitulacioAt(3);
+        System.out.println(titulacions.getNumelem());
+
+        System.out.println("Existeix la titulacio?"); 
+        System.out.println(titulacions.estaTitulacio("GEI"));
+
+        System.out.println("ToString"); 
+        titulacions.toString();
+
+        titulacions.afegirTitulacio(new Titulacio("FIB"));
         LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
         LlistaMembres llistaMembres = new LlistaMembres(20);
 
@@ -518,7 +534,7 @@ public class tests {
         Dades.guardaAssociacions(llistaAssociacio);
         LlistaAssociacio llistaLLegida = Dades.carregaAssociacions();
 
-        System.out.print("La guardada i carregada es igual a la original? ");
+        System.out.print("ASSOCIACIO -- La guardada i carregada es igual a la original? ");
         
         if (llistaAssociacio.toString().equals(llistaLLegida.toString()))
         {
