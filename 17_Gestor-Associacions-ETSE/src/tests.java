@@ -142,6 +142,29 @@ public class tests {
         System.out.println("Còpia de la llista:");
         System.out.println(copiaLlista.toString());
 
+        System.out.println("\nPROVES CLASSE ASSOCIACIO I TITULACIO");
+        
+        Membre prueba = new Alumne("Ivan", "Ivan@urv.es", new Titulacio("ADE"), false);
+        LlistaTitulacions titulacionsprueba =new LlistaTitulacions(4);
+        Titulacio titPrueba = new Titulacio("EXP");
+        titulacionsprueba.afegirTitulacio(titPrueba);
+
+        System.out.println(titPrueba.getNom());
+
+        System.out.println(titPrueba.toString());
+
+        LlistaMembres membresprueba =new LlistaMembres(5);
+        Associacio assoprueba = new Associacio("InfGei", "infGei@urv.es", prueba, prueba, prueba, titulacionsprueba, membresprueba);
+        
+        System.out.println(assoprueba.getCorreuContact());
+        System.out.println(assoprueba.getNom());
+        System.out.println(assoprueba.getPresident());
+        System.out.println(assoprueba.getTesorer());
+        System.out.println(assoprueba.getSecretari());
+        System.out.println(assoprueba.getTitulacions());
+        System.out.println(assoprueba.getMembres());
+
+        System.out.println(assoprueba.toString());
 
         System.out.println("\nPROVES CLASSE MEMBRE");
 
@@ -151,32 +174,30 @@ public class tests {
         LlistaDates dat = new LlistaDates(3);
         Membre ivan = new Alumne("Ivan", "Ivan@urv.es", new Titulacio("ADE"), false);
 
-        Titulacio titP = new Titulacio("Gei");
         LlistaTitulacions titulacions =new LlistaTitulacions(4);
-        titulacions.afegirTitulacio(titP);
+        titulacions.setTitulacioAt(0,new Titulacio("GEI"));
         LlistaMembres membres =new LlistaMembres(5);
         // Prueba de Associacion
-        System.out.println("\n\nPROVES CLASSE MEMBRE -- Subprova clase LlistaAssociacio");
+        System.out.println("-- Subprova clase LlistaAssociacio");
         Associacio asso = new Associacio("InfGei", "infGei@urv.es", ivan, ivan, ivan, titulacions, membres);
         ivan.afegiraAsociacio(asso, datIni.getDataInPos(0));
 
         LlistaAssociacio associacions = new LlistaAssociacio(1);
         System.out.println("\ncrea asociacio en una llista");
         associacions.afegirAsociacio(asso);
-        Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",null, false, datIni, associacions, null);
-        associacions.toString();
+        System.out.println(associacions.toString());
         System.out.println("\nllista de associacions plena");
         associacions.afegirAsociacio(asso);
         System.out.println("\nelimina asociacio de una llista");
         associacions.eliminarAsociacioAt(0);
-        associacions.toString();
+        System.out.println(associacions.toString());
         System.out.println("\nAssociacio buscada InfGei");
         associacions.afegirAsociacio(asso);
         System.out.println(associacions.getAssociacioAmbNom("InfGei"));
         
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
-
+        Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",null, false, datIni, associacions, null);
         System.out.println("toString de membres");
         System.out.println(Lluis + "\n");
         System.out.println(ivan);
@@ -376,7 +397,7 @@ public class tests {
         System.out.println("\nPROVES CLASSE ALUMNE");
 
         // Crear un objeto Alumne
-        Alumne alumne1 = new Alumne("Alumno1", "alumno1@universidad.com", titP, true, datesAlta1, lista, datesBaixa1);
+        Alumne alumne1 = new Alumne("Alumno1", "alumno1@universidad.com", new Titulacio("GEI"), true, datesAlta1, lista, datesBaixa1);
 
         // Imprimir información del Alumne 1
         System.out.println("Alumno 1:");
@@ -468,7 +489,7 @@ public class tests {
         System.out.println(titulacions.estaTitulacio("GEI"));
 
         System.out.println("ToString"); 
-        titulacions.toString();
+        System.out.println(titulacions.toString());
 
         titulacions.afegirTitulacio(new Titulacio("FIB"));
         LlistaAssociacio llistaAssociacio = new LlistaAssociacio(20);
