@@ -10,7 +10,7 @@ import Objectes.*;
  * per a l'aplicació de demostracions i associacions.
  */
 public class Aplicacio extends JFrame {
-    private JPanel centre, centreM, centreText;
+    private JPanel nord, centre, centreM, centreText;
     private JTextArea missatges;
     private JTextField textAssociacio;
     private JButton botoDA, botoDAA;
@@ -33,10 +33,12 @@ public class Aplicacio extends JFrame {
         Container meuCont = getContentPane();
         meuCont.setLayout(new BorderLayout());
 
-        centre = new JPanel(new BorderLayout());
-        JLabel instruc = new JLabel("Selecciona el botó segons l'opció");
-        centre.add(instruc, BorderLayout.NORTH);
+        nord = new JPanel(new BorderLayout());
+        JLabel instruc = new JLabel("Selecciona el botó desitjat. La informacio la trobaras a la part inferior de la finestra");
+        instruc.setHorizontalAlignment(JLabel.CENTER);
+        nord.add(instruc, BorderLayout.NORTH);
 
+        centre = new JPanel(new BorderLayout());
         AccioBotoTriaOpcio accio = new AccioBotoTriaOpcio(this);
         centreM = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
         botoDA = new JButton("Demostracions actives");
@@ -61,6 +63,7 @@ public class Aplicacio extends JFrame {
         JScrollPane scrollPane = new JScrollPane(missatges);
         centre.add(scrollPane, BorderLayout.SOUTH);
 
+        meuCont.add(nord, BorderLayout.NORTH);
         meuCont.add(centre, BorderLayout.CENTER);
 
         setVisible(true);
@@ -119,26 +122,42 @@ public class Aplicacio extends JFrame {
     private void mostrarDemostracionsActives() {
         missatges.setText("");
         Demostracio[] demostracionsActives = accions.demostracionsValides();
-        for (int i = 0; i < demostracionsActives.length; i++) {
-            missatges.append(demostracionsActives[i].toString() + "\n");
-        }
-    }
-
-    /**
-     * Mostra les demostracions actives per a una associació específica a l'àrea de missatges.
-     */
-    private void mostrarDemostracionsActivesPerAssociacio() {
-        missatges.setText("");
-        String nomAssociacio = textAssociacio.getText(); // Obtenir el nom de l'associació del camp de text
-        if (nomAssociacio != null && !nomAssociacio.trim().isEmpty()) {
-            Demostracio[] demostracionsActives = accions.demostracionsPerAssociacio(nomAssociacio, accions.demostracionsValides());
+        missatges.append("\t\t\t\t\t\tDEMOSTRACIONS ACTIVES\n");
+        if (demostracionsActives != null){
             for (int i = 0; i < demostracionsActives.length; i++) {
-                if (demostracionsActives[i] != null) {
+                if(demostracionsActives[i] != null){
                     missatges.append(demostracionsActives[i].toString() + "\n");
                 }
             }
         } else {
-            missatges.append("Associació no trobada o nom no introduït.\n");
+            missatges.append("No hi ha demostracions actives.\n");
         }
+        
+    }
+
+    private void mostrarDemostracionsActivesPerAssociacio() { 
+        missatges.setText(""); 
+        String nomAssociacio = textAssociacio.getText(); // Obtenir el nom de l'associació del camp de text 
+        missatges.append("\t\t\t\t\t\tDEMOSTRACIONS ACTIVES DE "+nomAssociacio+"\n");
+
+        if (nomAssociacio != null && !nomAssociacio.trim().isEmpty()) { 
+            Demostracio[] demostracionsActives = accions.demostracionsPerAssociacio(nomAssociacio, accions.demostracionsValides());  
+            if (demostracionsActives != null && demostracionsActives.length > 0) { 
+                boolean trobat = false; 
+                for (int i = 0; i < demostracionsActives.length; i++) { 
+                    if (demostracionsActives[i] != null) { 
+                        missatges.append(demostracionsActives[i].toString() + "\n"); 
+                        trobat = true; 
+                    } 
+                } if (!trobat) { 
+                            missatges.append("L'associació " + nomAssociacio + " no te cap demostracio activa o no existeix.\n"); 
+                } 
+            } else { 
+                missatges.append("L'associació " + nomAssociacio + " no te cap demostracio activa o no existeix.\n"); 
+            }
+            
+        } else { 
+            missatges.append("Associació no trobada o nom no introduït.\n"); 
+        } 
     }
 }
