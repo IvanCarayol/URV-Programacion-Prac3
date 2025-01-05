@@ -147,9 +147,9 @@ public class LlistaAccio {
                 LlistaMembres llistaMembres = xerrada.getLlistaMembres();
                 Data dataXerrada = listaAccions[i].getData();
 
-                if (Data.compararDatas(dataAvui, dataXerrada))
+                if (Data.compararDatas(dataXerrada, dataAvui))
                 {
-                    if (llistaMembres.getMembreAmbNom(nomMembre) != null)
+                    if (llistaMembres.getNumelem() != 0 && llistaMembres.getMembreAmbNom(nomMembre) != null)
                     {
                         llista.afegirAccio(xerrada);
                     }
