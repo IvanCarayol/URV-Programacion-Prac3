@@ -21,7 +21,7 @@ public class mainP {
 
         // 2.10. Afegir una nova demostració*/
 
-        /*LlistaAssociacio associacions;
+        LlistaAssociacio associacions;
         LlistaMembres membres;
         LlistaTitulacions titulacions = new LlistaTitulacions(4);
 
@@ -94,7 +94,7 @@ public class mainP {
         }
 
         Dades.guardaAssociacions(llistaAssociacio);
-
+/* 
         associacions = Dades.carregaAssociacions();
 
         for (int i = 0; i < associacions.getNumelem(); i++)
@@ -123,8 +123,8 @@ public class mainP {
     {
         LlistaMembres membres = associacions.getAssociacioAmbNom(nom).getMembres();
         System.out.println(membres);
-    }*/
-        LlistaTitulacions titulacions = new LlistaTitulacions(4); 
+    }
+        /*LlistaTitulacions titulacions = new LlistaTitulacions(4); 
         titulacions = Dades.carregaTitulacions();
         LlistaAssociacio associacions = Dades.carregaAssociacions();
         for (int i = 4; i < 9; i++)
@@ -146,6 +146,6 @@ public class mainP {
 
         System.out.println("\nMEMBRE MES ACTIU:\n"+membres.retornaMembreMesActiu());
 
-        System.out.println(associacions.getAssociacioAmbNom("GreenTeam").getMembres());
+        System.out.println(associacions.getAssociacioAmbNom("GreenTeam").getMembres());*/
     }
 }

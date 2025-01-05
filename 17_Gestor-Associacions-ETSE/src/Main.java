@@ -197,6 +197,7 @@ public class Main {
                     break;
 
                 case 16:
+                    mostrarXerradesFuturesMembre(accions);
                     break;
 
                 case 17:
@@ -320,6 +321,23 @@ public class Main {
                 membre.afegiraAsociacio(associacio, new Data(dia, mes, any));
             }
         }
+    }
+
+    private static void mostrarXerradesFuturesMembre(LlistaAccio accions)
+    {
+        int dia, mes, any;
+        System.out.println("Introdueix el membre del que vols consultar les xerrades:");
+        String nomMembre = scanner.nextLine();
+        System.out.print("\nIntrodueix la data de avui:\nDia: ");
+        dia = scanner.nextInt();
+        System.out.print("\nMes: ");
+        mes = scanner.nextInt();
+        System.out.print("\nAny: ");
+        any = scanner.nextInt();
+        Data data = new Data(dia, mes, any);
+        LlistaAccio xerrades =accions.retornaXerradesFuturesMembre(nomMembre, data);
+
+        System.out.println(xerrades);
     }
 
     private static int demanarOpcio()

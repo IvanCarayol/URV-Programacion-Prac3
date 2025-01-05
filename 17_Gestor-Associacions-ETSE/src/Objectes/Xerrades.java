@@ -71,6 +71,11 @@ public class Xerrades extends Accio {
         }
     }
 
+    public LlistaMembres getLlistaMembres()
+    {
+        return lMembres;
+    }
+
     public int getNumMax() {
         return nElemMAX;
     }

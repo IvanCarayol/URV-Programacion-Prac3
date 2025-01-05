@@ -135,6 +135,30 @@ public class LlistaAccio {
         return validas;
     }
 
+    public LlistaAccio retornaXerradesFuturesMembre(String nomMembre, Data dataAvui)
+    {
+        LlistaAccio llista = new LlistaAccio(10);
+
+        for (int i = 0; i < contador; i++)
+        {
+            if (listaAccions[i] instanceof Xerrades)
+            {
+                Xerrades xerrada = (Xerrades) listaAccions[i];
+                LlistaMembres llistaMembres = xerrada.getLlistaMembres();
+                Data dataXerrada = listaAccions[i].getData();
+
+                if (Data.compararDatas(dataAvui, dataXerrada))
+                {
+                    if (llistaMembres.getMembreAmbNom(nomMembre) != null)
+                    {
+                        llista.afegirAccio(xerrada);
+                    }
+                }
+            }
+        }
+        return llista;
+    }
+
     /**
      * Retorna la xerrada amb millor valoració.
      * 
