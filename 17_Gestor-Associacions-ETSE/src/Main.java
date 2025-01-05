@@ -39,6 +39,12 @@ public class Main {
                     break;
     
                 case 3:
+                    System.out.println("Filtre de membres, escull l'opció que vulguis:");
+                    System.out.println("    1. Tots");
+                    System.out.println("    2. Alumnes");
+                    System.out.println("    3. Profesors");
+                    int nummem = scanner.nextInt();
+                    System.out.println(membres.toStringAmbOpcions(nummem));
                     break;
     
                 case 4:
@@ -97,11 +103,23 @@ public class Main {
                     } else {
                         System.out.println("No hi ha xerrades en aquesta franja");
                     }
-                    
-
-                    break;
 
                 case 7:
+                    System.out.println("\nIndica el nom de la associacio:");
+                    String nom = scanner.nextLine();
+                    System.out.println("\nIndica el correu de la associacio:");
+                    String correu = scanner.nextLine();
+                    System.out.println("\nIndica el president de la associacio:");
+                    Membre president = membres.getMembreAmbNom(scanner.nextLine());
+                    System.out.println("\nIndica el tesorer de la associacio:");
+                    Membre tesorer = membres.getMembreAmbNom(scanner.nextLine());
+                    System.out.println("\nIndica el secretari de la associacio:");
+                    Membre secretari = membres.getMembreAmbNom(scanner.nextLine());
+                    Associacio a = new Associacio(nom, correu, president, tesorer, secretari, new LlistaTitulacions(10), new LlistaMembres(100));
+                    associacions.afegirAsociacio(a);
+                    a.afegeixMembre(secretari);
+                    a.afegeixMembre(tesorer);
+                    a.afegeixMembre(president);
                     break;
 
                 case 8:
@@ -123,6 +141,17 @@ public class Main {
                     break;
 
                 case 11:
+                    Demostracio[] demostra = accions.demostracionsInValides();
+                    System.out.println("Llista Demostracions");
+                    double cost = 0;
+                    int longitud;
+                    for (longitud = 0; longitud < demostra.length; longitud++){
+                        if (demostra[longitud] != null){
+                            System.out.println(demostra[longitud]);
+                            cost += demostra[longitud].getCost_material();
+                        }
+                    }
+                    System.out.println("Cost de les Demostracions "+cost+ " euros");
                     break;
 
                 case 12:
@@ -171,6 +200,16 @@ public class Main {
                     break;
 
                 case 17:
+                    System.out.println("Indica la data d'inici separada per '/': (dd/m/yyyy)");
+                    String[] datastring = scanner.nextLine().split("/");
+                    Data data1 = new Data(Integer.parseInt(datastring[0]), Integer.parseInt(datastring[1]), Integer.parseInt(datastring[2]));
+                    Demostracio[] demostracio = accions.demostracionsInValides();
+                    for (longitud = 0; longitud < demostracio.length; longitud++){
+                        if (demostracio[longitud] != null){
+                            accions.eliminaAccioData(demostracio[longitud], data1);
+                        }
+                    }
+                    System.out.println("Demostracions eliminades");
                     break;
 
                 case 18:

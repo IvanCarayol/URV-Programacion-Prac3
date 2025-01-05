@@ -76,6 +76,9 @@ public class LlistaTitulacions implements Serializable{
             tabla[numelem] = titulacio;
             numelem++;
         }
+        else{
+            System.out.println("No hay espacio disponible en la tabla.");
+        }
     }
 
     public boolean estaTitulacio(String tit) {
