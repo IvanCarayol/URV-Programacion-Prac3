@@ -107,10 +107,10 @@ public class LlistaAccio {
         for (int i = 0; i < contador; i++) {
 
             if (listaAccions[i] instanceof Xerrades) {
-
                 Data dataXerrada = listaAccions[i].getData();
-                if ((inici.compararDatas(dataXerrada, inici) == null) || (dataXerrada.compararDatas(fi, dataXerrada) == null) || 
-                    (inici.compararDatas(dataXerrada, inici) && dataXerrada.compararDatas(fi, dataXerrada))) {
+                Boolean iniciComparacio = Data.compararDatas(dataXerrada, inici);
+                Boolean fiComparacio = Data.compararDatas(fi, dataXerrada);
+                if (( iniciComparacio == null || iniciComparacio) && (fiComparacio == null || !fiComparacio)) {
                     validas.afegirAccio(listaAccions[i]);
                 }
             }

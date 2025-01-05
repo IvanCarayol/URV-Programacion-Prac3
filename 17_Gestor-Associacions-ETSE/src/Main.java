@@ -57,17 +57,48 @@ public class Main {
                     break;
 
                 case 6:
+                    Data dataInici = null;
+                    Data dataFinal = null;
+                    String[] data;
                     System.out.println("Indica la data d'inici separada per '/': (dd/m/yyyy)");
-                    scanner.nextLine();
-                    String[] data = scanner.nextLine().split("/");
-                    Data dataInici = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-                    System.out.println("Indica la data de fi separada per '/': (dd/m/yyyy)");
-                    data = scanner.nextLine().split("/");
-                    Data dataFinal = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
                     
+                    while (dataInici == null)
+                    try {
+                        data = scanner.nextLine().split("/");
+                        if (data.length == 3){
+                            dataInici = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+                        } else {
+                            throw new IllegalArgumentException("Format incorrecte");
+                        }    
+                    } catch (Exception e) {
+                        System.out.println("Data d'inici no vàlida. Torna a intentar-ho.");
+                        dataInici = null;
+                    }
+
+                    System.out.println("Indica la data de fi separada per '/': (dd/m/yyyy)");
+                    while (dataFinal == null){
+                        data = scanner.nextLine().split("/");
+                            try {
+                                if (data.length == 3){
+                                    dataFinal = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+                                } else {
+                                    throw new IllegalArgumentException("Format incorrecte");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Data de fi no vàlida. Torna a intentar-ho.");
+                                dataFinal = null;
+                            }
+                        
+                    }
                     LlistaAccio xerradesEnFranja = accions.llistarEnFranja(dataInici, dataFinal); 
                     System.out.println("\nXerrades en franja:"); 
-                    System.out.println(xerradesEnFranja);
+                    if(xerradesEnFranja.getContador() >= 1){
+                        System.out.println(xerradesEnFranja);
+                    } else {
+                        System.out.println("No hi ha xerrades en aquesta franja");
+                    }
+                    
+
                     break;
 
                 case 7:
