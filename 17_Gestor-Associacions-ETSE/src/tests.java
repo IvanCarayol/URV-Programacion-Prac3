@@ -197,7 +197,7 @@ public class tests {
         
         // pruebas de accio
         //Accio acccio1 = new Accio("Arquitectura", "Para todos", ivan, 0, dat);
-        Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",null, false, datIni, associacions, null);
+        Membre Lluis = new Alumne("Lluis", "lluis28@gmail.com",new Titulacio("AFE"), false, datIni, associacions, null);
         System.out.println("toString de membres");
         System.out.println(Lluis + "\n");
         System.out.println(ivan);

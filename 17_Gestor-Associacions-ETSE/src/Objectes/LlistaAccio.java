@@ -280,7 +280,7 @@ public class LlistaAccio {
         for (int i = 0; i < contador; i++) { 
             if (listaAccions[i] instanceof Demostracio){
                 Demostracio comprobar = (Demostracio) listaAccions[i];
-                if (!comprobar.getValida()){
+                if (comprobar.getValida() == false){
                     demostracionsResultants[y] = comprobar;
                     y++;
                 }
