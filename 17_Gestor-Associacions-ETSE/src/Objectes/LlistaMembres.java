@@ -248,4 +248,34 @@ public class LlistaMembres implements Serializable
         }
         return text;
     }
+
+    public String toStringAmbOpcions(int num){
+
+        String text = "Llista de Membres actius a alguna associacio:\n";
+
+        if (num == 1){
+            for (int i = 0; i < numElem; i++) 
+            {
+                text+="Membre "+i+": "+tabla[i].toString()+"\n";
+            }
+        }
+        else if(num == 2){
+            for (int i = 0; i < numElem; i++) 
+            {
+                if (tabla[i] instanceof Alumne) {
+                    text += "Alumno "+i+": "+tabla[i].toString()+"\n";
+                }
+            }
+        }
+        else{
+            for (int i = 0; i < numElem; i++) 
+            {
+                if (tabla[i] instanceof Professor) {
+                    text += "Alumno "+i+": "+tabla[i].toString()+"\n";
+                }
+            }
+        }
+
+        return text;
+    }
 }

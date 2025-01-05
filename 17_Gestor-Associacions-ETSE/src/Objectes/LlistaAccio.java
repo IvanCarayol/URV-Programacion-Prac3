@@ -28,6 +28,22 @@ public class LlistaAccio {
         }
     }
 
+    public void eliminaAccioData(Accio accio, Data data) {
+        if (Data.compararDatas(data, accio.getData())){
+            int i = 0; 
+            boolean trobat = false;
+            while (i < contador && !trobat){
+                if (accio.getNom().equals(listaAccions[i].getNom())){
+                    listaAccions[i] = listaAccions[i+1];
+                    listaAccions[contador-1] = null;
+                    contador--;
+                    trobat = true;
+                }
+                i++;
+            }
+        }
+    }
+
     // Método para obtener el contador de elementos
     public int getContador() {
         return contador;
@@ -256,7 +272,23 @@ public class LlistaAccio {
             }           
         }
         return demostracionsResultants;
+    }
+    
+    public Demostracio[] demostracionsInValides(){
+        Demostracio[] demostracionsResultants = new Demostracio[contador];
+        int y = 0;
+        for (int i = 0; i < contador; i++) { 
+            if (listaAccions[i] instanceof Demostracio){
+                Demostracio comprobar = (Demostracio) listaAccions[i];
+                if (!comprobar.getValida()){
+                    demostracionsResultants[y] = comprobar;
+                    y++;
+                }
+            }           
+        }
+        return demostracionsResultants;
     } 
+
 
     /**
      * Retorna un array de demostracions per a una associació específica.

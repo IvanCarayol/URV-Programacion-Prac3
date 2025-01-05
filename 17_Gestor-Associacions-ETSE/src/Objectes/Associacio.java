@@ -84,9 +84,9 @@ public class Associacio implements Serializable{
 
         if (membre instanceof Alumne) {
             Titulacio titula = ((Alumne) membre).getTitulacio();
-
-            titulacions.afegirTitulacio(titula);
-            
+            if (!titulacions.estaTitulacio(titula.getNom())){
+                titulacions.afegirTitulacio(titula);
+            }  
         }
     }
 
