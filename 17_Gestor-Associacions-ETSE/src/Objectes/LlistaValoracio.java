@@ -202,6 +202,24 @@ public class LlistaValoracio {
     }
 
     /**
+     * Crea una còpia del array de valoracions sense elements nuls. 
+     * 
+     * @param valoracions L'array de llistes de valoracions a copiar.
+     * @return Un nou array de llistes de valoracions amb els elements no nuls de l'array original. 
+     */
+    public static LlistaValoracio[] copiaLlista(LlistaValoracio[] valoracions){
+        LlistaValoracio[] novaArrayValoracions = new LlistaValoracio[100]; 
+        for (int i = 0; i < valoracions.length; i++) { 
+            if (valoracions[i] != null){
+                LlistaValoracio.afegirValoracioLlista(novaArrayValoracions, valoracions[i]);
+            } else {
+            System.out.println("valoracions[" + i + "] es null.");
+            }
+        }
+        return novaArrayValoracions;
+    }
+
+    /**
      * Obté totes les valoracions en forma de cadena.
      * 
      * @return una cadena amb totes les valoracions, separades per salts de línia, 

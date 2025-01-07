@@ -20,18 +20,9 @@ public class Main {
         accions = Dades.llegirAccions(membres, associacions);
         valoracions = Dades.llegirValoracions(membres);
 
-        LlistaValoracio[] novaArrayValoracions = new LlistaValoracio[100]; 
-        for (int i = 0; i < valoracions.length; i++) { 
-            if (valoracions[i] != null){
-                LlistaValoracio.afegirValoracioLlista(novaArrayValoracions, valoracions[i]);
-            } else {
-            System.out.println("valoracions[" + i + "] es null.");
-            }
-        }
+        LlistaValoracio[] novaArrayValoracions = LlistaValoracio.copiaLlista(valoracions);
 
         Dades.organizarValoraciones(valoracions, accions);
-
-
 
         mostrarMenu();
         System.out.println("Quina opcio vols:");
