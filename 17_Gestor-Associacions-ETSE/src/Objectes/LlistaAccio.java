@@ -126,7 +126,7 @@ public class LlistaAccio {
                 Data dataXerrada = listaAccions[i].getData();
                 Boolean iniciComparacio = Data.compararDatas(dataXerrada, inici);
                 Boolean fiComparacio = Data.compararDatas(fi, dataXerrada);
-                if (( iniciComparacio == null || iniciComparacio) && (fiComparacio == null || !fiComparacio)) {
+                if ((iniciComparacio == null || iniciComparacio) && (fiComparacio == null || fiComparacio)) {
                     validas.afegirAccio(listaAccions[i]);
                 }
             }
