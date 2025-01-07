@@ -36,6 +36,26 @@ public class LlistaValoracio {
         this.IDXerrada = IDXerrada;
     }
 
+    /** 
+     * Afegeix una nova valoració a la primera posició nula disponible del array si aquesta no està plena.
+     * 
+     * @param valoracio la valoració a afegir
+     * @throws IllegalStateException si l'array està ple i no es poden afegir més valoracions. 
+     */ 
+    public void afegirValoracioPrincipi(Valoracio valoracio) { 
+        boolean afegida = false; 
+        for (int i = 0; i < valoracions.length; i++) { 
+            if (valoracions[i] == null) { 
+                valoracions[i] = valoracio; nElem++; 
+                afegida = true; 
+                break; 
+            } 
+        } 
+        if (!afegida) { 
+            throw new IllegalStateException("L'array està ple. No es poden afegir més valoracions."); 
+        } 
+    }
+
     /**
      * Afegeix una nova valoració a la llista si aquesta no esta plena.
      *
@@ -46,8 +66,33 @@ public class LlistaValoracio {
         if (nElem == valoracions.length) {
             throw new IllegalStateException("L'array està ple. No es poden afegir més valoracions.");
         }
+
         valoracions[nElem] = valoracio;
         nElem++;
+    }
+
+    /**
+     * Afegeix una llista de valoracions a la última posició disponible del array valoracions.
+     *
+     * @param valoracions Array de llistes de valoracions. Es buscarà la primera posició nula en aquest array per afegir la nova llista de valoracions.
+     * @param valoracioAfegir La llista de valoracions a afegir al array. 
+     */
+    
+   public static void afegirValoracioLlista(LlistaValoracio[] valoracions, LlistaValoracio valoracioAfegir) { 
+        // Encontrar la primera posición nula en el array valoracions 
+        int pos = -1; 
+        for (int i = 0; i < valoracions.length; i++) { 
+            if (valoracions[i] == null) { 
+                pos = i; 
+                break; 
+            } 
+        }
+
+        if (pos != -1) { 
+            valoracions[pos] = valoracioAfegir; 
+        } else { 
+            System.out.println("No hi ha espai en la llista per afegir més valoracions."); 
+        }
     }
 
     /**

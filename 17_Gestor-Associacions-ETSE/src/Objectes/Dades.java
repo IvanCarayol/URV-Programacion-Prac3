@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "../data/";
+    private static String ruta = "17_Gestor-Associacions-ETSE/data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {
@@ -550,7 +550,7 @@ public class Dades
         return null;
     }
     
-    /** 
+       /** 
      * Escriu les valoracions a un fitxer. 
      * 
      * @param valoracions Les valoracions a escriure. 
@@ -562,7 +562,12 @@ public class Dades
         try
         {
             BufferedWriter fitxer = new BufferedWriter(new FileWriter(arxiu));
-            int numAccions = valoracions.length;
+            int numAccions = 0;
+            int j = 0;
+            while (valoracions[j] != null){
+                numAccions++;
+                j++;
+            }
             
             // escribimos el numero de listas de valoraciones
             fitxer.write(numAccions + "");
@@ -573,7 +578,8 @@ public class Dades
                     String nombre = valoracions[i].getIDXerrada();
                     fitxer.write(nombre);
                     fitxer.newLine();
-                    int numero = valoracions[i].getnElem()/2;
+                    int numero = (valoracions[i].getnElem()+2-1)/2;
+                    System.out.println(numero);
                     fitxer.write(numero + "");
                     fitxer.newLine();
                     for(int y = 0; y < valoracions[i].getnElem(); y++){
@@ -623,7 +629,7 @@ public class Dades
                     Membre membreValoracio = membre.getMembreAmbNom(partes[0]);
                     valoracio = Integer.parseInt(partes[1]);
                     valoracions = new Valoracio(membreValoracio, valoracio);
-                    llista.afegirValoracio(valoracions);
+                    llista.afegirValoracioPrincipi(valoracions);
                 }
                 llistes[y] = llista;
                 y++;
@@ -646,7 +652,7 @@ public class Dades
         for (int i = 0; i < accions.getContador(); i++){
             if (accions.getAccio(i) instanceof Xerrades){
                 for (int y = 0; y < valoracions.length; y++){
-                    if (valoracions[y].getIDXerrada().equals(accions.getAccio(i).getNom())){
+                    if (valoracions[y] != null && valoracions[y].getIDXerrada().equals(accions.getAccio(i).getNom())){
                         Xerrades xer = (Xerrades) accions.getAccio(i);
                         xer.setLlistaValoracions(valoracions[y]);
                     }

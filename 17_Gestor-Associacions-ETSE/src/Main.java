@@ -19,7 +19,19 @@ public class Main {
         membres = Dades.llegirMembres(associacions, titulacions);
         accions = Dades.llegirAccions(membres, associacions);
         valoracions = Dades.llegirValoracions(membres);
+
+        LlistaValoracio[] novaArrayValoracions = new LlistaValoracio[100]; 
+        for (int i = 0; i < valoracions.length; i++) { 
+            if (valoracions[i] != null){
+                LlistaValoracio.afegirValoracioLlista(novaArrayValoracions, valoracions[i]);
+            } else {
+            System.out.println("valoracions[" + i + "] es null.");
+            }
+        }
+
         Dades.organizarValoraciones(valoracions, accions);
+
+
 
         mostrarMenu();
         System.out.println("Quina opcio vols:");
@@ -133,8 +145,100 @@ public class Main {
                     break;
 
                 case 9:
-                    break;
+                    String nomXerradaAfegir = null;
+                    while (nomXerradaAfegir == null){
+                        System.out.println("Indica nom de la xerrada:");
+                        nomXerradaAfegir = scanner.nextLine();
+                        if (nomXerradaAfegir.length() < 3) { 
+                            System.out.println("El nom de la xerrada ha de tenir almenys 3 caràcters."); 
+                            nomXerradaAfegir = null; 
+                        }
+                    }
+                    
+                    System.out.println("Indica titol xerrada:");
+                    String titolXerrada = scanner.nextLine();
 
+                    boolean valida = false;
+                    LlistaAssociacio associacionsParticipants = null;
+                    while (!valida){
+                        try{
+                            System.out.println("Quantes associacions participen");
+                            int numeroAssociacions = Integer.parseInt(scanner.nextLine());
+                            if (numeroAssociacions < 0) { 
+                                throw new IllegalArgumentException("El número de associacions no pot ser negatiu."); 
+                            
+                            }
+                            valida = true;
+                            associacionsParticipants = new LlistaAssociacio(numeroAssociacions);
+                            for (int i = 0; i < numeroAssociacions; i++){
+                                valida = false;
+                                while (!valida){
+                                    try {
+                                        System.out.println("Escriu una associacio");
+                                        String associacioAfegir = scanner.nextLine();
+                                        Associacio associacioAAfegir = associacions.getAssociacioAmbNom(associacioAfegir);
+                                        if (associacioAAfegir != null){
+                                            associacionsParticipants.afegirAsociacio(associacioAAfegir);
+                                            valida = true;
+                                        } else {
+                                            System.out.println("Associacio no existent");
+                                        }
+                                    } catch (Exception e){
+                                        System.out.println("S'ha produït un error: " + e.getMessage());
+                                    }
+                                    
+                                }
+                            }
+
+
+                        } catch (NumberFormatException e){
+                            System.out.println("Introduce un entero");
+                        } catch (IllegalArgumentException e) { 
+                            System.out.println(e.getMessage());
+                        }
+                    }
+
+                    valida = false;
+                    Membre membreXerrada = null;
+                        while (!valida){
+                            try{
+                                System.out.println("Indica nom del membre representant xerrada:");
+                                String nomMemebre = scanner.nextLine();
+                                membreXerrada = membres.getMembreAmbNom(nomMemebre);
+                                if (membreXerrada != null){
+                                    valida = true;
+                                } else{
+                                    System.out.println("Membre no existent");
+                                }
+
+                            } catch (Exception e){
+                                System.out.println("Membre no existent");
+                            }
+                        }
+                    String[] dataXerrada;
+                    Data dataFinalXerrada = null;
+                    System.out.println("Indica la data d'inici separada per '/': (dd/m/yyyy)");
+                        
+                    while (dataFinalXerrada == null){
+                        try {
+                            dataXerrada = scanner.nextLine().split("/");
+                            if (dataXerrada.length == 3){
+                                dataFinalXerrada = new Data(Integer.parseInt(dataXerrada[0]), Integer.parseInt(dataXerrada[1]), Integer.parseInt(dataXerrada[2]));
+                            } else {
+                                throw new IllegalArgumentException("Format incorrecte");
+                            }    
+                        } catch (Exception e) {
+                            System.out.println("Data d'inici no vàlida. Torna a intentar-ho.");
+                            dataXerrada = null;
+                        }
+                    }
+                    Xerrades xerradaAfegir = new Xerrades(nomXerradaAfegir, titolXerrada, membreXerrada, associacionsParticipants, dataFinalXerrada, 100);
+                    accions.afegirAccio(xerradaAfegir);
+                    LlistaValoracio valoracionsxerrada = new LlistaValoracio(1000, nomXerradaAfegir); 
+                    LlistaValoracio.afegirValoracioLlista(novaArrayValoracions, valoracionsxerrada);
+                    Dades.organizarValoraciones(novaArrayValoracions, accions);
+                    break;
+                    
                 case 10:
                     LlistaAssociacio lassoaciaAux = new LlistaAssociacio(3);
                     lassoaciaAux.afegirAsociacio(associacions.getAsociacioAt(0));
@@ -212,10 +316,9 @@ public class Main {
 
                 case 14:
                     int[] indexXerrada = new int[1];
-                    scanner.nextLine();
                     System.out.println("Introdueix el nom de la xerrada");
                     String nomXerrada = scanner.nextLine();
-                    boolean trobat = valoracions[0].trobarXerrada(nomXerrada, valoracions, indexXerrada);
+                    boolean trobat = valoracions[0].trobarXerrada(nomXerrada, novaArrayValoracions, indexXerrada);
                     if (trobat){
                         System.out.println("Introdueix la valoració (0-10):"); 
                         int valor = Integer.parseInt(scanner.nextLine()); 
@@ -227,13 +330,13 @@ public class Main {
                         } else {
                             System.out.println("");
                             Valoracio valoracioAfegir = new Valoracio(membreValorant, valor);
-                            valoracions[indexXerrada[0]].afegirValoracio(valoracioAfegir);
+                            System.out.println(novaArrayValoracions[indexXerrada[0]].getnElem());
+                            novaArrayValoracions[indexXerrada[0]].afegirValoracio(valoracioAfegir);
+                            System.out.println(novaArrayValoracions[indexXerrada[0]].getnElem());
                         }
                     } else{
                         System.out.println("Xerrada no existent");
                     }
-
-                    
                     break;
 
                 case 15:
@@ -267,9 +370,10 @@ public class Main {
                         Dades.guardaAssociacions(associacions);
                         Dades.guardarMembres(membres);
                         Dades.escriureAccions(accions);
-                        Dades.escriureValoracions(valoracions);
+                        Dades.escriureValoracions(novaArrayValoracions);
                     }
                     sortir = true;
+                    break;
             }
             mostrarMenu();
             System.out.println("Quina opcio vols:");
