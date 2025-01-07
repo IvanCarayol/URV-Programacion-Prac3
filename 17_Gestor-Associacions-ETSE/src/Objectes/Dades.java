@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Dades 
 {
-    private static String ruta = "data/";
+    private static String ruta = "../data/";
     
     public static void guardarMembres(LlistaMembres membres)
     {

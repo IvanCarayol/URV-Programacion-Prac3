@@ -4,7 +4,6 @@ import java.util.Scanner;
 import Objectes.*;
 
 public class Main {
-    private final int SORTIR = 18;
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         LlistaAssociacio associacions;
@@ -21,8 +20,6 @@ public class Main {
         accions = Dades.llegirAccions(membres, associacions);
         valoracions = Dades.llegirValoracions(membres);
         Dades.organizarValoraciones(valoracions, accions);
-        
-        Data d = new Data(25, 11, 2023); // fecha de prueba*/
 
         mostrarMenu();
         System.out.println("Quina opcio vols:");
@@ -57,9 +54,17 @@ public class Main {
                     break;
                     
                 case 5:
-                    LlistaAccio accioAsso = accions.accioDeUnaAssociacio(associacions.getAsociacioAt(0));
-                    System.out.println("\nLlistar accions d’ una associació concreta");
-                    System.out.println(accioAsso);
+                    System.out.println("Introduex nom d'associacio");
+                    String nomAssociacio = scanner.next();
+                    Associacio buscaAssociacio = associacions.getAssociacioAmbNom(nomAssociacio);
+                    if(buscaAssociacio != null) {
+                        LlistaAccio accioAsso = accions.accioDeUnaAssociacio(buscaAssociacio);
+                        System.out.println("\nLlistar accions d’ una associació concreta");
+                        System.out.println(accioAsso);
+                    } else {
+                        System.out.println("Associacio inexistent");
+                    }
+                    
                     break;
 
                 case 6:
@@ -103,6 +108,7 @@ public class Main {
                     } else {
                         System.out.println("No hi ha xerrades en aquesta franja");
                     }
+                    break;
 
                 case 7:
                     System.out.println("\nIndica el nom de la associacio:");
@@ -133,11 +139,51 @@ public class Main {
                     LlistaAssociacio lassoaciaAux = new LlistaAssociacio(3);
                     lassoaciaAux.afegirAsociacio(associacions.getAsociacioAt(0));
                     lassoaciaAux.afegirAsociacio(associacions.getAsociacioAt(4));
-                    Demostracio demo = new Demostracio("Prueba10", "Prueba10T", membres.getMembreAt(5), lassoaciaAux, d, false, 0, 0);
-                    accions.afegirAccio(demo);
-            
-                    System.out.println("\nNova demostració");
-                    System.out.println(accions);
+
+                    System.out.println("Indica la data de creacio separada per '/': (dd/m/yyyy)");
+                    String[] dataDemostracioAux = scanner.nextLine().split("/");
+                    Data dataDemostracio = null;
+                    try {
+                        if (dataDemostracioAux.length == 3){
+                            dataDemostracio = new Data(Integer.parseInt(dataDemostracioAux[0]), Integer.parseInt(dataDemostracioAux[1]), Integer.parseInt(dataDemostracioAux[2]));
+                            
+                            System.out.println("Indica nom demostracio:");
+                            String nomDemostracio = scanner.nextLine();
+
+                            System.out.println("Indica titol demostracio:");
+                            String titolDemostracio = scanner.nextLine();
+
+                            System.out.println("Indica nom del membre demostracio:");
+                            String nomMemebre = scanner.nextLine();
+                            Membre membreDemostracio = membres.getMembreAmbNom(nomMemebre);
+                            
+                            if(membreDemostracio != null) {
+
+                                System.out.println("Indica vegades oferit demostracio:");
+                                int oferitDemostracio = scanner.nextInt();
+
+                                System.out.println("Indica cost demostracio:");
+                                int costDemostracio = scanner.nextInt();
+
+                                System.out.println("Indica validesa demostracio(si:1/no:0):");
+                                int validDemostracio = scanner.nextInt();
+
+                                Demostracio demo = new Demostracio(nomDemostracio, titolDemostracio, membreDemostracio, lassoaciaAux, dataDemostracio, (validDemostracio==1)? true:false, oferitDemostracio, costDemostracio);
+                                accions.afegirAccio(demo);
+                        
+                                System.out.println("\nNova demostració");
+                                System.out.println(accions);
+                            } else {
+                                System.out.println("Membre no trobat");
+                            }
+                        
+                        } else {
+                            throw new IllegalArgumentException("Format incorrecte");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Data de fi no vàlida. Torna a intentar-ho.");
+                        dataDemostracio = null;
+                    }
                     break;
 
                 case 11:
