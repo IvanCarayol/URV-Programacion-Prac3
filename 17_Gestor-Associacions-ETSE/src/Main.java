@@ -302,8 +302,10 @@ public class Main {
                     break;
 
                 case 13:
-                    LlistaAccio lxerrades = accions.xerradesMesAssisten(5);
-                    System.out.println("\nXerrades amb x membres");
+                    System.out.println("Numero de assistens:");
+                    int numAssistens = scanner.nextInt();
+                    LlistaAccio lxerrades = accions.xerradesMesAssisten(numAssistens);
+                    System.out.println("\nXerrades amb " + numAssistens + " assistens");
                     System.out.println(lxerrades);
                     break;
 

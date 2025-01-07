@@ -25,6 +25,8 @@ public class Xerrades extends Accio {
 
     public void setLlistaValoracions(LlistaValoracio valoracions){
         lValoracions = valoracions;
+        nValo = valoracions.getnElem()/2;
+        nMem = valoracions.getnElem()/2;
     }
 
     public int getNumValoracions(){
