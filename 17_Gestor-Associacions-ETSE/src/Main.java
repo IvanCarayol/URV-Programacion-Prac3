@@ -22,13 +22,7 @@ public class Main {
 
         LlistaValoracio[] novaArrayValoracions = LlistaValoracio.copiaLlista(valoracions);
 
-        LlistaAssociacio associacions = new LlistaAssociacio(100); 
-        for (int i = 0; i < novaArrayAssociacio.getNumelem(); i++) { 
-            if (novaArrayAssociacio.getAsociacioAt(i) != null){
-                associacions.afegirAsociacio(novaArrayAssociacio.getAsociacioAt(i));
-            }
-        }
-
+        LlistaAssociacio associacions = Main.copia(novaArrayAssociacio);
 
         Dades.organizarValoraciones(valoracions, accions);
 
@@ -514,5 +508,15 @@ public class Main {
         } while (opcio < 1 || opcio > 18);
         
         return opcio;
+    }
+
+    public static LlistaAssociacio copia (LlistaAssociacio novaArrayAssociacio){
+        LlistaAssociacio associacions = new LlistaAssociacio(100); 
+        for (int i = 0; i < novaArrayAssociacio.getNumelem(); i++) { 
+            if (novaArrayAssociacio.getAsociacioAt(i) != null){
+                associacions.afegirAsociacio(novaArrayAssociacio.getAsociacioAt(i));
+            }
+        }
+        return associacions;
     }
 }
