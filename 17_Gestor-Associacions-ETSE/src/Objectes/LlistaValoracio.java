@@ -212,8 +212,6 @@ public class LlistaValoracio {
         for (int i = 0; i < valoracions.length; i++) { 
             if (valoracions[i] != null){
                 LlistaValoracio.afegirValoracioLlista(novaArrayValoracions, valoracions[i]);
-            } else {
-            System.out.println("valoracions[" + i + "] es null.");
             }
         }
         return novaArrayValoracions;

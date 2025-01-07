@@ -6,7 +6,7 @@ import Objectes.*;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        LlistaAssociacio associacions;
+        LlistaAssociacio novaArrayAssociacio;
         LlistaMembres membres;
         LlistaTitulacions titulacions;
         LlistaAccio accions;
@@ -14,13 +14,21 @@ public class Main {
         int opcio;
         boolean sortir = false;
         
-        associacions = Dades.carregaAssociacions();
+        novaArrayAssociacio = Dades.carregaAssociacions();
         titulacions = Dades.carregaTitulacions();
-        membres = Dades.llegirMembres(associacions, titulacions);
-        accions = Dades.llegirAccions(membres, associacions);
+        membres = Dades.llegirMembres(novaArrayAssociacio, titulacions);
+        accions = Dades.llegirAccions(membres, novaArrayAssociacio);
         valoracions = Dades.llegirValoracions(membres);
 
         LlistaValoracio[] novaArrayValoracions = LlistaValoracio.copiaLlista(valoracions);
+
+        LlistaAssociacio associacions = new LlistaAssociacio(100); 
+        for (int i = 0; i < novaArrayAssociacio.getNumelem(); i++) { 
+            if (novaArrayAssociacio.getAsociacioAt(i) != null){
+                associacions.afegirAsociacio(novaArrayAssociacio.getAsociacioAt(i));
+            }
+        }
+
 
         Dades.organizarValoraciones(valoracions, accions);
 

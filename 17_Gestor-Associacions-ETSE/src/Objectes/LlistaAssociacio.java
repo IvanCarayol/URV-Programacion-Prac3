@@ -77,6 +77,8 @@ public class LlistaAssociacio implements Serializable{
         }
     }
 
+    
+
     // Método toString para mostrar toda la tabla temporal
     @Override
     public String toString() {
