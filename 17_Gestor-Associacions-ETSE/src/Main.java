@@ -373,14 +373,16 @@ public class Main {
                         Dades.escriureValoracions(novaArrayValoracions);
                     }
                     sortir = true;
+                    scanner.close();
                     break;
             }
-            mostrarMenu();
-            System.out.println("Quina opcio vols:");
-            opcio = demanarOpcio();
-            //scanner.nextLine();
+            if (!sortir){
+                mostrarMenu();
+                System.out.println("Quina opcio vols:");
+                opcio = demanarOpcio();
+            }
+
         }
-        scanner.close();
     }
 
     public static void mostrarMenu(){
